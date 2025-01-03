@@ -1,0 +1,256 @@
+{
+    "recettes": [
+        {
+            "nom": "Sushi (Nigiri et Maki)",
+            "ingredients": [
+                "Riz japonais",
+                "Vinaigre de riz",
+                "Sucre",
+                "Sel",
+                "Saumon",
+                "Thon",
+                "Crevette",
+                "Concombre",
+                "Feuille de nori",
+                "Wasabi",
+                "Sauce soja"
+            ]
+        },
+        {
+            "nom": "Ramen au miso",
+            "ingredients": [
+                "Nouilles ramen",
+                "Pâte de miso",
+                "Dashi",
+                "Sauce soja",
+                "Mirin",
+                "Porc chashu",
+                "\u0152uf mariné",
+                "Nori",
+                "Oignon vert",
+                "Gingembre",
+                "Ail",
+                "Huile de sésame"
+            ]
+        },
+        {
+            "nom": "Yakitori (brochettes de poulet)",
+            "ingredients": [
+                "Poulet",
+                "Sauce soja",
+                "Mirin",
+                "Sucre",
+                "Sake",
+                "Poireaux japonais"
+            ]
+        },
+        {
+            "nom": "Tempura",
+            "ingredients": [
+                "Crevettes",
+                "Patate douce",
+                "Aubergine",
+                "Courgette",
+                "Farine",
+                "\u0152uf",
+                "Eau froide",
+                "Huile végétale",
+                "Sauce tentsuyu"
+            ]
+        },
+        {
+            "nom": "Okonomiyaki",
+            "ingredients": [
+                "Farine",
+                "\u0152uf",
+                "Chou",
+                "Dashi",
+                "Porc",
+                "Crevettes",
+                "Mayonnaise japonaise",
+                "Sauce okonomiyaki",
+                "Aonori",
+                "Katsuobushi"
+            ]
+        },
+        {
+            "nom": "Takoyaki",
+            "ingredients": [
+                "Pâte (farine, \u0153uf, dashi)",
+                "Morceaux de poulpe",
+                "Beni shoga",
+                "Oignon vert",
+                "Aonori",
+                "Mayonnaise japonaise",
+                "Sauce takoyaki"
+            ]
+        },
+        {
+            "nom": "Tonkatsu (escalope panée)",
+            "ingredients": [
+                "Porc",
+                "Farine",
+                "\u0152uf",
+                "Panko",
+                "Huile",
+                "Chou",
+                "Sauce tonkatsu"
+            ]
+        },
+        {
+            "nom": "Gyudon (bol de bœuf)",
+            "ingredients": [
+                "Riz",
+                "Bœuf tranché",
+                "Oignon",
+                "Sauce soja",
+                "Mirin",
+                "Sucre",
+                "Sake",
+                "Beni shoga"
+            ]
+        },
+        {
+            "nom": "Shabu-shabu (fondue japonaise)",
+            "ingredients": [
+                "Bœuf tranché",
+                "Tofu",
+                "Champignons shiitake",
+                "Choux chinois",
+                "Carottes",
+                "Poireaux",
+                "Bouillon kombu",
+                "Ponzu"
+            ]
+        },
+        {
+            "nom": "Udon au curry",
+            "ingredients": [
+                "Nouilles udon",
+                "Poudre de curry",
+                "Dashi",
+                "Sauce soja",
+                "Mirin",
+                "Carottes",
+                "Pommes de terre",
+                "Oignons"
+            ]
+        },
+        {
+            "nom": "Onigiri",
+            "ingredients": [
+                "Riz japonais",
+                "Feuille de nori",
+                "Saumon grillé",
+                "Prunes umeboshi",
+                "Furikake"
+            ]
+        },
+        {
+            "nom": "Chirashi sushi",
+            "ingredients": [
+                "Riz",
+                "Vinaigre de riz",
+                "Saumon",
+                "Thon",
+                "Crevette",
+                "Tamago",
+                "Edamame",
+                "Nori",
+                "Gari"
+            ]
+        },
+        {
+            "nom": "Chawanmushi (flan salé)",
+            "ingredients": [
+                "\u0152uf",
+                "Dashi",
+                "Sauce soja",
+                "Mirin",
+                "Crevettes",
+                "Champignons shiitake"
+            ]
+        },
+        {
+            "nom": "Gyoza (raviolis japonais)",
+            "ingredients": [
+                "Farine (pour la pâte)",
+                "Porc haché",
+                "Chou",
+                "Ail",
+                "Gingembre",
+                "Ciboule",
+                "Sauce soja",
+                "Huile de sésame"
+            ]
+        },
+        {
+            "nom": "Oyakodon (bol de poulet et \u0153uf)",
+            "ingredients": [
+                "Poulet",
+                "\u0152uf",
+                "Riz",
+                "Oignon",
+                "Dashi",
+                "Sauce soja",
+                "Mirin",
+                "Sucre"
+            ]
+        },
+        {
+            "nom": "Soba froide",
+            "ingredients": [
+                "Nouilles soba",
+                "Sauce tsuyu",
+                "Nori",
+                "Oignon vert",
+                "Wasabi"
+            ]
+        },
+        {
+            "nom": "Nabe (potée japonaise)",
+            "ingredients": [
+                "Bouillon kombu",
+                "Tofu",
+                "Champignons enoki",
+                "Carottes",
+                "Choux chinois",
+                "Poulet",
+                "Nouilles udon"
+            ]
+        },
+        {
+            "nom": "Matcha Dorayaki",
+            "ingredients": [
+                "Farine",
+                "\u0152uf",
+                "Sucre",
+                "Poudre de matcha",
+                "Haricots rouges azuki"
+            ]
+        },
+        {
+            "nom": "Mochi (gâteau de riz gluant)",
+            "ingredients": [
+                "Farine de riz gluant",
+                "Sucre",
+                "Eau",
+                "Fécule de maïs",
+                "Anko"
+            ]
+        },
+        {
+            "nom": "Sukiyaki",
+            "ingredients": [
+                "Bœuf tranché",
+                "Tofu",
+                "Champignons shiitake",
+                "Nouilles shirataki",
+                "Choux chinois",
+                "Sauce soja",
+                "Sucre",
+                "Sake"
+            ]
+        }
+    ]
+}
