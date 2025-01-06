@@ -7,7 +7,12 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				title: ['Pacifico', 'cursive'], // Police pour les titres
+				body: ['Noto Sans JP', 'sans-serif'], // Police pour le texte principal
+			}
+		}
 	},
 
 	plugins: [typography, forms, containerQueries]
