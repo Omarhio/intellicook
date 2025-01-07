@@ -30,7 +30,7 @@
 		<div class="flex items-center gap-2">
 			<img src="/logo.webp" alt="Intellicook Logo" class="h-12 w-auto" />
 			<p class="max-w-sm text-center text-sm md:text-left">
-				<strong class="font-title text-lg text-[#F4ACB7]">Intellicook</strong> — Découvrez des recettes
+				<strong class="font-title text-lg text-[#9D8189]">Intellicook</strong> — Découvrez des recettes
 				japonaises et kawaii pour illuminer vos repas !
 			</p>
 		</div>
