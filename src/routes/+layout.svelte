@@ -53,7 +53,7 @@
 				<a href="/recipes" class="text-[#9D8189] hover:text-[#F4ACB7]">Recettes</a>
 			</li>
 			<li>
-				<a href="/about" class="text-[#9D8189] hover:text-[#F4ACB7]">À propos</a>
+				<a href="/favoris" class="text-[#9D8189] hover:text-[#F4ACB7]">Favoris</a>
 			</li>
 		</ul>
 	</nav>
@@ -74,8 +74,8 @@
 				>
 			</li>
 			<li class="mb-10">
-				<a href="/about" class="hover:text-[#F4ACB7]" on:click={() => (isMenuOpen = false)}
-					>À propos</a
+				<a href="/favoris" class="hover:text-[#F4ACB7]" on:click={() => (isMenuOpen = false)}
+					>Favoris</a
 				>
 			</li>
 		</ul>
@@ -97,7 +97,7 @@
 		<ul class="flex gap-6 text-sm">
 			<li><a href="/" class="hover:text-[#F4ACB7]">Accueil</a></li>
 			<li><a href="/recipes" class="hover:text-[#F4ACB7]">Recettes</a></li>
-			<li><a href="/about" class="hover:text-[#F4ACB7]">À propos</a></li>
+			<li><a href="/favoris" class="hover:text-[#F4ACB7]">Favoris</a></li>
 			<li><a href="/contact" class="hover:text-[#F4ACB7]">Contact</a></li>
 		</ul>
 
