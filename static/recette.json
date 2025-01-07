@@ -1,7 +1,7 @@
 {
     "recettes": [
         {
-            "nom": "Sushi (Nigiri et Maki)",
+            "nom": "Sushi",
             "ingredients": [
                 "Riz japonais",
                 "Vinaigre de riz",
@@ -34,7 +34,7 @@
             ]
         },
         {
-            "nom": "Yakitori (brochettes de poulet)",
+            "nom": "Yakitori",
             "ingredients": [
                 "Poulet",
                 "Sauce soja",
@@ -86,7 +86,7 @@
             ]
         },
         {
-            "nom": "Tonkatsu (escalope panée)",
+            "nom": "Tonkatsu",
             "ingredients": [
                 "Porc",
                 "Farine",
@@ -98,7 +98,7 @@
             ]
         },
         {
-            "nom": "Gyudon (bol de bœuf)",
+            "nom": "Gyudon",
             "ingredients": [
                 "Riz",
                 "Bœuf tranché",
@@ -111,7 +111,7 @@
             ]
         },
         {
-            "nom": "Shabu-shabu (fondue japonaise)",
+            "nom": "Shabu-shabu",
             "ingredients": [
                 "Bœuf tranché",
                 "Tofu",
@@ -161,7 +161,7 @@
             ]
         },
         {
-            "nom": "Chawanmushi (flan salé)",
+            "nom": "Chawanmushi",
             "ingredients": [
                 "\u0152uf",
                 "Dashi",
@@ -172,7 +172,7 @@
             ]
         },
         {
-            "nom": "Gyoza (raviolis japonais)",
+            "nom": "Gyoza",
             "ingredients": [
                 "Farine (pour la pâte)",
                 "Porc haché",
@@ -185,7 +185,7 @@
             ]
         },
         {
-            "nom": "Oyakodon (bol de poulet et \u0153uf)",
+            "nom": "Oyakodon",
             "ingredients": [
                 "Poulet",
                 "\u0152uf",
@@ -208,7 +208,7 @@
             ]
         },
         {
-            "nom": "Nabe (potée japonaise)",
+            "nom": "Nabe",
             "ingredients": [
                 "Bouillon kombu",
                 "Tofu",
@@ -230,7 +230,7 @@
             ]
         },
         {
-            "nom": "Mochi (gâteau de riz gluant)",
+            "nom": "Mochi",
             "ingredients": [
                 "Farine de riz gluant",
                 "Sucre",
