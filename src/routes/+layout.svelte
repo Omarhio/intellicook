@@ -6,11 +6,7 @@
 
 	$: {
 		if (typeof window !== 'undefined') {
-			if (isMenuOpen) {
-				document.body.style.overflow = 'hidden';
-			} else {
-				document.body.style.overflow = '';
-			}
+			document.body.style.overflow = isMenuOpen ? 'hidden' : '';
 		}
 	}
 </script>
@@ -30,20 +26,24 @@
 	<nav class="mx-auto flex max-w-6xl items-center justify-center px-4 md:w-full md:justify-between">
 		<div class="flex items-center gap-2">
 			<img src="/logo.webp" alt="Intellicook Logo" class="h-10 w-auto" />
-			<span class="font-title text-3xl text-[white]">Intellicook</span>
+			<span class="font-title text-3xl text-[#9D8189]">Intellicook</span>
 		</div>
 
-		<button
-			class="absolute left-4 top-2 z-[10000] block md:hidden"
+		<div
+			role="button"
+			tabindex="0"
 			aria-label="Toggle menu"
+			aria-expanded={isMenuOpen}
+			class="absolute left-4 top-2 z-[10000] block cursor-pointer md:hidden"
 			on:click={() => (isMenuOpen = !isMenuOpen)}
+			on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && (isMenuOpen = !isMenuOpen)}
 		>
 			<Hamburger
 				isActive={isMenuOpen}
-				class="ease-[cubic-bezier(0.25, 0.8, 0.5, 1)] transition-all duration-500"
+				class="ease-[cubic-bezier(0.25, 0.8, 0.5, 1)] duration-400 transition-all"
 				--color="#9D8189"
 			/>
-		</button>
+		</div>
 
 		<ul class="hidden gap-6 font-body text-lg md:flex">
 			<li>
@@ -59,7 +59,7 @@
 	</nav>
 
 	<div
-		class="fixed inset-0 z-[9999] transform bg-[#FFCAD4] text-[#9D8189] transition-transform duration-300 ease-in-out"
+		class="duration-400 fixed inset-0 z-[9999] transform bg-[#FFCAD4] text-[#9D8189] transition-transform ease-in-out"
 		style="transform: translateX({isMenuOpen ? '0%' : '-100%'})"
 	>
 		<ul
