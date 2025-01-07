@@ -6,7 +6,7 @@
 	<nav class="mx-auto flex max-w-6xl items-center justify-between">
 		<div class="flex items-center gap-2">
 			<img src="/logo.webp" alt="Intellicook Logo" class="h-10 w-auto" />
-			<span class="font-title text-3xl text-[white]">Intellicook</span>
+			<span class="font-title text-3xl text-[#9D8189]">Intellicook</span>
 		</div>
 
 		<ul class="flex gap-4 font-body text-lg">
