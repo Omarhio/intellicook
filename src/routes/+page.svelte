@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	let searchTerm = '';
 
-	// Redirection vers /recipes avec le terme dans l'URL
+	// Redirection vers /recipes avec la recherche
 	function rechercher() {
 		if (searchTerm) {
 			goto(`/recipes?search=${encodeURIComponent(searchTerm)}`);
@@ -10,12 +10,12 @@
 	}
 </script>
 
-<main class="flex min-h-screen flex-col items-center bg-[#FFF6F6] p-16 text-[#9D8189]">
+<main class="min-h-screen bg-[#FFF6F6] text-[#9D8189] flex flex-col items-center p-16">
 	<h1 class="text-5xl font-bold text-[#F4ACB7]">Bienvenue sur Intellicook !</h1>
 	<p class="mt-4 text-lg">Découvrez des recettes japonaises et kawaii 🍣</p>
 
 	<!-- BARRE DE RECHERCHE -->
-	<div class="mt-8 flex w-full max-w-2xl items-center space-x-4">
+	<div class="flex items-center mt-8 space-x-4 w-full max-w-2xl">
 		<input
 			type="text"
 			bind:value={searchTerm}
@@ -24,12 +24,12 @@
 		/>
 		<button
 			on:click={rechercher}
-			class="rounded-lg bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
+			class="bg-[#F4ACB7] hover:bg-[#e690a0] text-white font-bold py-2 px-6 rounded-lg"
 		>
 			Rechercher
 		</button>
 	</div>
 
 	<!-- LIEN POUR AFFICHER TOUTES LES RECETTES -->
-	<a href="/recipes" class="mt-6 text-[#F4ACB7] underline">Voir toutes les recettes</a>
+	<a href="/recipes" class="text-[#F4ACB7] underline mt-6">Voir toutes les recettes</a>
 </main>
