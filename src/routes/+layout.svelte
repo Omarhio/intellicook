@@ -88,7 +88,7 @@
 		style="transform: translateX({isMenuOpen ? '0%' : '-100%'})"
 	>
 		<ul
-			class="flex h-full flex-col items-center justify-center gap-12 text-center font-body text-2xl"
+			class="flex h-full flex-col items-center justify-center gap-24 text-center font-body text-2xl"
 		>
 			<li>
 				<a
