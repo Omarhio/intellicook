@@ -5,7 +5,7 @@
 	let recettes = [];
 	let filteredRecettes = [];
 	let allIngredients = new Set();
-	let allAllergens = ['Poisson', 'Œuf', 'Porc', 'Crustacés', 'Soja']; // Allergènes prédéfinis
+	let allAllergens = ['Poisson', 'Œuf', 'Halal', 'Crustacés', 'Soja'];
 	let selectedIngredients = [];
 	let excludedAllergens = [];
 	let showIngredientList = false;
@@ -29,7 +29,7 @@
 	const allergenMapping = {
 		Poisson: ['Saumon', 'Thon', 'Crevette', 'Saumon grillé'],
 		Œuf: ['Œuf', 'Tamago'],
-		Porc: ['Porc'],
+		Halal: ['Porc'],
 		Crustacés: ['Crevettes', 'Crabe'],
 		Soja: ['Sauce soja', 'Miso', 'Edamame']
 	};
@@ -119,7 +119,7 @@
 							type="checkbox"
 							bind:group={selectedIngredients}
 							value={ingredient}
-							class="accent-[#F4ACB7]"
+							class="text-[#F4ACB7] accent-[#F4ACB7]"
 						/>
 						<span class="text-[#9D8189]">{ingredient}</span>
 					</label>
