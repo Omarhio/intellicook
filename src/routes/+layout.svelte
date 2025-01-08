@@ -1,21 +1,21 @@
 <script lang="js">
 	import '../app.css';
 	import Hamburger from 'svelte-hamburgers';
-	import { afterNavigate } from '$app/navigation'; // Pour réinitialiser l'état après navigation
+	import { afterNavigate } from '$app/navigation';
 
-	// Déclare et initialise `open`
 	let isMenuOpen = false;
+	let currentPath = '';
 
-	// Empêche le défilement de la page si le menu est ouvert
 	$: {
 		if (typeof window !== 'undefined') {
 			document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+			currentPath = window.location.pathname;
 		}
 	}
 
-	// Réinitialise `isMenuOpen` après la navigation
 	afterNavigate(() => {
 		isMenuOpen = false;
+		currentPath = window.location.pathname;
 	});
 </script>
 
@@ -58,9 +58,27 @@
 
 		<!-- Liens de navigation desktop -->
 		<ul class="hidden gap-6 font-body text-lg md:flex">
-			<li><a href="/" class="text-[#9D8189] hover:text-[#F4ACB7]">Accueil</a></li>
-			<li><a href="/recipes" class="text-[#9D8189] hover:text-[#F4ACB7]">Recettes</a></li>
-			<li><a href="/favoris" class="text-[#9D8189] hover:text-[#F4ACB7]">Favoris</a></li>
+			<li>
+				<a
+					href="/"
+					class={`text-[#9D8189] ${currentPath === '/' ? 'font-bold underline underline-offset-1' : ''}`}
+					>Accueil</a
+				>
+			</li>
+			<li>
+				<a
+					href="/recipes"
+					class={`text-[#9D8189] ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''}`}
+					>Recettes</a
+				>
+			</li>
+			<li>
+				<a
+					href="/favoris"
+					class={`text-[#9D8189] ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''}`}
+					>Favoris</a
+				>
+			</li>
 		</ul>
 	</nav>
 
@@ -73,18 +91,32 @@
 			class="flex h-full flex-col items-center justify-center gap-12 text-center font-body text-2xl"
 		>
 			<li>
-				<a href="/" on:click={() => (isMenuOpen = false)}>Accueil</a>
+				<a
+					href="/"
+					class={`hover:text-[#F4ACB7] ${currentPath === '/' ? 'font-bold underline underline-offset-1	' : ''}`}
+					on:click={() => (isMenuOpen = false)}>Accueil</a
+				>
 			</li>
 			<li>
-				<a href="/recipes" on:click={() => (isMenuOpen = false)}>Recettes</a>
+				<a
+					href="/recipes"
+					class={`hover:text-[#F4ACB7] ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1	' : ''}`}
+					on:click={() => (isMenuOpen = false)}>Recettes</a
+				>
 			</li>
 			<li>
-				<a href="/favoris" on:click={() => (isMenuOpen = false)}>Favoris</a>
+				<a
+					href="/favoris"
+					class={`hover:text-[#F4ACB7] ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1	' : ''}`}
+					on:click={() => (isMenuOpen = false)}>Favoris</a
+				>
 			</li>
 		</ul>
 	</div>
 </header>
+
 <slot />
+
 <footer class="bg-[#FFCAD4] py-6 font-body text-[#9D8189]">
 	<div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 md:flex-row">
 		<div class="flex items-center gap-2">
@@ -96,9 +128,27 @@
 		</div>
 
 		<ul class="flex gap-6 text-sm">
-			<li><a href="/" class="hover:text-[#F4ACB7]">Accueil</a></li>
-			<li><a href="/recipes" class="hover:text-[#F4ACB7]">Recettes</a></li>
-			<li><a href="/favoris" class="hover:text-[#F4ACB7]">Favoris</a></li>
+			<li>
+				<a
+					href="/"
+					class={`hover:text-[#F4ACB7] ${currentPath === '/' ? 'font-bold underline underline-offset-1	' : ''}`}
+					>Accueil</a
+				>
+			</li>
+			<li>
+				<a
+					href="/recipes"
+					class={`hover:text-[#F4ACB7] ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1	' : ''}`}
+					>Recettes</a
+				>
+			</li>
+			<li>
+				<a
+					href="/favoris"
+					class={`hover:text-[#F4ACB7] ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1	' : ''}`}
+					>Favoris</a
+				>
+			</li>
 		</ul>
 
 		<p class="text-center text-sm md:text-right">&copy; Intellicook. Tous droits réservés.</p>
