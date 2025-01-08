@@ -48,7 +48,7 @@
 						class="absolute bottom-1 right-1"
 					>
 						<svg 
-							class="w-8 h-8 transform {favoris.some(fav => fav.nom === recette.nom) ? 'fill-red-500 animate-pulse' : 'fill-none stroke-2 stroke-current text-[#F4ACB7]'}" 
+							class="w-8 h-8 transform {favoris.some(fav => fav.nom === recette.nom) ? 'fill-red-500 animate-pulse transition-transform hover:scale-110' : 'fill-none stroke-2 stroke-current text-[#F4ACB7] transition-transform hover:scale-110'}" 
 							viewBox="0 0 24 24"
 						>
 							<path
