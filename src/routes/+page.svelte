@@ -4,6 +4,12 @@
 	let searchTerm = '';
 	let recettes = [];
 	let filteredRecettes = [];
+	let allIngredients = new Set();
+	let allAllergens = ['Poisson', 'Œuf', 'Porc', 'Crustacés', 'Soja']; // Allergènes prédéfinis
+	let selectedIngredients = [];
+	let excludedAllergens = [];
+	let showIngredientList = false;
+	let showAllergenList = false;
 
 	onMount(async () => {
 		try {
@@ -11,20 +17,54 @@
 			if (!response.ok) throw new Error('Erreur lors du chargement des recettes');
 			const data = await response.json();
 			recettes = data.recettes;
+
+			data.recettes.forEach((recette) => {
+				recette.ingredients.forEach((ingredient) => allIngredients.add(ingredient));
+			});
 		} catch (error) {
 			console.error('Erreur de chargement des recettes :', error);
 		}
 	});
 
-	$: filteredRecettes = searchTerm
-		? recettes.filter(
-				(recette) =>
-					recette.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					recette.ingredients.some((ingredient) =>
-						ingredient.toLowerCase().includes(searchTerm.toLowerCase())
+	const allergenMapping = {
+		Poisson: ['Saumon', 'Thon', 'Crevette', 'Saumon grillé'],
+		Œuf: ['Œuf', 'Tamago'],
+		Porc: ['Porc'],
+		Crustacés: ['Crevettes', 'Crabe'],
+		Soja: ['Sauce soja', 'Miso', 'Edamame']
+	};
+
+	function resetFilters() {
+		searchTerm = '';
+		selectedIngredients = [];
+		excludedAllergens = [];
+	}
+
+	$: filteredRecettes = recettes.filter((recette) => {
+		// Filtrer par recherche
+		const matchesSearch = searchTerm
+			? recette.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				recette.ingredients.some((ingredient) =>
+					ingredient.toLowerCase().includes(searchTerm.toLowerCase())
+				)
+			: true;
+
+		// Filtrer par ingrédients sélectionnés
+		const matchesIngredients =
+			selectedIngredients.length > 0
+				? selectedIngredients.every((ingredient) => recette.ingredients.includes(ingredient))
+				: true;
+
+		// Exclure par allergènes
+		const excludesAllergens =
+			excludedAllergens.length > 0
+				? !recette.ingredients.some((ingredient) =>
+						excludedAllergens.some((allergen) => allergenMapping[allergen]?.includes(ingredient))
 					)
-			)
-		: [];
+				: true;
+
+		return matchesSearch && matchesIngredients && excludesAllergens;
+	});
 </script>
 
 <main class="flex min-h-screen flex-col items-center bg-[#FFF6F6] p-6 text-[#9D8189]">
@@ -34,7 +74,7 @@
 		<p class="mt-4 text-lg">Découvrez des recettes japonaises et kawaii 🍣</p>
 	</div>
 
-	<!-- BARRE DE RECHERCHE -->
+	<!-- BARRE DE RECHERCHE ET BOUTONS -->
 	<div
 		class="mt-8 flex w-full max-w-2xl flex-col items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0"
 	>
@@ -45,18 +85,71 @@
 			class="w-full rounded-3xl border-2 border-[#F4ACB7] p-3 text-center text-lg focus:ring-2 focus:ring-[#F4ACB7]"
 		/>
 		<button
-			on:click={() => (searchTerm = '')}
+			on:click={resetFilters}
 			class="rounded-lg bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
 		>
 			Reset
 		</button>
 	</div>
 
-	<!-- LIEN POUR AFFICHER TOUTES LES RECETTES -->
-	<a href="/recipes" class="mt-6 text-[#F4ACB7] underline">Voir toutes les recettes</a>
+	<!-- BOUTONS INGREDIENTS ET ALLERGENES -->
+	<div class="mt-6 flex gap-4">
+		<button
+			on:click={() => (showIngredientList = !showIngredientList)}
+			class="rounded-lg bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
+		>
+			{showIngredientList ? 'Fermer ingrédients' : 'Ingrédients'}
+		</button>
+		<button
+			on:click={() => (showAllergenList = !showAllergenList)}
+			class="rounded-lg bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
+		>
+			{showAllergenList ? 'Fermer allergènes' : 'Allergènes'}
+		</button>
+	</div>
 
-	<!-- RÉSULTATS DE LA RECHERCHE -->
-	{#if searchTerm && filteredRecettes.length > 0}
+	<!-- LISTE D'INGRÉDIENTS -->
+	{#if showIngredientList}
+		<div class="mt-6 w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg">
+			<h2 class="mb-4 text-xl font-bold text-[#9D8189]">Sélectionnez des ingrédients :</h2>
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+				{#each Array.from(allIngredients) as ingredient}
+					<label class="flex items-center gap-2">
+						<input
+							type="checkbox"
+							bind:group={selectedIngredients}
+							value={ingredient}
+							class="accent-[#F4ACB7]"
+						/>
+						<span class="text-[#9D8189]">{ingredient}</span>
+					</label>
+				{/each}
+			</div>
+		</div>
+	{/if}
+
+	<!-- LISTE D'ALLERGENES -->
+	{#if showAllergenList}
+		<div class="mt-6 w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg">
+			<h2 class="mb-4 text-xl font-bold text-[#9D8189]">Excluez des allergènes :</h2>
+			<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+				{#each allAllergens as allergen}
+					<label class="flex items-center gap-2">
+						<input
+							type="checkbox"
+							bind:group={excludedAllergens}
+							value={allergen}
+							class="accent-[#F4ACB7]"
+						/>
+						<span class="text-[#9D8189]">{allergen}</span>
+					</label>
+				{/each}
+			</div>
+		</div>
+	{/if}
+
+	<!-- RESULTATS -->
+	{#if searchTerm || selectedIngredients.length > 0 || excludedAllergens.length > 0}
 		<div class="mt-8 w-full max-w-3xl">
 			<h2 class="mb-6 text-2xl font-bold text-[#9D8189]">Résultats :</h2>
 			<ul class="space-y-6">
@@ -66,7 +159,7 @@
 					>
 						<img src={recette.image} alt={recette.nom} class="h-32 w-32 rounded-lg object-cover" />
 						<div class="text-center md:text-left">
-							<h3 class="text-xl font-semibold text-[#F4ACB7] md:text-2xl">{recette.nom}</h3>
+							<h3 class="title-font text-xl text-[#F4ACB7] md:text-2xl">{recette.nom}</h3>
 							<p class="mt-2 text-sm text-[#9D8189] md:text-base">
 								<strong>Ingrédients :</strong>
 								{recette.ingredients.join(', ')}
@@ -76,7 +169,7 @@
 				{/each}
 			</ul>
 		</div>
-	{:else if searchTerm}
+	{:else if searchTerm || selectedIngredients.length > 0 || excludedAllergens.length > 0}
 		<div class="mt-8 w-full max-w-3xl">
 			<p class="text-center text-lg text-[#9D8189]">Aucun résultat trouvé.</p>
 		</div>
