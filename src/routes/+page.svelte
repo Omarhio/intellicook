@@ -157,7 +157,7 @@
 							name="allergens"
 							bind:group={excludedAllergens}
 							value={allergen}
-							class="accent-[#F4ACB7]"
+							class="text-[#F4ACB7] accent-[#F4ACB7]"
 						/>
 						<span class="text-[#9D8189]">{allergen}</span>
 					</label>
