@@ -11,7 +11,7 @@
 </script>
 
 <main class="min-h-screen bg-[#FFF6F6] text-[#9D8189] flex flex-col items-center p-16">
-	<h1 class="text-5xl font-bold text-[#F4ACB7]">Bienvenue sur Intellicook !</h1>
+	<h1 class="title-font text-5xl text-[#F4ACB7]">Bienvenue sur Intellicook !</h1>
 	<p class="mt-4 text-lg">Découvrez des recettes japonaises et kawaii 🍣</p>
 
 	<!-- BARRE DE RECHERCHE -->
