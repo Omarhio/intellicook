@@ -85,3 +85,22 @@
 	</div>
 </header>
 <slot />
+<footer class="bg-[#FFCAD4] py-6 font-body text-[#9D8189]">
+	<div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 md:flex-row">
+		<div class="flex items-center gap-2">
+			<img src="/logo.webp" alt="Intellicook Logo" class="h-12 w-auto" />
+			<p class="max-w-sm text-center text-sm md:text-left">
+				<strong class="font-title text-lg text-[#9D8189]">Intellicook</strong> — Découvrez des recettes
+				japonaises et kawaii pour illuminer vos repas !
+			</p>
+		</div>
+
+		<ul class="flex gap-6 text-sm">
+			<li><a href="/" class="hover:text-[#F4ACB7]">Accueil</a></li>
+			<li><a href="/recipes" class="hover:text-[#F4ACB7]">Recettes</a></li>
+			<li><a href="/favoris" class="hover:text-[#F4ACB7]">Favoris</a></li>
+		</ul>
+
+		<p class="text-center text-sm md:text-right">&copy; Intellicook. Tous droits réservés.</p>
+	</div>
+</footer>
