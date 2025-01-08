@@ -102,7 +102,7 @@
 			on:click={resetFilters}
 			class="rounded-lg bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
 		>
-			Reset
+			Effacer
 		</button>
 	</div>
 
