@@ -82,3 +82,27 @@ p,
 	animation: fadeOut 400ms ease-in;
 	animation-fill-mode: forwards;
 }
+
+.notification {
+	position: absolute;
+	top: -10px;
+	right: -60px;
+	background-color: #ffdd7d;
+	color: #5f363a;
+	padding: 8px 12px;
+	border-radius: 8px;
+	font-size: 14px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-out 3s forwards;
+}
+
+.notification::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -10px;
+	transform: translateY(-50%);
+	border-width: 6px;
+	border-style: solid;
+	border-color: transparent #ffdd7d transparent transparent;
+}
