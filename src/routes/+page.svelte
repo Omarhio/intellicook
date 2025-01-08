@@ -5,7 +5,7 @@
 	let recettes = [];
 	let filteredRecettes = [];
 	let allIngredients = new Set();
-	let allAllergens = ['Poisson', 'Œuf', 'Halal', 'Crustacés', 'Soja'];
+	let allAllergens = ['Poisson', 'Œuf', 'Halal', 'Crustacés', 'Soja', 'Végétarien'];
 	let selectedIngredients = [];
 	let excludedAllergens = [];
 	let showIngredientList = false;
@@ -27,11 +27,25 @@
 	});
 
 	const allergenMapping = {
-		Poisson: ['Saumon', 'Thon', 'Crevette', 'Saumon grillé'],
+		Poisson: ['Saumon', 'Thon', 'Crevette', 'Saumon grillé', 'Morceaux de poulpe'],
 		Œuf: ['Œuf', 'Tamago'],
-		Halal: ['Porc'],
-		Crustacés: ['Crevettes', 'Crabe'],
-		Soja: ['Sauce soja', 'Miso', 'Edamame']
+		Halal: ['Porc', 'Porc chashu', 'Porc haché'],
+		Crustacés: ['Crevettes', 'Crabe', 'Morceaux de poulpe'],
+		Soja: ['Sauce soja', 'Miso', 'Edamame'],
+		Végétarien: [
+			'Poulet',
+			'Porc',
+			'Porc chashu',
+			'Porc haché',
+			'Morceaux de poulpe',
+			'Bœuf tranché',
+			'Saumon',
+			'Thon',
+			'Crevette',
+			'Saumon grillé',
+			'Crevettes',
+			'Crabe'
+		]
 	};
 
 	function resetFilters() {
@@ -113,10 +127,12 @@
 		<div class="mt-6 w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg">
 			<h2 class="mb-4 text-xl font-bold text-[#9D8189]">Sélectionnez des ingrédients :</h2>
 			<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-				{#each Array.from(allIngredients) as ingredient}
-					<label class="flex items-center gap-2">
+				{#each Array.from(allIngredients) as ingredient, i}
+					<label for={`ingredient-${i}`} class="flex items-center gap-2">
 						<input
 							type="checkbox"
+							id={`ingredient-${i}`}
+							name="ingredients"
 							bind:group={selectedIngredients}
 							value={ingredient}
 							class="text-[#F4ACB7] accent-[#F4ACB7]"
@@ -133,10 +149,12 @@
 		<div class="mt-6 w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg">
 			<h2 class="mb-4 text-xl font-bold text-[#9D8189]">Excluez des allergènes :</h2>
 			<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-				{#each allAllergens as allergen}
-					<label class="flex items-center gap-2">
+				{#each allAllergens as allergen, i}
+					<label for={`allergen-${i}`} class="flex items-center gap-2">
 						<input
 							type="checkbox"
+							id={`allergen-${i}`}
+							name="allergens"
 							bind:group={excludedAllergens}
 							value={allergen}
 							class="accent-[#F4ACB7]"
@@ -152,26 +170,32 @@
 	{#if searchTerm || selectedIngredients.length > 0 || excludedAllergens.length > 0}
 		<div class="mt-8 w-full max-w-3xl">
 			<h2 class="mb-6 text-2xl font-bold text-[#9D8189]">Résultats :</h2>
-			<ul class="space-y-6">
-				{#each filteredRecettes as recette}
-					<li
-						class="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg md:flex-row"
-					>
-						<img src={recette.image} alt={recette.nom} class="h-32 w-32 rounded-lg object-cover" />
-						<div class="text-center md:text-left">
-							<h3 class="title-font text-xl text-[#F4ACB7] md:text-2xl">{recette.nom}</h3>
-							<p class="mt-2 text-sm text-[#9D8189] md:text-base">
-								<strong>Ingrédients :</strong>
-								{recette.ingredients.join(', ')}
-							</p>
-						</div>
-					</li>
-				{/each}
-			</ul>
-		</div>
-	{:else if searchTerm || selectedIngredients.length > 0 || excludedAllergens.length > 0}
-		<div class="mt-8 w-full max-w-3xl">
-			<p class="text-center text-lg text-[#9D8189]">Aucun résultat trouvé.</p>
+			{#if filteredRecettes.length > 0}
+				<ul class="space-y-6">
+					{#each filteredRecettes as recette}
+						<li
+							class="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg md:flex-row"
+						>
+							<img
+								src={recette.image}
+								alt={recette.nom}
+								class="h-32 w-32 rounded-lg object-cover"
+							/>
+							<div class="text-center md:text-left">
+								<h3 class="title-font text-xl text-[#F4ACB7] md:text-2xl">{recette.nom}</h3>
+								<p class="mt-2 text-sm text-[#9D8189] md:text-base">
+									<strong>Ingrédients :</strong>
+									{recette.ingredients.join(', ')}
+								</p>
+							</div>
+						</li>
+					{/each}
+				</ul>
+			{:else}
+				<p class="mt-4 text-center text-lg text-[#9D8189]">
+					Aucun résultat trouvé. Essayez d'ajuster votre recherche ou vos filtres.
+				</p>
+			{/if}
 		</div>
 	{/if}
 </main>
