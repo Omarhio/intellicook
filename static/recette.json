@@ -2,6 +2,7 @@
     "recettes": [
         {
             "nom": "Sushi",
+            "image": "/images/sushi.jpg",
             "ingredients": [
                 "Riz japonais",
                 "Vinaigre de riz",
@@ -18,6 +19,7 @@
         },
         {
             "nom": "Ramen au miso",
+            "image": "/images/ramen.jpg",
             "ingredients": [
                 "Nouilles ramen",
                 "Pâte de miso",
@@ -25,7 +27,7 @@
                 "Sauce soja",
                 "Mirin",
                 "Porc chashu",
-                "\u0152uf mariné",
+                "Œuf mariné",
                 "Nori",
                 "Oignon vert",
                 "Gingembre",
@@ -35,6 +37,7 @@
         },
         {
             "nom": "Yakitori",
+            "image": "/images/yakitori.jpg",
             "ingredients": [
                 "Poulet",
                 "Sauce soja",
@@ -46,13 +49,14 @@
         },
         {
             "nom": "Tempura",
+            "image": "/images/tempura.jpg",
             "ingredients": [
                 "Crevettes",
                 "Patate douce",
                 "Aubergine",
                 "Courgette",
                 "Farine",
-                "\u0152uf",
+                "Œuf",
                 "Eau froide",
                 "Huile végétale",
                 "Sauce tentsuyu"
@@ -60,9 +64,10 @@
         },
         {
             "nom": "Okonomiyaki",
+            "image": "/images/okonomiyaki.jpg",
             "ingredients": [
                 "Farine",
-                "\u0152uf",
+                "Œuf",
                 "Chou",
                 "Dashi",
                 "Porc",
@@ -75,8 +80,9 @@
         },
         {
             "nom": "Takoyaki",
+            "image": "/images/takoyaki.jpg",
             "ingredients": [
-                "Pâte (farine, \u0153uf, dashi)",
+                "Pâte (farine, œuf, dashi)",
                 "Morceaux de poulpe",
                 "Beni shoga",
                 "Oignon vert",
@@ -87,10 +93,11 @@
         },
         {
             "nom": "Tonkatsu",
+            "image": "/images/tonkatsu.jpg",
             "ingredients": [
                 "Porc",
                 "Farine",
-                "\u0152uf",
+                "Œuf",
                 "Panko",
                 "Huile",
                 "Chou",
@@ -99,6 +106,7 @@
         },
         {
             "nom": "Gyudon",
+            "image": "/images/gyudon.jpg",
             "ingredients": [
                 "Riz",
                 "Bœuf tranché",
@@ -112,6 +120,7 @@
         },
         {
             "nom": "Shabu-shabu",
+            "image": "/images/shabu-shabu.jpg",
             "ingredients": [
                 "Bœuf tranché",
                 "Tofu",
@@ -125,6 +134,7 @@
         },
         {
             "nom": "Udon au curry",
+            "image": "/images/udon-curry.jpg",
             "ingredients": [
                 "Nouilles udon",
                 "Poudre de curry",
@@ -138,6 +148,7 @@
         },
         {
             "nom": "Onigiri",
+            "image": "/images/onigiri.jpg",
             "ingredients": [
                 "Riz japonais",
                 "Feuille de nori",
@@ -148,6 +159,7 @@
         },
         {
             "nom": "Chirashi sushi",
+            "image": "/images/chirashi.jpg",
             "ingredients": [
                 "Riz",
                 "Vinaigre de riz",
@@ -162,8 +174,9 @@
         },
         {
             "nom": "Chawanmushi",
+            "image": "/images/chawanmushi.jpg",
             "ingredients": [
-                "\u0152uf",
+                "Œuf",
                 "Dashi",
                 "Sauce soja",
                 "Mirin",
@@ -173,6 +186,7 @@
         },
         {
             "nom": "Gyoza",
+            "image": "/images/gyoza.jpg",
             "ingredients": [
                 "Farine (pour la pâte)",
                 "Porc haché",
@@ -186,9 +200,10 @@
         },
         {
             "nom": "Oyakodon",
+            "image": "/images/oyakodon.jpg",
             "ingredients": [
                 "Poulet",
-                "\u0152uf",
+                "Œuf",
                 "Riz",
                 "Oignon",
                 "Dashi",
@@ -199,6 +214,7 @@
         },
         {
             "nom": "Soba froide",
+            "image": "/images/soba.jpg",
             "ingredients": [
                 "Nouilles soba",
                 "Sauce tsuyu",
@@ -209,6 +225,7 @@
         },
         {
             "nom": "Nabe",
+            "image": "/images/nabe.jpg",
             "ingredients": [
                 "Bouillon kombu",
                 "Tofu",
@@ -221,9 +238,10 @@
         },
         {
             "nom": "Matcha Dorayaki",
+            "image": "/images/dorayaki.jpg",
             "ingredients": [
                 "Farine",
-                "\u0152uf",
+                "Œuf",
                 "Sucre",
                 "Poudre de matcha",
                 "Haricots rouges azuki"
@@ -231,6 +249,7 @@
         },
         {
             "nom": "Mochi",
+            "image": "/images/mochi.jpg",
             "ingredients": [
                 "Farine de riz gluant",
                 "Sucre",
@@ -241,6 +260,7 @@
         },
         {
             "nom": "Sukiyaki",
+            "image": "/images/sukiyaki.jpg",
             "ingredients": [
                 "Bœuf tranché",
                 "Tofu",
