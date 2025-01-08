@@ -42,7 +42,7 @@
 </script>
 
 <main class="min-h-screen bg-[#FFF6F6] text-[#9D8189] p-8">
-	<h1 class="text-4xl font-bold text-center text-[#F4ACB7]">Recettes Disponibles</h1>
+	<h1 class="text-4xl text-center text-[#F4ACB7]">Recettes Disponibles</h1>
 	<p class="text-center text-lg mt-2">
 		{#if searchTerm}
 			Résultats pour : "<strong>{searchTerm}</strong>"
