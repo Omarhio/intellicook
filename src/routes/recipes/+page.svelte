@@ -56,7 +56,14 @@
 		<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
 			{#each filteredRecettes as recette (recette.nom)}
 				<li class="border p-4 rounded-lg shadow-lg hover:bg-[#FDE2E4] transition-all">
-					<img src={recette.image} alt={recette.nom} class="w-full h-48 object-cover rounded-md" />
+					<img 
+						src={recette.image} 
+						alt={recette.nom} 
+						class="w-full h-48 object-cover rounded-md"
+						loading="lazy"
+						srcset="{recette.image} 480w, {recette.image.replace('.webp', '-large.webp')} 1024w"
+						sizes="(max-width: 768px) 480px, 1024px"
+					/>
 					<h2 class="text-2xl font-semibold mt-4">{recette.nom}</h2>
 					<p class="mt-2">Ingrédients : {recette.ingredients.join(", ")}</p>
 				</li>
@@ -64,6 +71,6 @@
 			{#if filteredRecettes.length === 0}
 				<p class="text-center mt-6">Aucune recette trouvée...</p>
 			{/if}
-		</ul>
+		</ul>			
 	</div>
 </main>
