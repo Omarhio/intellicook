@@ -25,9 +25,11 @@
 <header class="relative z-50 bg-[#FFCAD4] p-4 shadow-md">
 	<nav class="mx-auto flex max-w-6xl items-center justify-center px-4 md:w-full md:justify-between">
 		<div class="flex items-center gap-2">
-			<img src="/logo.webp" alt="Intellicook Logo" class="h-10 w-auto" />
-			<span class="font-title text-3xl text-[#9D8189]">Intellicook</span>
-		</div>
+			<a href="/" class="flex items-center gap-2">
+				<img src="/logo.webp" alt="Intellicook Logo" class="h-10 w-auto" />
+				<span class="font-title text-3xl text-[#9D8189]">Intellicook</span>
+			</a>
+		</div>		
 
 		<div
 			role="button"
