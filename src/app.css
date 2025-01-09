@@ -103,11 +103,202 @@ p,
 	width: 20px;
 }
 
+
+.menu-overlay {
+	position: fixed;
+	inset: 0;
+	background-color: #ffc8d4;
+	transition: transform 0.4s ease-in-out;
+	z-index: 9999;
+}
+
+.kawaii-mascot {
+	animation: float 3s infinite ease-in-out;
+	opacity: 0.8;
+}
+
+.kawaii-mascot2 {
+	animation: float 8s infinite ease-in-out;
+	opacity: 0.8;
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.menu-item {
+	margin-bottom: 16px;
+}
+
+.menu-link {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	color: #9d8189;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-link:hover {
+	color: #f4acb7;
+	transform: scale(1.1);
+}
+
+.menu-icon {
+	width: 24px;
+	height: 24px;
+	transition: transform 0.3s ease;
+}
+
+.menu-link:hover .menu-icon:first-child {
+	transform: rotate(-15deg);
+}
+
+.menu-link:hover .menu-icon:last-child {
+	transform: rotate(15deg);
+}
+
+@keyframes kawaii-rotate {
+	0% {
+		transform: rotate(0);
+	}
+	25% {
+		transform: rotate(15deg);
+	}
+	50% {
+		transform: rotate(-10deg);
+	}
+	75% {
+		transform: rotate(5deg);
+	}
+	100% {
+		transform: rotate(0);
+	}
+}
+
+.icon-kawaii {
+	width: 24px;
+	height: 24px;
+	transition: transform 0.3s ease-in-out;
+}
+
+.icon-kawaii:hover {
+	animation: kawaii-rotate 0.6s ease-in-out;
+}
+
+.menu-link-kawaii {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	color: #9d8189;
+	transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.menu-link-kawaii:hover {
+	color: #f4acb7;
+	transform: scale(1.1) rotate(-2deg);
+}
+
+@keyframes kawaii-rotate-desktop {
+	0% {
+		transform: rotate(0);
+	}
+	25% {
+		transform: rotate(10deg);
+	}
+	50% {
+		transform: rotate(-8deg);
+	}
+	75% {
+		transform: rotate(4deg);
+	}
+	100% {
+		transform: rotate(0);
+	}
+}
+
+@keyframes kawaii-bounce {
+	0%, 100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+.icon-kawaii-desktop {
+	width: 28px;
+	height: 28px;
+	transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.icon-kawaii-desktop:hover {
+	animation: kawaii-rotate-desktop 0.8s ease-in-out;
+	filter: brightness(1.2) saturate(1.5);
+}
+
+.icon-kawaii-desktop:hover + span,
+.menu-link-kawaii-desktop:hover > .icon-kawaii-desktop {
+	animation: kawaii-bounce 0.5s ease-in-out;
+}
+
+.menu-link-kawaii-desktop {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	color: #9d8189;
+	transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+	text-decoration: none;
+}
+
+.menu-link-kawaii-desktop:hover {
+	color: #f4acb7;
+	transform: scale(1.1) rotate(-2deg);
+}
+
+.menu-link-kawaii-desktop:hover {
+	text-shadow: 0 3px 6px rgba(244, 172, 183, 0.4);
+}
+
 /* Responsive */
 @media (max-width: 480px) {
 	.snackbar {
 		width: 90%;
 		font-size: 13px;
 		padding: 12px 16px;
+	}
+}
+
+@media (min-width: 768px) {
+	.icon-kawaii {
+		display: none;
+	}
+	
+	.icon-kawaii-desktop {
+		display: block;
+	}
+}
+
+@media (max-width: 768px) {
+	.icon-kawaii-desktop {
+		display: none;
+	}
+	
+	.icon-kawaii {
+		display: block;
 	}
 }

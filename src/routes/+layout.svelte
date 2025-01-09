@@ -34,8 +34,8 @@
 	<nav class="mx-auto flex max-w-6xl items-center justify-center px-4 md:w-full md:justify-between">
 		<div class="flex items-center gap-2">
 			<a href="/" class="flex items-center gap-2">
-				<img src="/logo.webp" alt="Intellicook Logo" class="h-10 w-auto" />
-				<span class="font-title text-3xl text-[#9D8189]">Intellicook</span>
+				<img src="/logo.webp" alt="Intellicook Logo" class="menu-link-kawaii h-10 w-auto" />
+				<span class="menu-link-kawaii font-title text-3xl text-[#9D8189]">Intellicook</span>
 			</a>
 		</div>
 
@@ -57,62 +57,107 @@
 		</div>
 
 		<!-- Liens de navigation desktop -->
-		<ul class="hidden gap-6 font-body text-lg md:flex">
-			<li>
+		<ul class="nav-links-desktop hidden gap-6 font-body text-lg md:flex">
+			<li class="nav-item-desktop">
 				<a
 					href="/"
-					class={`text-[#9D8189] ${currentPath === '/' ? 'font-bold underline underline-offset-1' : ''}`}
-					>Accueil</a
+					class={`menu-link-kawaii-desktop ${
+						currentPath === '/' ? 'font-bold underline underline-offset-1' : ''
+					}`}
 				>
+					<span>Accueil</span>
+					<img src="/images/8.png" alt="Favoris" class="icon-kawaii-desktop" />
+				</a>
 			</li>
-			<li>
+			<li class="nav-item-desktop">
 				<a
 					href="/recipes"
-					class={`text-[#9D8189] ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''}`}
-					>Recettes</a
+					class={`menu-link-kawaii-desktop ${
+						currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''
+					}`}
 				>
+					<span>Recettes</span>
+					<img src="/images/2.png" alt="Favoris" class="icon-kawaii-desktop" />
+				</a>
 			</li>
-			<li>
+			<li class="nav-item-desktop">
 				<a
 					href="/favoris"
-					class={`text-[#9D8189] ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''}`}
-					>Favoris</a
+					class={`menu-link-kawaii-desktop ${
+						currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''
+					}`}
 				>
+					<span>Favoris</span>
+					<img src="/images/5.png" alt="Favoris" class="icon-kawaii-desktop" />
+				</a>
 			</li>
-		</ul>
+		</ul>		
 	</nav>
 
-	<!-- Menu Mobile -->
-	<div
-		class="fixed inset-0 z-[9999] transform bg-[#FFCAD4] text-[#9D8189] transition-transform duration-400 ease-in-out"
-		style="transform: translateX({isMenuOpen ? '0%' : '-100%'})"
-	>
-		<ul
-			class="flex h-full flex-col items-center justify-center gap-24 text-center font-body text-2xl"
+<!-- Menu Mobile -->
+<div
+	class="menu-overlay fixed inset-0 z-[9999] transform bg-[#FFCAD4] text-[#9D8189] transition-transform duration-400 ease-in-out"
+	style="transform: translateX({isMenuOpen ? '0%' : '-100%'})"
+>
+	<!-- Mascottes Kawaii -->
+	<img
+		src="/images/7.png"
+		alt="Kawaii Mascotte"
+		class="kawaii-mascot absolute bottom-4 left-4 h-20 w-auto"
+	/>
+	<img
+		src="/images/2.png"
+		alt="Kawaii Mascotte"
+		class="kawaii-mascot2 absolute top-4 right-4 h-20 w-auto"
+	/>
+
+	<!-- Liens de navigation -->
+	<ul
+	class="menu-links flex h-full flex-col items-center justify-center gap-12 text-center font-body text-2xl"
+>
+	<li class="menu-item">
+		<a
+			href="/"
+			class={`menu-link-kawaii ${
+				currentPath === '/' ? 'font-bold underline underline-offset-1' : ''
+			}`}
+			on:click={() => (isMenuOpen = false)}
 		>
-			<li>
-				<a
-					href="/"
-					class={`hover:text-[#F4ACB7] ${currentPath === '/' ? 'font-bold underline underline-offset-1	' : ''}`}
-					on:click={() => (isMenuOpen = false)}>Accueil</a
-				>
-			</li>
-			<li>
-				<a
-					href="/recipes"
-					class={`hover:text-[#F4ACB7] ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1	' : ''}`}
-					on:click={() => (isMenuOpen = false)}>Recettes</a
-				>
-			</li>
-			<li>
-				<a
-					href="/favoris"
-					class={`hover:text-[#F4ACB7] ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1	' : ''}`}
-					on:click={() => (isMenuOpen = false)}>Favoris</a
-				>
-			</li>
-		</ul>
-	</div>
+			<img src="/images/3.png" alt="Accueil" class="icon-kawaii" />
+			<span>Accueil</span>
+			<img src="/images/3.png" alt="Accueil" class="icon-kawaii" />
+		</a>
+	</li>
+	<li class="menu-item">
+		<a
+			href="/recipes"
+			class={`menu-link-kawaii ${
+				currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''
+			}`}
+			on:click={() => (isMenuOpen = false)}
+		>
+			<img src="/images/3.png" alt="Recettes" class="icon-kawaii" />
+			<span>Recettes</span>
+			<img src="/images/3.png" alt="Recettes" class="icon-kawaii" />
+		</a>
+	</li>
+	<li class="menu-item">
+		<a
+			href="/favoris"
+			class={`menu-link-kawaii ${
+				currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''
+			}`}
+			on:click={() => (isMenuOpen = false)}
+		>
+			<img src="/images/3.png" alt="Favoris" class="icon-kawaii" />
+			<span>Favoris</span>
+			<img src="/images/3.png" alt="Favoris" class="icon-kawaii" />
+		</a>
+	</li>
+</ul>
+
+</div>
+
 </header>
 
 <slot />
@@ -128,6 +173,7 @@
 		</div>
 
 		<ul class="flex gap-6 text-sm">
+
 			<li>
 				<a
 					href="/"
