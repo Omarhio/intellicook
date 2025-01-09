@@ -83,7 +83,9 @@
 	<div class="mt-12 flex justify-center">
 		<ul class="grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each recettes as recette (recette.nom)}
-				<li class="relative rounded-lg border p-4 shadow-lg transition-all hover:bg-[#FDE2E4]">
+				<li
+					class="relative mx-auto max-w-sm rounded-lg border p-4 pb-12 shadow-lg transition-all hover:bg-[#FDE2E4] sm:pb-4"
+				>
 					<!-- Bouton pour ouvrir la popup -->
 					<button
 						class="w-full text-left"
