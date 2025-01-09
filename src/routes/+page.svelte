@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 
 	let searchTerm = '';
 	let recettes = [];
@@ -11,46 +11,87 @@
 	let showIngredientList = false;
 	let showAllergenList = false;
 
-	// Variables pour le carousel
-	let currentIndex = 0; // Index du premier élément visible dans le carousel
+	let currentIndex = 0;
 	let autoSlideInterval;
-	const slideDuration = 5; // Durée en secondes entre chaque changement d'image
+	const slideDuration = 5000;
 
-	// Charger les recettes et initialiser les ingrédients/allergènes
-	onMount(async () => {
+	// Mapping des ingrédients (ID → Nom)
+	let ingredientMap = {};
+
+	// Charger les recettes et la correspondance des ingrédients
+	async function chargerRecettes() {
 		try {
 			const response = await fetch('/recette.json');
 			if (!response.ok) throw new Error('Erreur lors du chargement des recettes');
 			const data = await response.json();
-			recettes = data.recettes;
 
-			data.recettes.forEach((recette) => {
-				recette.ingredients.forEach((ingredient) => allIngredients.add(ingredient));
+			// Construire la correspondance ID → Nom
+			data.ingredients.forEach((ingredient) => {
+				ingredientMap[ingredient.id] = ingredient.nom;
 			});
 
-			// Initialisation de l'auto-slide du carousel
-			autoSlideInterval = setInterval(() => {
-				slideRight();
-			}, slideDuration * 1000);
+			// Remplacer les IDs par les noms des ingrédients dans les recettes
+			recettes = data.recettes.map((recette) => ({
+				...recette,
+				ingredients: recette.ingredients.map(
+					(id) => ingredientMap[id] || `Ingrédient inconnu (ID: ${id})`
+				)
+			}));
 
-			return () => {
-				clearInterval(autoSlideInterval);
-			};
+			// Récupérer les ingrédients uniques
+			recettes.forEach((recette) => {
+				recette.ingredients.forEach((ingredient) => allIngredients.add(ingredient));
+			});
 		} catch (error) {
 			console.error('Erreur de chargement des recettes :', error);
 		}
-	});
-
-	// Fonction pour défiler à gauche
-	function slideLeft() {
-		currentIndex = currentIndex > 0 ? currentIndex - 1 : recettes.length - 3;
 	}
 
-	// Fonction pour défiler à droite
+	// Gestion du carrousel
+	function slideLeft() {
+		currentIndex = (currentIndex - 1 + recettes.length) % recettes.length;
+	}
+
 	function slideRight() {
 		currentIndex = (currentIndex + 1) % recettes.length;
 	}
 
+	function getRecipe(indexOffset) {
+		const total = recettes.length;
+		return recettes[(currentIndex + indexOffset + total) % total];
+	}
+
+	function resetFilters() {
+		searchTerm = '';
+		selectedIngredients = [];
+		excludedAllergens = [];
+	}
+
+	// Filtrage des recettes
+	$: filteredRecettes = recettes.filter((recette) => {
+		const matchesSearch = searchTerm
+			? recette.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			  recette.ingredients.some((ingredient) =>
+				  ingredient.toLowerCase().includes(searchTerm.toLowerCase())
+			  )
+			: true;
+
+		const matchesIngredients =
+			selectedIngredients.length > 0
+				? selectedIngredients.every((ingredient) => recette.ingredients.includes(ingredient))
+				: true;
+
+		const excludesAllergens =
+			excludedAllergens.length > 0
+				? !recette.ingredients.some((ingredient) =>
+					  excludedAllergens.some((allergen) => allergenMapping[allergen]?.includes(ingredient))
+				  )
+				: true;
+
+		return matchesSearch && matchesIngredients && excludesAllergens;
+	});
+
+	// Allergènes
 	const allergenMapping = {
 		Poisson: ['Saumon', 'Thon', 'Crevette', 'Saumon grillé', 'Morceaux de poulpe'],
 		Œuf: ['Œuf', 'Tamago'],
@@ -73,52 +114,26 @@
 		]
 	};
 
-	function resetFilters() {
-		searchTerm = '';
-		selectedIngredients = [];
-		excludedAllergens = [];
-	}
+	onMount(async () => {
+		await chargerRecettes();
 
-	$: filteredRecettes = recettes.filter((recette) => {
-		// Filtrer par recherche
-		const matchesSearch = searchTerm
-			? recette.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				recette.ingredients.some((ingredient) =>
-					ingredient.toLowerCase().includes(searchTerm.toLowerCase())
-				)
-			: true;
+		autoSlideInterval = setInterval(slideRight, slideDuration);
+	});
 
-		// Filtrer par ingrédients sélectionnés
-		const matchesIngredients =
-			selectedIngredients.length > 0
-				? selectedIngredients.every((ingredient) => recette.ingredients.includes(ingredient))
-				: true;
-
-		// Exclure par allergènes
-		const excludesAllergens =
-			excludedAllergens.length > 0
-				? !recette.ingredients.some((ingredient) =>
-						excludedAllergens.some((allergen) => allergenMapping[allergen]?.includes(ingredient))
-					)
-				: true;
-
-		return matchesSearch && matchesIngredients && excludesAllergens;
+	onDestroy(() => {
+		clearInterval(autoSlideInterval);
 	});
 </script>
 
-<main class="flex min-h-screen flex-col items-center bg-[#FFF6F6] p-6 text-[#9D8189]">
+<main class="flex flex-col items-center bg-[#FFF6F6] p-6 text-[#9D8189] min-h-screen">
 	<!-- TITRE ET SOUS-TITRE -->
 	<div class="text-center">
 		<h1 class="title-font text-4xl text-[#F4ACB7] md:text-5xl">Bienvenue sur Intellicook !</h1>
 		<p class="mt-4 text-lg">Découvrez des recettes japonaises et kawaii 🍣</p>
 	</div>
 
-
-
-	<!-- BARRE DE RECHERCHE ET BOUTONS -->
-	<div
-		class="mt-8 flex w-full max-w-2xl flex-col items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0"
-	>
+	<!-- BARRE DE RECHERCHE -->
+	<div class="mt-8 flex w-full max-w-2xl flex-col items-center md:flex-row md:space-x-4">
 		<input
 			type="text"
 			bind:value={searchTerm}
@@ -193,41 +208,6 @@
 		</div>
 	{/if}
 
-		<!-- CAROUSEL -->
-		<div class="mx-auto mt-12 w-full max-w-6xl">
-			<h2 class="mb-8 text-center text-3xl font-bold text-[#9D8189]">Nos recettes du jour</h2>
-	
-			<!-- Conteneur du carousel -->
-			<div class="flex justify-between items-center">
-				<!-- Flèche gauche -->
-				<button on:click={slideLeft} class="text-2xl text-[#F4ACB7] hover:text-[#e690a0]">
-					&lt;
-				</button>
-	
-				<div class="carousel-container flex gap-6 overflow-hidden">
-					{#each recettes.slice(currentIndex, currentIndex + 3) as recette (recette.nom)}
-						<div class="w-80 flex-none rounded-lg bg-white p-6 shadow-lg">
-							<img
-								src={recette.image}
-								alt={recette.nom}
-								class="mb-4 h-40 w-full rounded-lg object-cover"
-							/>
-							<h3 class="title-font mb-2 text-xl font-semibold text-[#F4ACB7]">{recette.nom}</h3>
-							<p class="text-sm text-[#9D8189]">
-								<strong>Ingrédients :</strong>
-								{recette.ingredients.join(', ')}
-							</p>
-						</div>
-					{/each}
-				</div>
-	
-				<!-- Flèche droite -->
-				<button on:click={slideRight} class="text-2xl text-[#F4ACB7] hover:text-[#e690a0]">
-					&gt;
-				</button>
-			</div>
-		</div>
-
 	<!-- RESULTATS -->
 	{#if searchTerm || selectedIngredients.length > 0 || excludedAllergens.length > 0}
 		<div class="mt-8 w-full max-w-3xl">
@@ -260,6 +240,53 @@
 			{/if}
 		</div>
 	{/if}
+
+		<!-- CAROUSEL -->
+		<div class="relative mt-10 w-full max-w-6xl">
+			<h2 class="mb-8 text-center text-3xl font-bold text-[#9D8189]">Nos recettes du jour</h2>
+	
+			<div class="flex items-center justify-center gap-6">
+				{#if recettes.length > 0}
+					<div class="w-60 scale-90 opacity-70 transform transition-all">
+						<img
+							src={getRecipe(-1).image}
+							alt={getRecipe(-1).nom}
+							class="h-40 w-full rounded-lg object-cover"
+						/>
+						<h3 class="mt-2 text-center text-sm font-semibold">{getRecipe(-1).nom}</h3>
+					</div>
+					<div class="w-80 scale-100 shadow-lg transform transition-all">
+						<img
+							src={getRecipe(0).image}
+							alt={getRecipe(0).nom}
+							class="h-48 w-full rounded-lg object-cover"
+						/>
+						<h3 class="mt-4 text-center text-xl font-bold text-[#F4ACB7]">{getRecipe(0).nom}</h3>
+						<p class="mt-2 text-center text-sm text-[#9D8189]">
+							<strong>Ingrédients :</strong> {getRecipe(0).ingredients.join(', ')}
+						</p>
+					</div>
+					<div class="w-60 scale-90 opacity-70 transform transition-all">
+						<img
+							src={getRecipe(1).image}
+							alt={getRecipe(1).nom}
+							class="h-40 w-full rounded-lg object-cover"
+						/>
+						<h3 class="mt-2 text-center text-sm font-semibold">{getRecipe(1).nom}</h3>
+					</div>
+				{/if}
+			</div>
+	
+			<!-- Indicateurs -->
+			<div class="mt-6 flex justify-center gap-2">
+				{#each Array.from({ length: recettes.length }) as _, index}
+					<!-- svelte-ignore a11y_consider_explicit_label -->
+					<button
+						on:click={() => (currentIndex = index)}
+						class="w-3 h-3 rounded-full transition-all 
+							{currentIndex === index ? 'bg-[#F4ACB7] scale-125' : 'bg-gray-300'}"
+					></button>
+				{/each}
+			</div>
+		</div>
 </main>
-
-
