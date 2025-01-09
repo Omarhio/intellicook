@@ -110,6 +110,37 @@ p,
 	width: 20px;
 }
 
+<<<<<<< Updated upstream
+=======
+.carousel-wrapper {
+	position: relative;
+}
+.carousel-track {
+	/* Empêche les débordements */
+	overflow: hidden;
+}
+.carousel-item {
+	/* Transition douce des éléments du carrousel */
+	transition: transform 0.5s ease, scale 0.5s ease, box-shadow 0.5s ease;
+}
+.carousel-item.scale-110 {
+	/* Met en avant l'élément actif au milieu */
+	transform: scale(1.1);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.carousel-arrow {
+	/* Styles des flèches */
+	padding: 8px 12px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+.carousel-arrow:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+>>>>>>> Stashed changes
 .menu-overlay {
 	position: fixed;
 	inset: 0;
