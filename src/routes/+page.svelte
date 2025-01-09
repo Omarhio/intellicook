@@ -166,9 +166,9 @@
 
 	<!-- LISTE D'INGRÉDIENTS -->
 	{#if showIngredientList}
-		<div class="mt-6 w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg">
+		<div class="mt-6 w-full max-w-6xl rounded-lg bg-white p-6 shadow-lg">
 			<h2 class="mb-4 text-xl font-bold text-[#9D8189]">Sélectionnez des ingrédients :</h2>
-			<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
 				{#each Array.from(allIngredients) as ingredient, i}
 					<label for={`ingredient-${i}`} class="flex items-center gap-2">
 						<input
