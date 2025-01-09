@@ -1,23 +1,35 @@
 <script>
 	import { onMount } from 'svelte';
+
 	let recettes = [];
 	let favoris = [];
+	let ingredientMap = {};
 
 	// Charger les recettes
 	async function chargerRecettes() {
 		const res = await fetch('/recette.json');
 		const data = await res.json();
-		recettes = data.recettes;
+
+		// Créer une correspondance ID → Nom pour les ingrédients
+		data.ingredients.forEach((ingredient) => {
+			ingredientMap[ingredient.id] = ingredient.nom;
+		});
+
+		// Remplacer les IDs des ingrédients par leur nom dans les recettes
+		recettes = data.recettes.map((recette) => ({
+			...recette,
+			ingredients: recette.ingredients.map((id) => ingredientMap[id] || id)
+		}));
 	}
 
 	// Ajouter ou retirer des favoris
 	function toggleFavori(recette) {
-		const index = favoris.findIndex(fav => fav.nom === recette.nom);
-		
+		const index = favoris.findIndex((fav) => fav.nom === recette.nom);
+
 		if (index === -1) {
 			favoris = [...favoris, recette];
 		} else {
-			favoris = favoris.filter(fav => fav.nom !== recette.nom);
+			favoris = favoris.filter((fav) => fav.nom !== recette.nom);
 		}
 
 		localStorage.setItem('favoris', JSON.stringify(favoris));
@@ -31,24 +43,31 @@
 	});
 </script>
 
-<main class="min-h-screen bg-[#FFF6F6] text-[#9D8189] p-8">
-	<h1 class="text-4xl text-center text-[#F4ACB7]">Recettes Disponibles</h1>
+<main class="min-h-screen bg-[#FFF6F6] p-8 text-[#9D8189]">
+	<h1 class="text-center text-4xl text-[#F4ACB7]">Recettes Disponibles</h1>
 
 	<div class="mt-12 flex justify-center">
-		<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+		<ul class="grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each recettes as recette (recette.nom)}
-				<li class="relative border p-4 rounded-lg shadow-lg hover:bg-[#FDE2E4] transition-all">
-					<img src={recette.image} alt={recette.nom} class="w-full h-48 object-cover rounded-md" loading="lazy" />
-					<h2 class="text-2xl font-semibold mt-4">{recette.nom}</h2>
-					<p class="mt-2">Ingrédients : {recette.ingredients.join(", ")}</p>
+				<li class="relative rounded-lg border p-4 shadow-lg transition-all hover:bg-[#FDE2E4]">
+					<img
+						src={recette.image}
+						alt={recette.nom}
+						class="h-48 w-full rounded-md object-cover"
+						loading="lazy"
+					/>
+					<h2 class="mt-4 text-2xl font-semibold">{recette.nom}</h2>
+					<p class="mt-2">Ingrédients : {recette.ingredients.join(', ')}</p>
 
-					<button 
+					<button
 						on:click={() => toggleFavori(recette)}
 						aria-label="Ajouter ou retirer des favoris"
 						class="absolute bottom-1 right-1"
 					>
-						<svg 
-							class="w-8 h-8 transform {favoris.some(fav => fav.nom === recette.nom) ? 'fill-red-500 animate-pulse transition-transform hover:scale-110' : 'fill-none stroke-2 stroke-current text-[#F4ACB7] transition-transform hover:scale-110'}" 
+						<svg
+							class="h-8 w-8 transform {favoris.some((fav) => fav.nom === recette.nom)
+								? 'animate-pulse fill-red-500 transition-transform hover:scale-110'
+								: 'fill-none stroke-current stroke-2 text-[#F4ACB7] transition-transform hover:scale-110'}"
 							viewBox="0 0 24 24"
 						>
 							<path

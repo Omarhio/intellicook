@@ -1,276 +1,157 @@
 {
-    "recettes": [
-        {
-            "nom": "Sushi",
-            "image": "/images/sushi.jpg",
-            "ingredients": [
-                "Riz japonais",
-                "Vinaigre de riz",
-                "Sucre",
-                "Sel",
-                "Saumon",
-                "Thon",
-                "Crevette",
-                "Concombre",
-                "Feuille de nori",
-                "Wasabi",
-                "Sauce soja"
-            ]
-        },
-        {
-            "nom": "Ramen au miso",
-            "image": "/images/ramen.jpg",
-            "ingredients": [
-                "Nouilles ramen",
-                "Pâte de miso",
-                "Dashi",
-                "Sauce soja",
-                "Mirin",
-                "Porc chashu",
-                "Œuf mariné",
-                "Nori",
-                "Oignon vert",
-                "Gingembre",
-                "Ail",
-                "Huile de sésame"
-            ]
-        },
-        {
-            "nom": "Yakitori",
-            "image": "/images/yakitori.jpg",
-            "ingredients": [
-                "Poulet",
-                "Sauce soja",
-                "Mirin",
-                "Sucre",
-                "Sake",
-                "Poireaux japonais"
-            ]
-        },
-        {
-            "nom": "Tempura",
-            "image": "/images/tempura.jpg",
-            "ingredients": [
-                "Crevettes",
-                "Patate douce",
-                "Aubergine",
-                "Courgette",
-                "Farine",
-                "Œuf",
-                "Eau froide",
-                "Huile végétale",
-                "Sauce tentsuyu"
-            ]
-        },
-        {
-            "nom": "Okonomiyaki",
-            "image": "/images/okonomiyaki.jpg",
-            "ingredients": [
-                "Farine",
-                "Œuf",
-                "Chou",
-                "Dashi",
-                "Porc",
-                "Crevettes",
-                "Mayonnaise japonaise",
-                "Sauce okonomiyaki",
-                "Aonori",
-                "Katsuobushi"
-            ]
-        },
-        {
-            "nom": "Takoyaki",
-            "image": "/images/takoyaki.jpg",
-            "ingredients": [
-                "Pâte (farine, œuf, dashi)",
-                "Morceaux de poulpe",
-                "Beni shoga",
-                "Oignon vert",
-                "Aonori",
-                "Mayonnaise japonaise",
-                "Sauce takoyaki"
-            ]
-        },
-        {
-            "nom": "Tonkatsu",
-            "image": "/images/tonkatsu.jpg",
-            "ingredients": [
-                "Porc",
-                "Farine",
-                "Œuf",
-                "Panko",
-                "Huile",
-                "Chou",
-                "Sauce tonkatsu"
-            ]
-        },
-        {
-            "nom": "Gyudon",
-            "image": "/images/gyudon.jpg",
-            "ingredients": [
-                "Riz",
-                "Bœuf tranché",
-                "Oignon",
-                "Sauce soja",
-                "Mirin",
-                "Sucre",
-                "Sake",
-                "Beni shoga"
-            ]
-        },
-        {
-            "nom": "Shabu-shabu",
-            "image": "/images/shabu-shabu.jpg",
-            "ingredients": [
-                "Bœuf tranché",
-                "Tofu",
-                "Champignons shiitake",
-                "Choux chinois",
-                "Carottes",
-                "Poireaux",
-                "Bouillon kombu",
-                "Ponzu"
-            ]
-        },
-        {
-            "nom": "Udon au curry",
-            "image": "/images/udon-curry.jpg",
-            "ingredients": [
-                "Nouilles udon",
-                "Poudre de curry",
-                "Dashi",
-                "Sauce soja",
-                "Mirin",
-                "Carottes",
-                "Pommes de terre",
-                "Oignons"
-            ]
-        },
-        {
-            "nom": "Onigiri",
-            "image": "/images/onigiri.jpg",
-            "ingredients": [
-                "Riz japonais",
-                "Feuille de nori",
-                "Saumon grillé",
-                "Prunes umeboshi",
-                "Furikake"
-            ]
-        },
-        {
-            "nom": "Chirashi sushi",
-            "image": "/images/chirashi.jpg",
-            "ingredients": [
-                "Riz",
-                "Vinaigre de riz",
-                "Saumon",
-                "Thon",
-                "Crevette",
-                "Tamago",
-                "Edamame",
-                "Nori",
-                "Gari"
-            ]
-        },
-        {
-            "nom": "Chawanmushi",
-            "image": "/images/chawanmushi.jpg",
-            "ingredients": [
-                "Œuf",
-                "Dashi",
-                "Sauce soja",
-                "Mirin",
-                "Crevettes",
-                "Champignons shiitake"
-            ]
-        },
-        {
-            "nom": "Gyoza",
-            "image": "/images/gyoza.jpg",
-            "ingredients": [
-                "Farine (pour la pâte)",
-                "Porc haché",
-                "Chou",
-                "Ail",
-                "Gingembre",
-                "Ciboule",
-                "Sauce soja",
-                "Huile de sésame"
-            ]
-        },
-        {
-            "nom": "Oyakodon",
-            "image": "/images/oyakodon.jpg",
-            "ingredients": [
-                "Poulet",
-                "Œuf",
-                "Riz",
-                "Oignon",
-                "Dashi",
-                "Sauce soja",
-                "Mirin",
-                "Sucre"
-            ]
-        },
-        {
-            "nom": "Soba froide",
-            "image": "/images/soba.jpg",
-            "ingredients": [
-                "Nouilles soba",
-                "Sauce tsuyu",
-                "Nori",
-                "Oignon vert",
-                "Wasabi"
-            ]
-        },
-        {
-            "nom": "Nabe",
-            "image": "/images/nabe.jpg",
-            "ingredients": [
-                "Bouillon kombu",
-                "Tofu",
-                "Champignons enoki",
-                "Carottes",
-                "Choux chinois",
-                "Poulet",
-                "Nouilles udon"
-            ]
-        },
-        {
-            "nom": "Matcha Dorayaki",
-            "image": "/images/dorayaki.jpg",
-            "ingredients": [
-                "Farine",
-                "Œuf",
-                "Sucre",
-                "Poudre de matcha",
-                "Haricots rouges azuki"
-            ]
-        },
-        {
-            "nom": "Mochi",
-            "image": "/images/mochi.jpg",
-            "ingredients": [
-                "Farine de riz gluant",
-                "Sucre",
-                "Eau",
-                "Fécule de maïs",
-                "Anko"
-            ]
-        },
-        {
-            "nom": "Sukiyaki",
-            "image": "/images/sukiyaki.jpg",
-            "ingredients": [
-                "Bœuf tranché",
-                "Tofu",
-                "Champignons shiitake",
-                "Nouilles shirataki",
-                "Choux chinois",
-                "Sauce soja",
-                "Sucre",
-                "Sake"
-            ]
-        }
-    ]
+	"ingredients": [
+		{ "id": 1, "nom": "Riz japonais" },
+		{ "id": 2, "nom": "Vinaigre de riz" },
+		{ "id": 3, "nom": "Saumon" },
+		{ "id": 4, "nom": "Thon" },
+		{ "id": 5, "nom": "Crevettes" },
+		{ "id": 6, "nom": "Concombre" },
+		{ "id": 7, "nom": "Feuille de nori" },
+		{ "id": 8, "nom": "Wasabi" },
+		{ "id": 9, "nom": "Sauce soja" },
+		{ "id": 10, "nom": "Nouilles ramen" },
+		{ "id": 11, "nom": "Pâte de miso" },
+		{ "id": 12, "nom": "Dashi" },
+		{ "id": 13, "nom": "Mirin" },
+		{ "id": 14, "nom": "Porc chashu" },
+		{ "id": 15, "nom": "Œuf mariné" },
+		{ "id": 16, "nom": "Oignon vert" },
+		{ "id": 17, "nom": "Gingembre" },
+		{ "id": 18, "nom": "Ail" },
+		{ "id": 19, "nom": "Huile de sésame" },
+		{ "id": 20, "nom": "Poulet" },
+		{ "id": 21, "nom": "Sucre" },
+		{ "id": 22, "nom": "Sake" },
+		{ "id": 23, "nom": "Poireaux japonais" },
+		{ "id": 24, "nom": "Patate douce" },
+		{ "id": 25, "nom": "Aubergine" },
+		{ "id": 26, "nom": "Courgette" },
+		{ "id": 27, "nom": "Farine" },
+		{ "id": 28, "nom": "Œuf" },
+		{ "id": 29, "nom": "Eau froide" },
+		{ "id": 30, "nom": "Huile végétale" },
+		{ "id": 31, "nom": "Sauce tentsuyu" },
+		{ "id": 32, "nom": "Chou" },
+		{ "id": 33, "nom": "Mayonnaise japonaise" },
+		{ "id": 34, "nom": "Sauce okonomiyaki" },
+		{ "id": 35, "nom": "Aonori" },
+		{ "id": 36, "nom": "Katsuobushi" },
+		{ "id": 37, "nom": "Morceaux de poulpe" },
+		{ "id": 38, "nom": "Beni shoga" },
+		{ "id": 39, "nom": "Sauce takoyaki" },
+		{ "id": 40, "nom": "Panko" },
+		{ "id": 41, "nom": "Riz" },
+		{ "id": 42, "nom": "Bœuf tranché" },
+		{ "id": 43, "nom": "Tofu" },
+		{ "id": 44, "nom": "Champignons shiitake" },
+		{ "id": 45, "nom": "Choux chinois" },
+		{ "id": 46, "nom": "Nouilles udon" },
+		{ "id": 47, "nom": "Poudre de curry" },
+		{ "id": 48, "nom": "Pommes de terre" },
+		{ "id": 49, "nom": "Tamago" },
+		{ "id": 50, "nom": "Haricots rouges azuki" }
+	],
+
+	"recettes": [
+		{
+			"nom": "Sushi",
+			"image": "/images/sushi.jpg",
+			"ingredients": [1, 2, 3, 7, 9]
+		},
+		{
+			"nom": "Ramen au miso",
+			"image": "/images/ramen.jpg",
+			"ingredients": [10, 11, 12, 9, 4, 16, 7, 13]
+		},
+		{
+			"nom": "Yakitori",
+			"image": "/images/yakitori.jpg",
+			"ingredients": [20, 9, 13, 21, 22, 23]
+		},
+		{
+			"nom": "Tempura",
+			"image": "/images/tempura.jpg",
+			"ingredients": [5, 24, 25, 26, 27, 28, 29, 30, 31]
+		},
+		{
+			"nom": "Okonomiyaki",
+			"image": "/images/okonomiyaki.jpg",
+			"ingredients": [27, 28, 32, 12, 20, 5, 33, 34, 35, 36]
+		},
+		{
+			"nom": "Takoyaki",
+			"image": "/images/takoyaki.jpg",
+			"ingredients": [27, 28, 12, 37, 38, 16, 35, 33, 39]
+		},
+		{
+			"nom": "Tonkatsu",
+			"image": "/images/tonkatsu.jpg",
+			"ingredients": [20, 27, 28, 40, 30, 32, 9]
+		},
+		{
+			"nom": "Gyudon",
+			"image": "/images/gyudon.jpg",
+			"ingredients": [41, 42, 16, 9, 13, 21, 22, 38]
+		},
+		{
+			"nom": "Shabu-shabu",
+			"image": "/images/shabu-shabu.jpg",
+			"ingredients": [42, 43, 44, 45, 48, 23, 12, 9]
+		},
+		{
+			"nom": "Udon au curry",
+			"image": "/images/udon-curry.jpg",
+			"ingredients": [46, 47, 12, 9, 13, 48, 48, 16]
+		},
+		{
+			"nom": "Onigiri",
+			"image": "/images/onigiri.jpg",
+			"ingredients": [1, 7, 3, 21, 9]
+		},
+		{
+			"nom": "Chirashi sushi",
+			"image": "/images/chirashi.jpg",
+			"ingredients": [41, 2, 3, 4, 5, 49, 42, 7, 9]
+		},
+		{
+			"nom": "Chawanmushi",
+			"image": "/images/chawanmushi.jpg",
+			"ingredients": [28, 12, 9, 13, 5, 44]
+		},
+		{
+			"nom": "Gyoza",
+			"image": "/images/gyoza.jpg",
+			"ingredients": [27, 20, 32, 18, 17, 16, 9, 19]
+		},
+		{
+			"nom": "Oyakodon",
+			"image": "/images/oyakodon.jpg",
+			"ingredients": [20, 28, 41, 16, 12, 9, 13, 21]
+		},
+		{
+			"nom": "Soba froide",
+			"image": "/images/soba.jpg",
+			"ingredients": [46, 31, 7, 16, 8]
+		},
+		{
+			"nom": "Nabe",
+			"image": "/images/nabe.jpg",
+			"ingredients": [12, 43, 44, 48, 45, 20, 46]
+		},
+		{
+			"nom": "Matcha Dorayaki",
+			"image": "/images/dorayaki.jpg",
+			"ingredients": [27, 28, 21, 47, 50]
+		},
+		{
+			"nom": "Mochi",
+			"image": "/images/mochi.jpg",
+			"ingredients": [27, 21, 29, 22, 50]
+		},
+		{
+			"nom": "Sukiyaki",
+			"image": "/images/sukiyaki.jpg",
+			"ingredients": [42, 43, 44, 41, 45, 9, 21, 22]
+		}
+	]
 }

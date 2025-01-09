@@ -10,15 +10,27 @@
 	let excludedAllergens = [];
 	let showIngredientList = false;
 	let showAllergenList = false;
+	let ingredientMap = {};
 
 	onMount(async () => {
 		try {
 			const response = await fetch('/recette.json');
 			if (!response.ok) throw new Error('Erreur lors du chargement des recettes');
 			const data = await response.json();
-			recettes = data.recettes;
 
-			data.recettes.forEach((recette) => {
+			// Créer une correspondance ID → Nom
+			data.ingredients.forEach((ingredient) => {
+				ingredientMap[ingredient.id] = ingredient.nom;
+			});
+
+			// Remplace les IDs dans les recettes par leur nom
+			recettes = data.recettes.map((recette) => ({
+				...recette,
+				ingredients: recette.ingredients.map((id) => ingredientMap[id] || id)
+			}));
+
+			// Ajouter les ingrédients à l'ensemble
+			recettes.forEach((recette) => {
 				recette.ingredients.forEach((ingredient) => allIngredients.add(ingredient));
 			});
 		} catch (error) {
