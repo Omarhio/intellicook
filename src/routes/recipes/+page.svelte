@@ -135,6 +135,15 @@
 			aria-labelledby="popup-title"
 			aria-describedby="popup-description"
 		>
+			<!-- Clic à l'extérieur pour fermer -->
+			<button
+				class="absolute inset-0 bg-transparent"
+				on:click={closePopup}
+				aria-hidden="true"
+				tabindex="-1"
+				type="button"
+			></button>
+
 			<!-- Conteneur principal de la popup -->
 			<div
 				class="popup-container relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white p-8 pt-12 shadow-lg"
