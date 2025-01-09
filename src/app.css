@@ -21,10 +21,12 @@ p,
 }
 
 @keyframes pulse {
-	0%, 100% {
+	0%,
+	100% {
 		transform: scale(1);
 	}
-	25%, 75% {
+	25%,
+	75% {
 		transform: scale(1.1);
 	}
 	50% {
@@ -33,7 +35,9 @@ p,
 }
 
 .animate-fade {
-	animation: fadeIn 0.5s ease-out forwards, fadeOut 0.6s ease-in 2.5s forwards;
+	animation:
+		fadeIn 0.5s ease-out forwards,
+		fadeOut 0.6s ease-in 2.5s forwards;
 }
 
 @keyframes fadeIn {
@@ -75,7 +79,7 @@ p,
 	bottom: 20px;
 	left: 50%;
 	transform: translateX(-50%);
-	background-color: #9D8189;
+	background-color: #9d8189;
 	color: white;
 	padding: 14px 24px;
 	border-radius: 8px;
@@ -86,7 +90,10 @@ p,
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	opacity: 0;
 	visibility: hidden;
-	transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s;
+	transition:
+		opacity 0.3s ease-out,
+		transform 0.3s ease-out,
+		visibility 0.3s;
 	z-index: 100;
 	pointer-events: none;
 }
@@ -102,7 +109,6 @@ p,
 	height: 20px;
 	width: 20px;
 }
-
 
 .menu-overlay {
 	position: fixed;
@@ -148,7 +154,9 @@ p,
 	align-items: center;
 	justify-content: center;
 	gap: 8px;
-	transition: color 0.2s ease, transform 0.2s ease;
+	transition:
+		color 0.2s ease,
+		transform 0.2s ease;
 }
 
 .menu-link:hover {
@@ -204,7 +212,9 @@ p,
 	justify-content: center;
 	gap: 8px;
 	color: #9d8189;
-	transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+	transition:
+		color 0.3s ease-in-out,
+		transform 0.3s ease-in-out;
 }
 
 .menu-link-kawaii:hover {
@@ -231,7 +241,8 @@ p,
 }
 
 @keyframes kawaii-bounce {
-	0%, 100% {
+	0%,
+	100% {
 		transform: translateY(0);
 	}
 	50% {
@@ -242,7 +253,9 @@ p,
 .icon-kawaii-desktop {
 	width: 28px;
 	height: 28px;
-	transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+	transition:
+		transform 0.3s ease-in-out,
+		filter 0.3s ease-in-out;
 }
 
 .icon-kawaii-desktop:hover {
@@ -261,7 +274,9 @@ p,
 	justify-content: center;
 	gap: 10px;
 	color: #9d8189;
-	transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+	transition:
+		color 0.3s ease-in-out,
+		transform 0.3s ease-in-out;
 	text-decoration: none;
 }
 
@@ -287,7 +302,7 @@ p,
 	.icon-kawaii {
 		display: none;
 	}
-	
+
 	.icon-kawaii-desktop {
 		display: block;
 	}
@@ -297,8 +312,12 @@ p,
 	.icon-kawaii-desktop {
 		display: none;
 	}
-	
+
 	.icon-kawaii {
 		display: block;
 	}
+}
+
+aside {
+	overflow-y: auto;
 }

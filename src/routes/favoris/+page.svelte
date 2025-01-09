@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 
 	let favoris = [];
 	let showSnackbar = false;
@@ -8,66 +8,75 @@
 	let searchTerm = '';
 	let favorisFiltres = [];
 
-	// Chargement des favoris depuis localStorage
 	onMount(() => {
 		const savedFavorites = localStorage.getItem('favoris');
 		favoris = savedFavorites ? JSON.parse(savedFavorites) : [];
-		favorisFiltres = favoris; // Initialisation des favoris filtrés
+		favorisFiltres = favoris;
+
+		document.addEventListener('click', handleOutsideClick);
 	});
 
-	// Supprimer une recette des favoris
+	onDestroy(() => {
+		document.removeEventListener('click', handleOutsideClick);
+	});
+
 	function retirerFavori(recette) {
 		favoris = favoris.filter((fav) => fav.nom !== recette.nom);
 		localStorage.setItem('favoris', JSON.stringify(favoris));
-
-		// Mettre à jour les favoris filtrés après suppression
 		filtrerFavoris();
-
-		// Fermer l'aside si la recette supprimée est celle affichée
 		if (selectedRecette === recette) {
 			closeAside();
 		}
-
-		// Afficher un message Snackbar
 		snackbarMessage = `${recette.nom} retiré des favoris`;
 		showSnackbar = true;
-
 		setTimeout(() => {
 			showSnackbar = false;
 		}, 4000);
 	}
 
-	// Supprimer tous les favoris
 	function supprimerTousFavoris() {
 		favoris = [];
 		localStorage.setItem('favoris', JSON.stringify(favoris));
-
-		// Mettre à jour les favoris filtrés
 		filtrerFavoris();
-
-		// Fermer l'aside si tous les favoris sont supprimés
 		closeAside();
 	}
 
-	// Ouvrir ou fermer l'aside pour afficher une recette
 	function toggleAside(recette) {
 		if (selectedRecette === recette) {
 			closeAside();
 		} else {
 			selectedRecette = recette;
+			if (window.innerWidth <= 768) {
+				document.body.style.overflow = 'hidden';
+			}
 		}
 	}
 
-	// Fermer l'aside
 	function closeAside() {
 		selectedRecette = null;
+		if (window.innerWidth <= 768) {
+			document.body.style.overflow = '';
+		}
 	}
 
-	// Fonction pour filtrer les favoris en fonction de la recherche
 	function filtrerFavoris() {
 		favorisFiltres = searchTerm
 			? favoris.filter((fav) => fav.nom.toLowerCase().includes(searchTerm.trim().toLowerCase()))
 			: favoris;
+	}
+
+	function handleOutsideClick(event) {
+		const aside = document.querySelector('aside');
+		const card = event.target.closest('li');
+		if (aside && !aside.contains(event.target) && !card) {
+			closeAside();
+		}
+	}
+
+	// Réinitialise la recherche
+	function resetSearch() {
+		searchTerm = '';
+		filtrerFavoris();
 	}
 </script>
 
@@ -78,7 +87,6 @@
 		favoris.
 	</p>
 
-	<!-- Bouton pour supprimer tous les favoris -->
 	<button
 		class="mt-4 rounded bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
 		on:click={supprimerTousFavoris}
@@ -86,18 +94,22 @@
 		Supprimer tous les favoris
 	</button>
 
-	<!-- Barre de recherche -->
-	<div class="mt-6 flex w-full flex-col items-center">
+	<div class="mt-6 flex w-full max-w-[600px] flex-col gap-4 sm:flex-row sm:items-center sm:gap-0">
 		<input
 			type="text"
 			bind:value={searchTerm}
 			placeholder="Rechercher une recette..."
-			class="w-full max-w-[600px] rounded-full border-2 border-[#F4ACB7] px-6 py-3 text-lg placeholder:text-center focus:border-[#F4ACB7] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
+			class="w-full rounded-full border-2 border-[#F4ACB7] px-6 py-3 text-lg placeholder:text-center focus:border-[#F4ACB7] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
 			on:input={filtrerFavoris}
 		/>
+		<button
+			on:click={resetSearch}
+			class="mt-4 w-full max-w-[200px] self-center rounded bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7] sm:ml-4 sm:mt-0 sm:self-auto"
+		>
+			Effacer
+		</button>
 	</div>
 
-	<!-- Liste des favoris filtrés -->
 	{#if favorisFiltres.length > 0}
 		<div class="mt-12 w-full max-w-6xl">
 			<ul class="grid grid-cols-1 justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -105,7 +117,6 @@
 					<li
 						class="relative mx-auto max-w-sm rounded-lg border p-4 shadow-lg transition-all hover:bg-[#FDE2E4]"
 					>
-						<!-- Affichage des recettes -->
 						<button
 							class="w-full text-left"
 							on:click={() => toggleAside(recette)}
@@ -125,7 +136,6 @@
 							<p class="mt-2">Ingrédients : {recette.ingredients.join(', ')}</p>
 						</button>
 
-						<!-- Bouton pour retirer des favoris -->
 						<button
 							on:click={(e) => {
 								e.stopPropagation();
@@ -160,10 +170,8 @@
 			</ul>
 		</div>
 	{:else}
-		<!-- Aucune recette trouvée -->
 		<div class="mt-6 text-center">
 			<p class="text-lg">Aucune recette trouvée dans vos favoris.</p>
-			<!-- Bouton pour aller aux recettes -->
 			<a
 				href="/recipes"
 				class="mt-4 inline-block rounded bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
@@ -173,7 +181,6 @@
 		</div>
 	{/if}
 
-	<!-- Affichage de l'aside -->
 	{#if selectedRecette}
 		<aside
 			class="fixed right-0 top-0 z-50 h-screen w-full overflow-y-auto bg-white p-8 pt-12 shadow-lg transition-transform duration-300 sm:max-w-[20%]"
@@ -231,7 +238,8 @@
 					stroke-linejoin="round"
 					stroke-width="3"
 				></circle>
-			</svg>{snackbarMessage}
+			</svg>
+			{snackbarMessage}
 		</div>
 	{/if}
 </main>
