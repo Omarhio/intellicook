@@ -10,33 +10,46 @@
 	let excludedAllergens = [];
 	let showIngredientList = false;
 	let showAllergenList = false;
-	let ingredientMap = {};
 
+	// Variables pour le carousel
+	let currentIndex = 0; // Index du premier élément visible dans le carousel
+	let autoSlideInterval;
+	const slideDuration = 5; // Durée en secondes entre chaque changement d'image
+
+	// Charger les recettes et initialiser les ingrédients/allergènes
 	onMount(async () => {
 		try {
 			const response = await fetch('/recette.json');
 			if (!response.ok) throw new Error('Erreur lors du chargement des recettes');
 			const data = await response.json();
+			recettes = data.recettes;
 
-			// Créer une correspondance ID → Nom
-			data.ingredients.forEach((ingredient) => {
-				ingredientMap[ingredient.id] = ingredient.nom;
-			});
-
-			// Remplace les IDs dans les recettes par leur nom
-			recettes = data.recettes.map((recette) => ({
-				...recette,
-				ingredients: recette.ingredients.map((id) => ingredientMap[id] || id)
-			}));
-
-			// Ajouter les ingrédients à l'ensemble
-			recettes.forEach((recette) => {
+			data.recettes.forEach((recette) => {
 				recette.ingredients.forEach((ingredient) => allIngredients.add(ingredient));
 			});
+
+			// Initialisation de l'auto-slide du carousel
+			autoSlideInterval = setInterval(() => {
+				slideRight();
+			}, slideDuration * 1000);
+
+			return () => {
+				clearInterval(autoSlideInterval);
+			};
 		} catch (error) {
 			console.error('Erreur de chargement des recettes :', error);
 		}
 	});
+
+	// Fonction pour défiler à gauche
+	function slideLeft() {
+		currentIndex = currentIndex > 0 ? currentIndex - 1 : recettes.length - 3;
+	}
+
+	// Fonction pour défiler à droite
+	function slideRight() {
+		currentIndex = (currentIndex + 1) % recettes.length;
+	}
 
 	const allergenMapping = {
 		Poisson: ['Saumon', 'Thon', 'Crevette', 'Saumon grillé', 'Morceaux de poulpe'],
@@ -99,6 +112,8 @@
 		<h1 class="title-font text-4xl text-[#F4ACB7] md:text-5xl">Bienvenue sur Intellicook !</h1>
 		<p class="mt-4 text-lg">Découvrez des recettes japonaises et kawaii 🍣</p>
 	</div>
+
+
 
 	<!-- BARRE DE RECHERCHE ET BOUTONS -->
 	<div
@@ -178,6 +193,41 @@
 		</div>
 	{/if}
 
+		<!-- CAROUSEL -->
+		<div class="mx-auto mt-12 w-full max-w-6xl">
+			<h2 class="mb-8 text-center text-3xl font-bold text-[#9D8189]">Nos recettes du jour</h2>
+	
+			<!-- Conteneur du carousel -->
+			<div class="flex justify-between items-center">
+				<!-- Flèche gauche -->
+				<button on:click={slideLeft} class="text-2xl text-[#F4ACB7] hover:text-[#e690a0]">
+					&lt;
+				</button>
+	
+				<div class="carousel-container flex gap-6 overflow-hidden">
+					{#each recettes.slice(currentIndex, currentIndex + 3) as recette (recette.nom)}
+						<div class="w-80 flex-none rounded-lg bg-white p-6 shadow-lg">
+							<img
+								src={recette.image}
+								alt={recette.nom}
+								class="mb-4 h-40 w-full rounded-lg object-cover"
+							/>
+							<h3 class="title-font mb-2 text-xl font-semibold text-[#F4ACB7]">{recette.nom}</h3>
+							<p class="text-sm text-[#9D8189]">
+								<strong>Ingrédients :</strong>
+								{recette.ingredients.join(', ')}
+							</p>
+						</div>
+					{/each}
+				</div>
+	
+				<!-- Flèche droite -->
+				<button on:click={slideRight} class="text-2xl text-[#F4ACB7] hover:text-[#e690a0]">
+					&gt;
+				</button>
+			</div>
+		</div>
+
 	<!-- RESULTATS -->
 	{#if searchTerm || selectedIngredients.length > 0 || excludedAllergens.length > 0}
 		<div class="mt-8 w-full max-w-3xl">
@@ -211,3 +261,5 @@
 		</div>
 	{/if}
 </main>
+
+
