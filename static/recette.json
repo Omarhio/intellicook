@@ -56,102 +56,206 @@
 		{
 			"nom": "Sushi",
 			"image": "/images/sushi.jpg",
-			"ingredients": [1, 2, 3, 7, 9]
+			"ingredients": [1, 2, 3, 7, 9],
+			"etapes": [
+				"Cuire le riz japonais avec la bonne quantité d'eau.",
+				"Mélanger le vinaigre de riz, le sucre et le sel pour assaisonner le riz.",
+				"Étaler une feuille de nori et ajouter une couche de riz.",
+				"Ajouter les morceaux de saumon et d'autres ingrédients.",
+				"Rouler fermement et couper en morceaux égaux."
+			]
 		},
 		{
 			"nom": "Ramen au miso",
 			"image": "/images/ramen.jpg",
-			"ingredients": [10, 11, 12, 9, 4, 16, 7, 13]
+			"ingredients": [10, 11, 12, 9, 4, 16, 7, 13],
+			"etapes": [
+				"Préparer le bouillon avec le dashi, le miso et la sauce soja.",
+				"Cuire les nouilles ramen selon les instructions.",
+				"Ajouter les ingrédients au bouillon.",
+				"Servir chaud avec des morceaux de thon et de nori sur le dessus."
+			]
 		},
 		{
 			"nom": "Yakitori",
 			"image": "/images/yakitori.jpg",
-			"ingredients": [20, 9, 13, 21, 22, 23]
+			"ingredients": [20, 9, 13, 21, 22, 23],
+			"etapes": [
+				"Découper le poulet en morceaux et les enfiler sur des brochettes.",
+				"Préparer une sauce avec la sauce soja, le mirin, le sucre et le sake.",
+				"Griller les brochettes en les badigeonnant de sauce régulièrement.",
+				"Servir chaud avec une sauce supplémentaire."
+			]
 		},
 		{
 			"nom": "Tempura",
 			"image": "/images/tempura.jpg",
-			"ingredients": [5, 24, 25, 26, 27, 28, 29, 30, 31]
+			"ingredients": [5, 24, 25, 26, 27, 28, 29, 30, 31],
+			"etapes": [
+				"Préparer la pâte à tempura en mélangeant la farine, l'eau froide et l'œuf.",
+				"Tremper les légumes et crevettes dans la pâte.",
+				"Faire frire dans de l'huile chaude jusqu'à ce qu'ils soient dorés.",
+				"Servir chaud avec la sauce tentsuyu."
+			]
 		},
 		{
 			"nom": "Okonomiyaki",
 			"image": "/images/okonomiyaki.jpg",
-			"ingredients": [27, 28, 32, 12, 20, 5, 33, 34, 35, 36]
+			"ingredients": [27, 28, 32, 12, 20, 5, 33, 34, 35, 36],
+			"etapes": [
+				"Préparer la pâte avec la farine, l'œuf et le dashi.",
+				"Ajouter le chou finement haché et mélanger.",
+				"Faire cuire dans une poêle avec les garnitures comme le porc ou les crevettes.",
+				"Garnir avec la sauce okonomiyaki, la mayonnaise japonaise, l'aonori et le katsuobushi."
+			]
 		},
 		{
 			"nom": "Takoyaki",
 			"image": "/images/takoyaki.jpg",
-			"ingredients": [27, 28, 12, 37, 38, 16, 35, 33, 39]
+			"ingredients": [27, 28, 12, 37, 38, 16, 35, 33, 39],
+			"etapes": [
+				"Préparer la pâte avec la farine, l'œuf et le dashi.",
+				"Remplir chaque cavité du moule à takoyaki avec de la pâte.",
+				"Ajouter un morceau de poulpe et cuire en tournant jusqu'à obtenir une boule dorée.",
+				"Garnir avec la sauce takoyaki, la mayonnaise japonaise, l'aonori et le beni shoga."
+			]
 		},
 		{
 			"nom": "Tonkatsu",
 			"image": "/images/tonkatsu.jpg",
-			"ingredients": [20, 27, 28, 40, 30, 32, 9]
+			"ingredients": [20, 27, 28, 40, 30, 32, 9],
+			"etapes": [
+				"Assaisonner le porc et le passer dans la farine, l'œuf battu et la panko.",
+				"Faire frire jusqu'à ce qu'il soit doré et croustillant.",
+				"Servir avec du chou finement tranché et de la sauce tonkatsu."
+			]
 		},
 		{
 			"nom": "Gyudon",
 			"image": "/images/gyudon.jpg",
-			"ingredients": [41, 42, 16, 9, 13, 21, 22, 38]
+			"ingredients": [41, 42, 16, 9, 13, 21, 22, 38],
+			"etapes": [
+				"Faire revenir le bœuf tranché avec l'oignon dans une sauce soja, mirin et sake.",
+				"Servir sur du riz chaud avec des garnitures comme le beni shoga."
+			]
 		},
 		{
 			"nom": "Shabu-shabu",
 			"image": "/images/shabu-shabu.jpg",
-			"ingredients": [42, 43, 44, 45, 48, 23, 12, 9]
+			"ingredients": [42, 43, 44, 45, 48, 23, 12, 9],
+			"etapes": [
+				"Préparer un bouillon de kombu et le porter à ébullition.",
+				"Ajouter les légumes et tofu pour les cuire doucement.",
+				"Tremper les fines tranches de bœuf dans le bouillon juste avant de les manger."
+			]
 		},
 		{
 			"nom": "Udon au curry",
 			"image": "/images/udon-curry.jpg",
-			"ingredients": [46, 47, 12, 9, 13, 48, 48, 16]
+			"ingredients": [46, 47, 12, 9, 13, 48, 16],
+			"etapes": [
+				"Préparer une soupe avec du dashi, du curry et de la sauce soja.",
+				"Cuire les nouilles udon selon les instructions.",
+				"Ajouter les légumes et servir chaud."
+			]
 		},
 		{
 			"nom": "Onigiri",
 			"image": "/images/onigiri.jpg",
-			"ingredients": [1, 7, 3, 21, 9]
+			"ingredients": [1, 7, 3, 21, 9],
+			"etapes": [
+				"Cuire le riz japonais.",
+				"Former des triangles ou des boules de riz en insérant une garniture comme du saumon.",
+				"Envelopper avec une feuille de nori."
+			]
 		},
 		{
 			"nom": "Chirashi sushi",
 			"image": "/images/chirashi.jpg",
-			"ingredients": [41, 2, 3, 4, 5, 49, 42, 7, 9]
+			"ingredients": [41, 2, 3, 4, 5, 49, 42, 7, 9],
+			"etapes": [
+				"Assaisonner le riz avec le vinaigre de riz.",
+				"Ajouter les tranches de poisson et les garnitures sur le dessus.",
+				"Servir dans un grand bol."
+			]
 		},
 		{
 			"nom": "Chawanmushi",
 			"image": "/images/chawanmushi.jpg",
-			"ingredients": [28, 12, 9, 13, 5, 44]
+			"ingredients": [28, 12, 9, 13, 5, 44],
+			"etapes": [
+				"Mélanger les œufs avec le dashi, la sauce soja et le mirin.",
+				"Ajouter les crevettes et champignons dans des ramequins.",
+				"Cuire à la vapeur jusqu'à ce que le mélange soit pris."
+			]
 		},
 		{
 			"nom": "Gyoza",
 			"image": "/images/gyoza.jpg",
-			"ingredients": [27, 20, 32, 18, 17, 16, 9, 19]
+			"ingredients": [27, 20, 32, 18, 17, 16, 9, 19],
+			"etapes": [
+				"Préparer une farce avec le porc, le chou et les assaisonnements.",
+				"Remplir les feuilles de gyoza et sceller en formant des plis.",
+				"Faire cuire à la poêle avec un peu d'eau pour les dorer et les cuire à la vapeur."
+			]
 		},
 		{
 			"nom": "Oyakodon",
 			"image": "/images/oyakodon.jpg",
-			"ingredients": [20, 28, 41, 16, 12, 9, 13, 21]
+			"ingredients": [20, 28, 41, 16, 12, 9, 13, 21],
+			"etapes": [
+				"Cuire le poulet avec des oignons dans une sauce dashi, soja et mirin.",
+				"Ajouter des œufs battus et cuire jusqu'à ce qu'ils soient pris.",
+				"Servir sur du riz chaud."
+			]
 		},
 		{
 			"nom": "Soba froide",
 			"image": "/images/soba.jpg",
-			"ingredients": [46, 31, 7, 16, 8]
+			"ingredients": [46, 31, 7, 16, 8],
+			"etapes": [
+				"Cuire les nouilles soba et les refroidir dans de l'eau glacée.",
+				"Servir avec une sauce tsuyu, des garnitures comme le nori et le wasabi."
+			]
 		},
 		{
 			"nom": "Nabe",
 			"image": "/images/nabe.jpg",
-			"ingredients": [12, 43, 44, 48, 45, 20, 46]
+			"ingredients": [12, 43, 44, 48, 45, 20, 46],
+			"etapes": [
+				"Préparer un bouillon de kombu et ajouter les légumes et le tofu.",
+				"Cuire les morceaux de poulet et les nouilles directement dans le bouillon."
+			]
 		},
 		{
 			"nom": "Matcha Dorayaki",
 			"image": "/images/dorayaki.jpg",
-			"ingredients": [27, 28, 21, 47, 50]
+			"ingredients": [27, 28, 21, 47, 50],
+			"etapes": [
+				"Préparer une pâte à dorayaki en y ajoutant de la poudre de matcha.",
+				"Faire cuire de petites crêpes dans une poêle.",
+				"Garnir avec de la pâte d'azuki et assembler deux crêpes ensemble."
+			]
 		},
 		{
 			"nom": "Mochi",
 			"image": "/images/mochi.jpg",
-			"ingredients": [27, 21, 29, 22, 50]
+			"ingredients": [27, 21, 29, 22, 50],
+			"etapes": [
+				"Mélanger la farine de riz gluant avec de l'eau et du sucre.",
+				"Cuire à la vapeur ou au micro-ondes jusqu'à obtenir une pâte collante.",
+				"Former des boules et garnir avec de l'anko (pâte de haricots rouges)."
+			]
 		},
 		{
 			"nom": "Sukiyaki",
 			"image": "/images/sukiyaki.jpg",
-			"ingredients": [42, 43, 44, 41, 45, 9, 21, 22]
+			"ingredients": [42, 43, 44, 41, 45, 9, 21, 22],
+			"etapes": [
+				"Préparer une sauce sukiyaki avec la sauce soja, le sucre et le sake.",
+				"Cuire les légumes et la viande directement dans la sauce.",
+				"Servir chaud avec du riz."
+			]
 		}
 	]
 }
