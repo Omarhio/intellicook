@@ -118,19 +118,36 @@
 	</button>
 
 	<div class="mt-6 flex w-full max-w-[600px] flex-col gap-4 sm:flex-row sm:items-center sm:gap-0">
-		<input
-			type="text"
-			bind:value={searchTerm}
-			placeholder="Rechercher une recette..."
-			class="w-full rounded-full border-2 border-[#F4ACB7] px-6 py-3 text-lg placeholder:text-center focus:border-[#F4ACB7] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
-			on:input={filtrerFavoris}
-		/>
-		<button
-			on:click={resetSearch}
-			class="mt-4 w-full max-w-[200px] self-center rounded-2xl bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7] sm:ml-4 sm:mt-0 sm:self-auto"
-		>
-			Effacer
-		</button>
+		<div class="relative w-full">
+			<input
+				type="text"
+				bind:value={searchTerm}
+				placeholder="Rechercher une recette..."
+				class="w-full rounded-3xl border-2 border-[#F4ACB7] px-6 py-3 pr-10 text-lg placeholder:text-center focus:border-[#F4ACB7] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
+				on:input={filtrerFavoris}
+			/>
+			<button
+				on:click={resetSearch}
+				class="absolute right-3 top-1/2 -translate-y-1/2 transform text-[#F4ACB7] hover:text-[#D5899C]"
+				aria-label="Effacer la recherche"
+				class:hidden={!searchTerm}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M6 18L18 6M6 6l12 12"
+					/>
+				</svg>
+			</button>
+		</div>
 	</div>
 
 	{#if favorisFiltres.length > 0}
