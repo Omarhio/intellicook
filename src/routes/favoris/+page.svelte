@@ -206,7 +206,7 @@
 
 	{#if selectedRecette}
 		<aside
-			class="fixed right-0 top-0 z-50 h-screen w-full overflow-y-auto bg-white p-8 pt-12 shadow-lg transition-transform duration-300 sm:max-w-[40%] lg:max-w-[30%]"
+			class="fixed right-0 top-0 z-50 h-screen w-full overflow-y-auto bg-white p-8 pt-12 shadow-lg transition-transform duration-300 sm:max-w-[30%] lg:max-w-[25%]"
 			style="transform: translateX(0%);"
 			role="dialog"
 			aria-labelledby="aside-title"
