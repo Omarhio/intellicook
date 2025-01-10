@@ -133,7 +133,7 @@
 	</div>
 
 	<!-- BARRE DE RECHERCHE -->
-	<div class="mt-8 flex w-full max-w-2xl flex-col items-center md:flex-row md:space-x-4">
+	<div class="gap-6 sm:gap-0 mt-8 flex w-full max-w-2xl flex-col items-center md:flex-row md:space-x-4">
 		<input
 			type="text"
 			bind:value={searchTerm}
