@@ -142,7 +142,7 @@
 		/>
 		<button
 			on:click={resetFilters}
-			class="rounded-lg bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
+			class="rounded-2xl bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
 		>
 			Effacer
 		</button>
@@ -152,13 +152,13 @@
 	<div class="mt-6 flex gap-4">
 		<button
 			on:click={() => (showIngredientList = !showIngredientList)}
-			class="rounded-lg bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
+			class="rounded-2xl bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
 		>
 			{showIngredientList ? 'Fermer ingrédients' : 'Ingrédients'}
 		</button>
 		<button
 			on:click={() => (showAllergenList = !showAllergenList)}
-			class="rounded-lg bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
+			class="rounded-2xl bg-[#F4ACB7] px-6 py-2 font-bold text-white hover:bg-[#e690a0]"
 		>
 			{showAllergenList ? 'Fermer allergènes' : 'Allergènes'}
 		</button>
@@ -166,7 +166,7 @@
 
 	<!-- LISTE D'INGRÉDIENTS -->
 	{#if showIngredientList}
-		<div class="mt-6 w-full max-w-6xl rounded-lg bg-white p-6 shadow-lg">
+		<div class="mt-6 w-full max-w-6xl rounded-2xl bg-white p-6 shadow-lg">
 			<h2 class="mb-4 text-xl font-bold text-[#9D8189]">Sélectionnez des ingrédients :</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
 				{#each Array.from(allIngredients) as ingredient, i}
@@ -188,7 +188,7 @@
 
 	<!-- LISTE D'ALLERGENES -->
 	{#if showAllergenList}
-		<div class="mt-6 w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg">
+		<div class="mt-6 w-full max-w-2xl rounded-2xl bg-white p-4 shadow-lg">
 			<h2 class="mb-4 text-xl font-bold text-[#9D8189]">Excluez des allergènes :</h2>
 			<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
 				{#each allAllergens as allergen, i}
@@ -216,12 +216,12 @@
 				<ul class="space-y-6">
 					{#each filteredRecettes as recette}
 						<li
-							class="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg md:flex-row"
+							class="flex flex-col items-center gap-4 rounded-2xl bg-white p-4 shadow-lg md:flex-row"
 						>
 							<img
 								src={recette.image}
 								alt={recette.nom}
-								class="h-32 w-32 rounded-lg object-cover"
+								class="h-32 w-32 rounded-2xl object-cover"
 							/>
 							<div class="text-center md:text-left">
 								<h3 class="title-font text-xl text-[#F4ACB7] md:text-2xl">{recette.nom}</h3>
@@ -251,26 +251,25 @@
 						<img
 							src={getRecipe(-1).image}
 							alt={getRecipe(-1).nom}
-							class="h-40 w-full rounded-lg object-cover"
+							class="h-40 w-full rounded-2xl object-cover"
 						/>
 						<h3 class="mt-2 text-center text-sm font-semibold">{getRecipe(-1).nom}</h3>
 					</div>
-					<div class="w-80 scale-100 shadow-lg transform transition-all">
+					<div class="sm:w-80 w-96 scale-100 rounded-2xl shadow-lg transform transition-all">
 						<img
 							src={getRecipe(0).image}
 							alt={getRecipe(0).nom}
-							class="h-48 w-full rounded-lg object-cover"
+							class="h-48 w-full rounded-2xl object-cover"
 						/>
-						<h3 class="mt-4 text-center text-xl font-bold text-[#F4ACB7]">{getRecipe(0).nom}</h3>
+						<h3 class="title-font pb-2 mt-4 text-center text-2xl font-bold text-[#F4ACB7]">{getRecipe(0).nom}</h3>
 						<p class="mt-2 text-center text-sm text-[#9D8189]">
-							<strong>Ingrédients :</strong> {getRecipe(0).ingredients.join(', ')}
 						</p>
 					</div>
 					<div class="w-60 scale-90 opacity-70 transform transition-all">
 						<img
 							src={getRecipe(1).image}
 							alt={getRecipe(1).nom}
-							class="h-40 w-full rounded-lg object-cover"
+							class="h-40 w-full rounded-2xl object-cover"
 						/>
 						<h3 class="mt-2 text-center text-sm font-semibold">{getRecipe(1).nom}</h3>
 					</div>
