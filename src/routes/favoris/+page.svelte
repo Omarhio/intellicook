@@ -46,7 +46,7 @@
 			closeAside();
 		} else {
 			selectedRecette = recette;
-			if (window.innerWidth <= 768) {
+			if (window.innerWidth < 768) {
 				document.body.style.overflow = 'hidden';
 			}
 		}
@@ -54,7 +54,7 @@
 
 	function closeAside() {
 		selectedRecette = null;
-		if (window.innerWidth <= 768) {
+		if (window.innerWidth < 768) {
 			document.body.style.overflow = '';
 		}
 	}
@@ -183,7 +183,7 @@
 
 	{#if selectedRecette}
 		<aside
-			class="fixed right-0 top-0 z-50 h-screen w-full overflow-y-auto bg-white p-8 pt-12 shadow-lg transition-transform duration-300 sm:max-w-[20%]"
+			class="fixed right-0 top-0 z-50 h-screen w-full overflow-y-auto bg-white p-8 pt-12 shadow-lg transition-transform duration-300 sm:max-w-[40%] lg:max-w-[30%]"
 			style="transform: translateX(0%);"
 			role="dialog"
 			aria-labelledby="aside-title"
