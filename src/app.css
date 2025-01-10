@@ -110,8 +110,6 @@ p,
 	width: 20px;
 }
 
-<<<<<<< Updated upstream
-=======
 .carousel-wrapper {
 	position: relative;
 }
@@ -121,7 +119,10 @@ p,
 }
 .carousel-item {
 	/* Transition douce des éléments du carrousel */
-	transition: transform 0.5s ease, scale 0.5s ease, box-shadow 0.5s ease;
+	transition:
+		transform 0.5s ease,
+		scale 0.5s ease,
+		box-shadow 0.5s ease;
 }
 .carousel-item.scale-110 {
 	/* Met en avant l'élément actif au milieu */
@@ -140,7 +141,6 @@ p,
 	opacity: 0.5;
 }
 
->>>>>>> Stashed changes
 .menu-overlay {
 	position: fixed;
 	inset: 0;
