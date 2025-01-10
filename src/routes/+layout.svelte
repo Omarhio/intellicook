@@ -39,7 +39,6 @@
 			</a>
 		</div>
 
-		<!-- Menu Burger -->
 		<div
 			role="button"
 			tabindex="0"
@@ -56,7 +55,6 @@
 			/>
 		</div>
 
-		<!-- Liens de navigation desktop -->
 		<ul class="nav-links-desktop hidden gap-6 font-body text-lg md:flex">
 			<li class="nav-item-desktop">
 				<a
@@ -94,70 +92,69 @@
 		</ul>		
 	</nav>
 
-<!-- Menu Mobile -->
-<div
-	class="menu-overlay fixed inset-0 z-[9999] transform bg-[#FFCAD4] text-[#9D8189] transition-transform duration-400 ease-in-out"
-	style="transform: translateX({isMenuOpen ? '0%' : '-100%'})"
->
-	<!-- Mascottes Kawaii -->
-	<img
-		src="/images/7.png"
-		alt="Kawaii Mascotte"
-		class="kawaii-mascot absolute bottom-4 left-4 h-20 w-auto"
-	/>
-	<img
-		src="/images/2.png"
-		alt="Kawaii Mascotte"
-		class="kawaii-mascot2 absolute top-4 right-4 h-20 w-auto"
-	/>
+	<!-- Menu Burger -->
+	<div
+		class="menu-overlay fixed inset-0 z-[9999] transform bg-[#FFCAD4] text-[#9D8189] transition-transform duration-400 ease-in-out"
+		style="transform: translateX({isMenuOpen ? '0%' : '-100%'})"
+	>
+		<img
+			src="/images/7.png"
+			alt="Kawaii Mascotte"
+			class="kawaii-mascot absolute bottom-4 left-4 h-20 w-auto z-[50] "
+		/>
+		<img
+			src="/images/2.png"
+			alt="Kawaii Mascotte"
+			class="kawaii-mascot2 absolute top-4 right-4 h-20 w-auto z-[50]"
+		/>
 
-	<!-- Liens de navigation -->
-	<ul
-	class="menu-links flex h-full flex-col items-center justify-center gap-12 text-center font-body text-2xl"
->
-	<li class="menu-item">
-		<a
-			href="/"
-			class={`menu-link-kawaii ${
-				currentPath === '/' ? 'font-bold underline underline-offset-1' : ''
-			}`}
-			on:click={() => (isMenuOpen = false)}
-		>
-			<img src="/images/3.png" alt="Accueil" class="icon-kawaii" />
-			<span>Accueil</span>
-			<img src="/images/3.png" alt="Accueil" class="icon-kawaii" />
-		</a>
-	</li>
-	<li class="menu-item">
-		<a
-			href="/recipes"
-			class={`menu-link-kawaii ${
-				currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''
-			}`}
-			on:click={() => (isMenuOpen = false)}
-		>
-			<img src="/images/3.png" alt="Recettes" class="icon-kawaii" />
-			<span>Recettes</span>
-			<img src="/images/3.png" alt="Recettes" class="icon-kawaii" />
-		</a>
-	</li>
-	<li class="menu-item">
-		<a
-			href="/favoris"
-			class={`menu-link-kawaii ${
-				currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''
-			}`}
-			on:click={() => (isMenuOpen = false)}
-		>
-			<img src="/images/3.png" alt="Favoris" class="icon-kawaii" />
-			<span>Favoris</span>
-			<img src="/images/3.png" alt="Favoris" class="icon-kawaii" />
-		</a>
-	</li>
-</ul>
+		<ul class="menu-links flex h-full flex-col items-center justify-center gap-12 text-center font-body text-2xl">
+			<h2 class="kawaii-mascot menu-section-title text-3xl font-semibold uppercase text-[#9D8189]">Navigation</h2>
+			<li class="menu-item">
+				<a
+					href="/"
+					class={`menu-link-kawaii ${
+						currentPath === '/' ? 'font-bold underline underline-offset-1' : ''
+					}`}
+					on:click={() => (isMenuOpen = false)}
+				>
+					<img src="/images/3.png" alt="Accueil" class="icon-kawaii" />
+					<span>Accueil</span>
+					<img src="/images/3.png" alt="Accueil" class="icon-kawaii" />
+				</a>
+			</li>
+			<li class="menu-item">
+				<a
+					href="/recipes"
+					class={`menu-link-kawaii ${
+						currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''
+					}`}
+					on:click={() => (isMenuOpen = false)}
+				>
+					<img src="/images/3.png" alt="Recettes" class="icon-kawaii" />
+					<span>Recettes</span>
+					<img src="/images/3.png" alt="Recettes" class="icon-kawaii" />
+				</a>
+			</li>
+			<li class="menu-item">
+				<a
+					href="/favoris"
+					class={`menu-link-kawaii ${
+						currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''
+					}`}
+					on:click={() => (isMenuOpen = false)}
+				>
+					<img src="/images/3.png" alt="Favoris" class="icon-kawaii" />
+					<span>Favoris</span>
+					<img src="/images/3.png" alt="Favoris" class="icon-kawaii" />
+				</a>
+			</li>
+		</ul>
 
-</div>
-
+		<div class="menu-footer absolute bottom-0 left-0 right-0 flex flex-col items-center gap-4 bg-[#FFCAD4] py-4">
+			<p class="text-sm text-[#9D8189]">&copy; 2025 Intellicook. Tous droits réservés.</p>
+		</div>
+	</div>
 </header>
 
 <slot />
@@ -173,25 +170,24 @@
 		</div>
 
 		<ul class="flex gap-6 text-sm">
-
 			<li>
 				<a
 					href="/"
-					class={`hover:text-[#F4ACB7] ${currentPath === '/' ? 'font-bold underline underline-offset-1	' : ''}`}
+					class={`hover:text-[#F4ACB7] ${currentPath === '/' ? 'font-bold underline underline-offset-1' : ''}`}
 					>Accueil</a
 				>
 			</li>
 			<li>
 				<a
 					href="/recipes"
-					class={`hover:text-[#F4ACB7] ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1	' : ''}`}
+					class={`hover:text-[#F4ACB7] ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''}`}
 					>Recettes</a
 				>
 			</li>
 			<li>
 				<a
 					href="/favoris"
-					class={`hover:text-[#F4ACB7] ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1	' : ''}`}
+					class={`hover:text-[#F4ACB7] ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''}`}
 					>Favoris</a
 				>
 			</li>
