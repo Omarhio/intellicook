@@ -83,12 +83,31 @@
 <main class="relative flex min-h-screen flex-col items-center bg-[#FFF6F6] p-8 text-[#9D8189]">
 	<h1 class="text-center text-4xl text-[#F4ACB7]">Vos Favoris ❤️</h1>
 	<p class="mt-2 text-center italic text-[#9D8189]">
-		Vous pouvez cliquer sur <span class="font-bold">l'émoji œuf</span> pour retirer une recette de vos
+		Vous pouvez cliquer sur <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="h-8 w-8">
+			<path
+				fill="#fffaf0"
+				stroke="#5f363a"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="3"
+				d="M22.09,48.28a6.83,6.83,0,0,0-4.95-3.91A20.22,20.22,0,0,1,20.93,4.3a20.53,20.53,0,0,1,9.7,2.56,7.26,7.26,0,0,0,7.15-.16A16.8,16.8,0,0,1,60.36,30.54a6.89,6.89,0,0,0-1,5.45,20.52,20.52,0,0,1,.48,4.34A19.48,19.48,0,0,1,40.37,59.7C29,59.7,24.08,52.71,22.09,48.28Z"
+			></path>
+			<circle
+				cx="37.21"
+				cy="30"
+				r="10.63"
+				fill="#ffdd7d"
+				stroke="#5f363a"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="3"
+			></circle>
+		</svg> pour retirer une recette de vos
 		favoris.
 	</p>
 
 	<button
-		class="mt-4 rounded bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
+		class="mt-4 rounded-2xl bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
 		on:click={supprimerTousFavoris}
 	>
 		Supprimer tous les favoris
@@ -104,7 +123,7 @@
 		/>
 		<button
 			on:click={resetSearch}
-			class="mt-4 w-full max-w-[200px] self-center rounded bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7] sm:ml-4 sm:mt-0 sm:self-auto"
+			class="mt-4 w-full max-w-[200px] self-center rounded-2xl bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7] sm:ml-4 sm:mt-0 sm:self-auto"
 		>
 			Effacer
 		</button>
@@ -115,7 +134,7 @@
 			<ul class="grid grid-cols-1 justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
 				{#each favorisFiltres as recette (recette.nom)}
 					<li
-						class="relative mx-auto max-w-sm rounded-lg border p-4 shadow-lg transition-all hover:bg-[#FDE2E4]"
+						class="relative mx-auto max-w-sm rounded-2xl border p-4 shadow-lg transition-all hover:bg-[#FDE2E4]"
 					>
 						<button
 							class="w-full text-left"
@@ -141,7 +160,7 @@
 								e.stopPropagation();
 								retirerFavori(recette);
 							}}
-							class="absolute right-3 top-3 rounded-full bg-none p-2 transition-transform hover:scale-110"
+							class="absolute right-3 top-3 rounded-2xl bg-none p-2 transition-transform hover:scale-110"
 							aria-label="Retirer des favoris"
 						>
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="h-8 w-8">
@@ -174,7 +193,7 @@
 			<p class="text-lg">Aucune recette trouvée dans vos favoris.</p>
 			<a
 				href="/recipes"
-				class="mt-4 inline-block rounded bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
+				class="mt-4 inline-block rounded-2xl bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
 			>
 				Découvrir des recettes
 			</a>
