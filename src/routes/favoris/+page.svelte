@@ -73,7 +73,6 @@
 		}
 	}
 
-	// Réinitialise la recherche
 	function resetSearch() {
 		searchTerm = '';
 		filtrerFavoris();
@@ -83,7 +82,12 @@
 <main class="relative flex min-h-screen flex-col items-center bg-[#FFF6F6] p-8 text-[#9D8189]">
 	<h1 class="text-center text-4xl text-[#F4ACB7]">Vos Favoris ❤️</h1>
 	<p class="mt-2 text-center italic text-[#9D8189]">
-		Vous pouvez cliquer sur <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="h-8 w-8">
+		Vous pouvez cliquer sur &nbsp
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 64 64"
+			class="inline-block h-8 w-8 align-middle"
+		>
 			<path
 				fill="#fffaf0"
 				stroke="#5f363a"
@@ -102,8 +106,8 @@
 				stroke-linejoin="round"
 				stroke-width="3"
 			></circle>
-		</svg> pour retirer une recette de vos
-		favoris.
+		</svg>
+		&nbsp pour retirer une recette de vos favoris.
 	</p>
 
 	<button
