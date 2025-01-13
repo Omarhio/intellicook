@@ -280,6 +280,7 @@
 				<button
 					on:click={() => (currentIndex = index)}
 					class="h-3 w-3 rounded-full {currentIndex === index ? 'bg-[#F4ACB7]' : 'bg-gray-300'}"
+					aria-label="Voir la recette numéro {index + 1}"
 				></button>
 			{/each}
 		</div>
