@@ -264,7 +264,7 @@
 						alt={getRecipe(0).nom}
 						class="h-48 w-full rounded-2xl object-cover"
 					/>
-					<h3 class="mt-4 text-center text-xl font-bold text-[#F4ACB7]">{getRecipe(0).nom}</h3>
+					<h3 class="mt-4 title-font text-center text-2xl font-bold text-[#F4ACB7]">{getRecipe(0).nom}</h3>
 				</div>
 				<div class="w-60 scale-90 opacity-70">
 					<img
