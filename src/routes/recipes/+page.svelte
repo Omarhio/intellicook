@@ -1,39 +1,27 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let recettes = [];
-	let favoris = [];
-	let ingredientMap = {}; // Pour la correspondance ID → Nom
-	let selectedRecette = null; // Recette actuellement sélectionnée pour la popup
+	let recettes = []; // Toutes les recettes
+	let favoris = []; // Favoris
+	let selectedRecette = null; // Recette actuellement sélectionnée pour la modale
 
-	// Charger les recettes et la correspondance des ingrédients
+	// Charger les recettes depuis le fichier JSON
 	async function chargerRecettes() {
 		try {
 			const response = await fetch('/recette.json');
 			if (!response.ok) throw new Error('Erreur lors du chargement des recettes');
 			const data = await response.json();
 
-			// Construire la correspondance ID → Nom
-			data.ingredients.forEach((ingredient) => {
-				ingredientMap[ingredient.id] = ingredient.nom;
-			});
-
-			// Remplacer les IDs par les noms des ingrédients dans les recettes
-			recettes = data.recettes.map((recette) => ({
-				...recette,
-				ingredients: recette.ingredients.map(
-					(id) => ingredientMap[id] || `Ingrédient inconnu (ID: ${id})`
-				)
-			}));
+			// Charger les recettes depuis le fichier JSON
+			recettes = data.recettes;
 		} catch (error) {
-			console.error('Erreur de chargement des recettes :', error);
+			console.error('Erreur lors du chargement des recettes :', error);
 		}
 	}
 
 	// Ajouter ou retirer des favoris
 	function toggleFavori(recette) {
 		const index = favoris.findIndex((fav) => fav.nom === recette.nom);
-
 		if (index === -1) {
 			favoris = [...favoris, recette];
 		} else {
@@ -46,20 +34,16 @@
 	// Ouvrir la popup pour une recette
 	function openPopup(recette) {
 		selectedRecette = recette;
-
-		// Bloquer le scrolling global
-		document.body.style.overflow = 'hidden';
+		document.body.style.overflow = 'hidden'; // Bloquer le défilement de l'arrière-plan
 	}
 
 	// Fermer la popup
 	function closePopup() {
 		selectedRecette = null;
-
-		// Réactiver le scrolling global
-		document.body.style.overflow = '';
+		document.body.style.overflow = ''; // Réactiver le défilement de l'arrière-plan
 	}
 
-	// Charger les favoris existants
+	// Charger les favoris existants depuis le localStorage
 	onMount(() => {
 		const savedFavorites = localStorage.getItem('favoris');
 		favoris = savedFavorites ? JSON.parse(savedFavorites) : [];
@@ -86,7 +70,7 @@
 				<li
 					class="relative mx-auto max-w-sm rounded-lg border p-4 pb-12 shadow-lg transition-all hover:bg-[#FDE2E4] sm:pb-4"
 				>
-					<!-- Bouton pour ouvrir la popup -->
+					<!-- Bouton pour ouvrir la modale -->
 					<button
 						class="w-full text-left"
 						on:click={() => openPopup(recette)}
@@ -100,7 +84,7 @@
 							loading="lazy"
 						/>
 						<h2 class="mt-4 text-2xl font-semibold">{recette.nom}</h2>
-						<p class="mt-2">Ingrédients : {recette.ingredients.join(', ')}</p>
+						<p class="mt-2">Ingrédients : {recette.ingredients.map((i) => i.nom).join(', ')}</p>
 					</button>
 
 					<!-- Icône cœur -->
@@ -171,10 +155,18 @@
 					class="mb-4 h-64 w-full rounded-lg object-cover"
 				/>
 				<h2 id="popup-title" class="text-3xl font-bold text-[#F4ACB7]">{selectedRecette.nom}</h2>
-				<p id="popup-description" class="mt-4 text-lg">
-					<strong>Ingrédients :</strong>
-					{selectedRecette.ingredients.join(', ')}
-				</p>
+
+				<!-- Liste des ingrédients avec noms et dosages -->
+				<h3 class="mt-4 text-2xl font-semibold text-[#F4ACB7]">Ingrédients :</h3>
+				<ul class="mt-2 list-inside list-disc space-y-2 text-[#9D8189]">
+					{#each selectedRecette.ingredients as ingredient}
+						<li>
+							<strong>{ingredient.nom}</strong> - {ingredient.dosage}
+						</li>
+					{/each}
+				</ul>
+
+				<!-- Étapes de préparation -->
 				<h3 class="mt-6 text-2xl font-semibold text-[#F4ACB7]">Étapes de préparation :</h3>
 				<ul class="mt-2 list-inside list-disc space-y-2 text-[#9D8189]">
 					{#each selectedRecette.etapes as etape}
