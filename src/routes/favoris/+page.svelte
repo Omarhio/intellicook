@@ -181,28 +181,20 @@
 								e.stopPropagation();
 								retirerFavori(recette);
 							}}
-							class="absolute right-3 top-3 rounded-2xl bg-none p-2 transition-transform hover:scale-110"
+							class="absolute right-1 top-1 flex items-center justify-center rounded-full bg-[#F4ACB7] bg-opacity-80 p-2 shadow-lg transition-all duration-200 ease-in-out hover:scale-110 hover:bg-[#FDE2E4]"
 							aria-label="Retirer des favoris"
 						>
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="h-8 w-8">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-5 w-5 text-white transition-transform duration-300 ease-in-out hover:scale-125 hover:text-[#FF6B6B]"
+							>
 								<path
-									fill="#fffaf0"
-									stroke="#5f363a"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="3"
-									d="M22.09,48.28a6.83,6.83,0,0,0-4.95-3.91A20.22,20.22,0,0,1,20.93,4.3a20.53,20.53,0,0,1,9.7,2.56,7.26,7.26,0,0,0,7.15-.16A16.8,16.8,0,0,1,60.36,30.54a6.89,6.89,0,0,0-1,5.45,20.52,20.52,0,0,1,.48,4.34A19.48,19.48,0,0,1,40.37,59.7C29,59.7,24.08,52.71,22.09,48.28Z"
-								></path>
-								<circle
-									cx="37.21"
-									cy="30"
-									r="10.63"
-									fill="#ffdd7d"
-									stroke="#5f363a"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="3"
-								></circle>
+									fill-rule="evenodd"
+									d="M4.22 4.22a.75.75 0 011.06 0L12 10.94l6.72-6.72a.75.75 0 111.06 1.06L13.06 12l6.72 6.72a.75.75 0 11-1.06 1.06L12 13.06l-6.72 6.72a.75.75 0 11-1.06-1.06L10.94 12 4.22 5.28a.75.75 0 010-1.06z"
+									clip-rule="evenodd"
+								/>
 							</svg>
 						</button>
 					</li>
