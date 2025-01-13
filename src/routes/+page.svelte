@@ -228,7 +228,7 @@
 								class="h-32 w-32 rounded-lg object-cover"
 							/>
 							<div>
-								<h3 class="text-xl font-semibold text-[#F4ACB7]">{recette.nom}</h3>
+								<h3 class="title-font text-2xl text-[#F4ACB7]">{recette.nom}</h3>
 								<p class="mt-2 text-sm">
 									<strong>Ingrédients :</strong>
 									<!-- Affiche uniquement les noms des ingrédients -->
