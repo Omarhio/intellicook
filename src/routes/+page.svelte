@@ -125,14 +125,14 @@
 		<p class="mt-4 text-lg">Découvrez des recettes japonaises et kawaii 🍣</p>
 	</div>
 
-		<!-- GIF ANIMÉ -->
-		<div class="mt-6">
-			<img
-				src="/images/tkthao219-bubududu.gif"
-				alt="Animation kawaii"
-				class="mx-auto h-48 w-auto rounded-lg"
-			/>
-		</div>
+	<!-- GIF ANIMÉ -->
+	<div class="mt-6">
+		<img
+			src="/images/tkthao219-bubududu.gif"
+			alt="Animation kawaii"
+			class="mx-auto h-48 w-auto rounded-lg"
+		/>
+	</div>
 
 	<!-- BARRE DE RECHERCHE -->
 	<div class="mt-8 flex w-full max-w-2xl items-center gap-4">
@@ -206,7 +206,7 @@
 	<!-- LISTE D'ALLERGENES -->
 	{#if showAllergenList}
 		<div class="mt-6 w-full max-w-2xl rounded-2xl bg-white p-4 shadow-lg">
-			<h2 class="text-xl font-bold text-[#9D8189]">Excluez des allergènes :</h2>
+			<h2 class="pb-2 text-xl font-bold text-[#9D8189]">Excluez des allergènes :</h2>
 			<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
 				{#each allAllergens as allergen, i}
 					<label class="flex items-center gap-2">
@@ -273,7 +273,9 @@
 						alt={getRecipe(0).nom}
 						class="h-48 w-full rounded-2xl object-cover"
 					/>
-					<h3 class="mt-4 title-font text-center text-2xl font-bold text-[#F4ACB7]">{getRecipe(0).nom}</h3>
+					<h3 class="title-font mt-4 text-center text-2xl font-bold text-[#F4ACB7]">
+						{getRecipe(0).nom}
+					</h3>
 				</div>
 				<div class="w-60 scale-90 opacity-70">
 					<img
