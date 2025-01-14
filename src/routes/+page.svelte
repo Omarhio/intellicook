@@ -125,6 +125,15 @@
 		<p class="mt-4 text-lg">Découvrez des recettes japonaises et kawaii 🍣</p>
 	</div>
 
+		<!-- GIF ANIMÉ -->
+		<div class="mt-6">
+			<img
+				src="/images/tkthao219-bubududu.gif"
+				alt="Animation kawaii"
+				class="mx-auto h-48 w-auto rounded-lg"
+			/>
+		</div>
+
 	<!-- BARRE DE RECHERCHE -->
 	<div class="mt-8 flex w-full max-w-2xl items-center gap-4">
 		<div class="relative w-full">

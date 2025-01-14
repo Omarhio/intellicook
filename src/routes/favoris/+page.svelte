@@ -80,34 +80,9 @@
 </script>
 
 <main class="relative flex min-h-screen flex-col items-center bg-[#FFF6F6] p-8 text-[#9D8189]">
-	<h1 class="text-center text-4xl text-[#F4ACB7]">Vos Favoris ❤️</h1>
+	<h1 class="text-center text-4xl text-[#F4ACB7]">Vos Favoris</h1>
 	<p class="mt-2 text-center italic text-[#9D8189]">
-		Vous pouvez cliquer sur &nbsp
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 64 64"
-			class="inline-block h-8 w-8 align-middle"
-		>
-			<path
-				fill="#fffaf0"
-				stroke="#5f363a"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="3"
-				d="M22.09,48.28a6.83,6.83,0,0,0-4.95-3.91A20.22,20.22,0,0,1,20.93,4.3a20.53,20.53,0,0,1,9.7,2.56,7.26,7.26,0,0,0,7.15-.16A16.8,16.8,0,0,1,60.36,30.54a6.89,6.89,0,0,0-1,5.45,20.52,20.52,0,0,1,.48,4.34A19.48,19.48,0,0,1,40.37,59.7C29,59.7,24.08,52.71,22.09,48.28Z"
-			></path>
-			<circle
-				cx="37.21"
-				cy="30"
-				r="10.63"
-				fill="#ffdd7d"
-				stroke="#5f363a"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="3"
-			></circle>
-		</svg>
-		&nbsp pour retirer une recette de vos favoris.
+		Vous pouvez retrouver vos favoris ici.
 	</p>
 
 	<button
@@ -274,4 +249,17 @@
 			{snackbarMessage}
 		</div>
 	{/if}
+
+	{#if favorisFiltres.length === 0}
+	<div class="mt-12 text-center">
+		<img src="/images/bubu-dudu-sseeyall.gif" alt="Aucun favori" class="mx-auto h-48" />
+		<p class="mt-4 text-lg text-[#9D8189]">Vous n'avez encore aucun favori.</p>
+		<a
+			href="/recipes"
+			class="mt-6 inline-block rounded-2xl bg-[#F4ACB7] px-6 py-2 text-white shadow-lg hover:bg-[#D5899C]"
+		>
+			Découvrir des recettes
+		</a>
+	</div>
+{/if}
 </main>
