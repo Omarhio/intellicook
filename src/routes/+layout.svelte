@@ -89,7 +89,7 @@
 					<img src="/images/5.png" alt="Favoris" class="icon-kawaii-desktop" />
 				</a>
 			</li>
-		</ul>		
+		</ul>
 	</nav>
 
 	<!-- Menu Burger -->
@@ -97,19 +97,18 @@
 		class="menu-overlay fixed inset-0 z-[9999] transform bg-[#FFCAD4] text-[#9D8189] transition-transform duration-400 ease-in-out"
 		style="transform: translateX({isMenuOpen ? '0%' : '-100%'})"
 	>
-		<img
-			src="/images/7.png"
-			alt="Kawaii Mascotte"
-			class="kawaii-mascot absolute bottom-4 left-4 h-20 w-auto z-[50] "
-		/>
-		<img
-			src="/images/2.png"
-			alt="Kawaii Mascotte"
-			class="kawaii-mascot2 absolute top-4 right-4 h-20 w-auto z-[50]"
-		/>
+		<!-- Ajout du GIF en haut au centre -->
+		<div class="absolute bottom-12 left-1/2 -translate-x-1/2 transform">
+			<img src="/images/cute.gif" alt="Kawaii Animation" class="h-40 w-auto object-contain" />
+		</div>
 
-		<ul class="menu-links flex h-full flex-col items-center justify-center gap-12 text-center font-body text-2xl">
-			<h2 class="kawaii-mascot menu-section-title text-3xl font-semibold uppercase text-[#9D8189]">Navigation</h2>
+		<!-- Liste de navigation -->
+		<ul
+			class="menu-links flex h-full flex-col items-center justify-center gap-12 text-center font-body text-2xl"
+		>
+			<h2 class="kawaii-mascot menu-section-title text-3xl font-semibold uppercase text-[#9D8189]">
+				Navigation
+			</h2>
 			<li class="menu-item">
 				<a
 					href="/"
@@ -151,7 +150,10 @@
 			</li>
 		</ul>
 
-		<div class="menu-footer absolute bottom-0 left-0 right-0 flex flex-col items-center gap-4 bg-[#FFCAD4] py-4">
+		<!-- Pied de menu -->
+		<div
+			class="menu-footer absolute bottom-0 left-0 right-0 flex flex-col items-center gap-4 bg-[#FFCAD4] py-4 shadow-inner"
+		>
 			<p class="text-sm text-[#9D8189]">&copy; 2025 Intellicook. Tous droits réservés.</p>
 		</div>
 	</div>
