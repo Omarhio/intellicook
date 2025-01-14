@@ -194,7 +194,7 @@
 							type="checkbox"
 							bind:group={selectedIngredients}
 							value={ingredient}
-							class="accent-[#F4ACB7]"
+							class="text-[#F4ACB7] accent-[#F4ACB7]"
 						/>
 						<span>{ingredient}</span>
 					</label>
@@ -214,7 +214,7 @@
 							type="checkbox"
 							bind:group={excludedAllergens}
 							value={allergen}
-							class="accent-[#F4ACB7]"
+							class=" text-[#F4ACB7] accent-[#F4ACB7]"
 						/>
 						<span>{allergen}</span>
 					</label>
