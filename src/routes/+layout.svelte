@@ -1,4 +1,4 @@
-<script lang="js">
+<script lang="ts">
 	import '../app.css';
 	import Hamburger from 'svelte-hamburgers';
 	import { afterNavigate } from '$app/navigation';
@@ -50,7 +50,6 @@
 		>
 			<Hamburger
 				open={isMenuOpen}
-				class="ease-[cubic-bezier(0.25, 0.8, 0.5, 1)] transition-all duration-400"
 				--color="#9D8189"
 			/>
 		</div>
@@ -167,7 +166,7 @@
 			<img src="/logo.webp" alt="Intellicook Logo" class="h-12 w-auto" />
 			<p class="max-w-sm text-center text-sm md:text-left">
 				<strong class="font-title text-lg text-[#9D8189]">Intellicook</strong> — Découvrez des recettes
-				japonaises et kawaii pour illuminer vos repas !
+				japonaises et kawaii pour illuminer vos repas !
 			</p>
 		</div>
 
