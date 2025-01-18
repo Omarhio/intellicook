@@ -1,14 +1,20 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Button from '$lib/components/atoms/buttons/Button.svelte';
-	import SearchInput from '$lib/components/atoms/inputs/SearchInput.svelte';
-	import FilterGroup from '$lib/components/molecules/filters/FilterGroup.svelte';
-	import RecipeCard from '$lib/components/molecules/cards/RecipeCard.svelte';
-	import Carousel from '$lib/components/molecules/carousel/Carousel.svelte';
+	import type { Recipe } from '$lib/types/Recipe';
+	import {
+		Button,
+		SearchInput,
+		FilterGroup,
+		RecipeCard,
+		RecipeModal,
+		Carousel
+	} from '$lib/components';
 
 	let searchTerm = '';
-	let recettes = [];
-	let filteredRecettes = [];
+	let recipes: Recipe[] = [];
+	let filteredRecipes: Recipe[] = [];
+	let favorites: string[] = [];
+	let selectedRecipe: Recipe | null = null;
 	let allIngredients: Set<string> = new Set();
 	let allAllergens = ['Poisson', 'Œuf', 'Halal', 'Crustacés', 'Soja', 'Végétarien'];
 	let selectedIngredients: string[] = [];
@@ -25,13 +31,23 @@
 			const response = await fetch('/recette.json');
 			if (!response.ok) throw new Error('Erreur lors du chargement des recettes');
 			const data = await response.json();
-			recettes = data.recettes;
-			recettes.forEach((recette) => {
-				recette.ingredients.forEach((ingredient) => allIngredients.add(ingredient.nom));
+			recipes = data.recettes;
+			recipes.forEach((recipe) => {
+				recipe.ingredients.forEach((ingredient) => allIngredients.add(ingredient.nom));
 			});
 		} catch (error) {
 			console.error('Erreur de chargement des recettes :', error);
 		}
+	}
+
+	// Gérer les favoris
+	function toggleFavorite(recipeName: string) {
+		if (favorites.includes(recipeName)) {
+			favorites = favorites.filter((name) => name !== recipeName);
+		} else {
+			favorites = [...favorites, recipeName];
+		}
+		localStorage.setItem('favorites', JSON.stringify(favorites));
 	}
 
 	function resetFilters() {
@@ -58,10 +74,10 @@
 		]
 	};
 
-	$: filteredRecettes = recettes.filter((recette) => {
+	$: filteredRecipes = recipes.filter((recipe) => {
 		const matchesSearch = searchTerm
-			? recette.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				recette.ingredients.some((ingredient) =>
+			? recipe.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				recipe.ingredients.some((ingredient) =>
 					ingredient.nom.toLowerCase().includes(searchTerm.toLowerCase())
 				)
 			: true;
@@ -69,13 +85,13 @@
 		const matchesIngredients =
 			selectedIngredients.length > 0
 				? selectedIngredients.every((ingredient) =>
-						recette.ingredients.map((ing) => ing.nom).includes(ingredient)
+						recipe.ingredients.map((ing) => ing.nom).includes(ingredient)
 					)
 				: true;
 
 		const excludesAllergens =
 			excludedAllergens.length > 0
-				? !recette.ingredients.some((ingredient) =>
+				? !recipe.ingredients.some((ingredient) =>
 						excludedAllergens.some((allergen) =>
 							allergenMapping[allergen]?.includes(ingredient.nom)
 						)
@@ -87,8 +103,14 @@
 
 	onMount(async () => {
 		await chargerRecettes();
+		// Charger les favoris depuis le localStorage
+		const storedFavorites = localStorage.getItem('favorites');
+		if (storedFavorites) {
+			favorites = JSON.parse(storedFavorites);
+		}
+		// Démarrer le carousel
 		autoSlideInterval = setInterval(() => {
-			currentIndex = (currentIndex + 1) % recettes.length;
+			currentIndex = (currentIndex + 1) % recipes.length;
 		}, slideDuration);
 	});
 
@@ -149,12 +171,17 @@
 	{/if}
 
 	{#if searchTerm || selectedIngredients.length > 0 || excludedAllergens.length > 0}
-		{#if filteredRecettes.length > 0}
+		{#if filteredRecipes.length > 0}
 			<div class="mt-8 w-full max-w-3xl">
 				<h2 class="text-2xl font-bold text-[#9D8189]">Résultats :</h2>
-				<ul class="space-y-6">
-					{#each filteredRecettes as recipe}
-						<RecipeCard {recipe} />
+				<ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{#each filteredRecipes as recipe (recipe.nom)}
+						<RecipeCard
+							{recipe}
+							isFavorite={favorites.includes(recipe.nom)}
+							onFavoriteClick={() => toggleFavorite(recipe.nom)}
+							onClick={() => (selectedRecipe = recipe)}
+						/>
 					{/each}
 				</ul>
 			</div>
@@ -165,5 +192,10 @@
 		{/if}
 	{/if}
 
-	<Carousel items={recettes} bind:currentIndex />
+	<Carousel items={recipes} bind:currentIndex />
 </main>
+
+<!-- Modale de recette -->
+{#if selectedRecipe}
+	<RecipeModal recipe={selectedRecipe} onClose={() => (selectedRecipe = null)} />
+{/if}
