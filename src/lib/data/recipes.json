@@ -1,0 +1,1342 @@
+{
+    "ingredients": [
+        {
+            "id": 1,
+            "nom": "Riz japonais"
+        },
+        {
+            "id": 2,
+            "nom": "Vinaigre de riz"
+        },
+        {
+            "id": 3,
+            "nom": "Saumon"
+        },
+        {
+            "id": 4,
+            "nom": "Thon"
+        },
+        {
+            "id": 5,
+            "nom": "Crevettes"
+        },
+        {
+            "id": 6,
+            "nom": "Concombre"
+        },
+        {
+            "id": 7,
+            "nom": "Feuille de nori"
+        },
+        {
+            "id": 8,
+            "nom": "Wasabi"
+        },
+        {
+            "id": 9,
+            "nom": "Sauce soja"
+        },
+        {
+            "id": 10,
+            "nom": "Nouilles ramen"
+        },
+        {
+            "id": 11,
+            "nom": "Pâte de miso"
+        },
+        {
+            "id": 12,
+            "nom": "Dashi"
+        },
+        {
+            "id": 13,
+            "nom": "Mirin"
+        },
+        {
+            "id": 14,
+            "nom": "Porc chashu"
+        },
+        {
+            "id": 15,
+            "nom": "Œuf mariné"
+        },
+        {
+            "id": 16,
+            "nom": "Oignon vert"
+        },
+        {
+            "id": 17,
+            "nom": "Gingembre"
+        },
+        {
+            "id": 18,
+            "nom": "Ail"
+        },
+        {
+            "id": 19,
+            "nom": "Huile de sésame"
+        },
+        {
+            "id": 20,
+            "nom": "Poulet"
+        },
+        {
+            "id": 21,
+            "nom": "Sucre"
+        },
+        {
+            "id": 22,
+            "nom": "Sake"
+        },
+        {
+            "id": 23,
+            "nom": "Poireaux japonais"
+        },
+        {
+            "id": 24,
+            "nom": "Patate douce"
+        },
+        {
+            "id": 25,
+            "nom": "Aubergine"
+        },
+        {
+            "id": 26,
+            "nom": "Courgette"
+        },
+        {
+            "id": 27,
+            "nom": "Farine"
+        },
+        {
+            "id": 28,
+            "nom": "Œuf"
+        },
+        {
+            "id": 29,
+            "nom": "Eau froide"
+        },
+        {
+            "id": 30,
+            "nom": "Huile végétale"
+        },
+        {
+            "id": 31,
+            "nom": "Sauce tentsuyu"
+        },
+        {
+            "id": 32,
+            "nom": "Chou"
+        },
+        {
+            "id": 33,
+            "nom": "Mayonnaise japonaise"
+        },
+        {
+            "id": 34,
+            "nom": "Sauce okonomiyaki"
+        },
+        {
+            "id": 35,
+            "nom": "Aonori"
+        },
+        {
+            "id": 36,
+            "nom": "Katsuobushi"
+        },
+        {
+            "id": 37,
+            "nom": "Morceaux de poulpe"
+        },
+        {
+            "id": 38,
+            "nom": "Beni shoga"
+        },
+        {
+            "id": 39,
+            "nom": "Sauce takoyaki"
+        },
+        {
+            "id": 40,
+            "nom": "Panko"
+        },
+        {
+            "id": 41,
+            "nom": "Riz"
+        },
+        {
+            "id": 42,
+            "nom": "Bœuf tranché"
+        },
+        {
+            "id": 43,
+            "nom": "Tofu"
+        },
+        {
+            "id": 44,
+            "nom": "Champignons shiitake"
+        },
+        {
+            "id": 45,
+            "nom": "Choux chinois"
+        },
+        {
+            "id": 46,
+            "nom": "Nouilles udon"
+        },
+        {
+            "id": 47,
+            "nom": "Poudre de curry"
+        },
+        {
+            "id": 48,
+            "nom": "Pommes de terre"
+        },
+        {
+            "id": 49,
+            "nom": "Tamago"
+        },
+        {
+            "id": 50,
+            "nom": "Haricots rouges azuki"
+        }
+    ],
+    "recettes": [
+        {
+            "id": 1,
+            "nom": "Sushi",
+            "description": "Délicieux sushis maison avec du saumon frais",
+            "image": "/images/sushi.jpg",
+            "temps_preparation": 30,
+            "temps_cuisson": 20,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 1,
+                        "nom": "Riz japonais"
+                    },
+                    "quantite": 300,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 3,
+                        "nom": "Saumon"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 2,
+                        "nom": "Vinaigre de riz"
+                    },
+                    "quantite": 2,
+                    "unite": "cuillères à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 7,
+                        "nom": "Feuille de nori"
+                    },
+                    "quantite": 4,
+                    "unite": "feuilles"
+                },
+                {
+                    "ingredient": {
+                        "id": 21,
+                        "nom": "Sucre"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à café"
+                }
+            ],
+            "etapes": [
+                "Cuire le riz japonais avec la bonne quantité d'eau.",
+                "Mélanger le vinaigre de riz, le sucre et le sel pour assaisonner le riz.",
+                "Étaler une feuille de nori et ajouter une couche de riz.",
+                "Ajouter les morceaux de saumon et d'autres ingrédients.",
+                "Rouler fermement et couper en morceaux égaux."
+            ],
+            "allergenes": ["poisson"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "poisson", "riz"],
+            "favoris": false
+        },
+        {
+            "id": 2,
+            "nom": "Ramen au miso",
+            "description": "Délicieux ramen avec un bouillon riche au miso",
+            "image": "/images/ramen.jpg",
+            "temps_preparation": 30,
+            "temps_cuisson": 45,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 10,
+                        "nom": "Nouilles ramen"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 11,
+                        "nom": "Pâte de miso"
+                    },
+                    "quantite": 2,
+                    "unite": "cuillères à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 12,
+                        "nom": "Dashi"
+                    },
+                    "quantite": 500,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 4,
+                        "nom": "Thon"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 7,
+                        "nom": "Feuille de nori"
+                    },
+                    "quantite": 1,
+                    "unite": "feuille"
+                },
+                {
+                    "ingredient": {
+                        "id": 16,
+                        "nom": "Oignon vert"
+                    },
+                    "quantite": 1,
+                    "unite": "tige"
+                }
+            ],
+            "etapes": [
+                "Préparer le bouillon avec le dashi, le miso et la sauce soja.",
+                "Cuire les nouilles ramen selon les instructions.",
+                "Ajouter les ingrédients au bouillon.",
+                "Servir chaud avec des morceaux de thon et de nori sur le dessus."
+            ],
+            "allergenes": ["gluten", "soja", "poisson"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "soupe", "nouilles"],
+            "favoris": false
+        },
+        {
+            "id": 3,
+            "nom": "Yakitori",
+            "description": "Brochettes de poulet grillées à la sauce yakitori",
+            "image": "/images/yakitori.jpg",
+            "temps_preparation": 20,
+            "temps_cuisson": 15,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 20,
+                        "nom": "Poulet"
+                    },
+                    "quantite": 300,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 9,
+                        "nom": "Sauce soja"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 13,
+                        "nom": "Mirin"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 21,
+                        "nom": "Sucre"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 22,
+                        "nom": "Sake"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                }
+            ],
+            "etapes": [
+                "Découper le poulet en morceaux et les enfiler sur des brochettes.",
+                "Préparer une sauce avec la sauce soja, le mirin, le sucre et le sake.",
+                "Griller les brochettes en les badigeonnant de sauce régulièrement.",
+                "Servir chaud avec une sauce supplémentaire."
+            ],
+            "allergenes": ["soja"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "poulet", "grillé"],
+            "favoris": false
+        },
+        {
+            "id": 4,
+            "nom": "Tempura",
+            "description": "Beignets japonais légers et croustillants",
+            "image": "/images/tempura.jpg",
+            "temps_preparation": 25,
+            "temps_cuisson": 10,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 27,
+                        "nom": "Farine"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 29,
+                        "nom": "Eau froide"
+                    },
+                    "quantite": 150,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 28,
+                        "nom": "Œuf"
+                    },
+                    "quantite": 1,
+                    "unite": "œuf"
+                },
+                {
+                    "ingredient": {
+                        "id": 5,
+                        "nom": "Crevettes"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 30,
+                        "nom": "Huile végétale"
+                    },
+                    "quantite": 1,
+                    "unite": "litre"
+                }
+            ],
+            "etapes": [
+                "Préparer la pâte à tempura en mélangeant la farine, l'eau froide et l'œuf.",
+                "Tremper les légumes et crevettes dans la pâte.",
+                "Faire frire dans de l'huile chaude jusqu'à ce qu'ils soient dorés.",
+                "Servir chaud avec la sauce tentsuyu."
+            ],
+            "allergenes": ["gluten", "crustacés", "œufs"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "friture", "fruits de mer"],
+            "favoris": false
+        },
+        {
+            "id": 5,
+            "nom": "Okonomiyaki",
+            "description": "Crêpe japonaise garnie de divers ingrédients",
+            "image": "/images/okonomiyaki.jpg",
+            "temps_preparation": 20,
+            "temps_cuisson": 15,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 27,
+                        "nom": "Farine"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 12,
+                        "nom": "Dashi"
+                    },
+                    "quantite": 150,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 28,
+                        "nom": "Œuf"
+                    },
+                    "quantite": 2,
+                    "unite": "œufs"
+                },
+                {
+                    "ingredient": {
+                        "id": 32,
+                        "nom": "Chou"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 34,
+                        "nom": "Sauce okonomiyaki"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 33,
+                        "nom": "Mayonnaise japonaise"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 35,
+                        "nom": "Aonori"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à café"
+                },
+                {
+                    "ingredient": {
+                        "id": 36,
+                        "nom": "Katsuobushi"
+                    },
+                    "quantite": 1,
+                    "unite": "poignée"
+                }
+            ],
+            "etapes": [
+                "Préparer la pâte avec la farine, l'œuf et le dashi.",
+                "Ajouter le chou finement haché et mélanger.",
+                "Faire cuire dans une poêle avec les garnitures comme le porc ou les crevettes.",
+                "Garnir avec la sauce okonomiyaki, la mayonnaise japonaise, l'aonori et le katsuobushi."
+            ],
+            "allergenes": ["gluten", "œufs"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "crêpe", "street food"],
+            "favoris": false
+        },
+        {
+            "id": 6,
+            "nom": "Takoyaki",
+            "description": "Boulettes de pâte farcies au poulpe",
+            "image": "/images/takoyaki.jpg",
+            "temps_preparation": 25,
+            "temps_cuisson": 15,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 27,
+                        "nom": "Farine"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 12,
+                        "nom": "Dashi"
+                    },
+                    "quantite": 150,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 37,
+                        "nom": "Morceaux de poulpe"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 33,
+                        "nom": "Mayonnaise japonaise"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 39,
+                        "nom": "Sauce takoyaki"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                }
+            ],
+            "etapes": [
+                "Préparer la pâte avec la farine, l'œuf et le dashi.",
+                "Remplir chaque cavité du moule à takoyaki avec de la pâte.",
+                "Ajouter un morceau de poulpe et cuire en tournant jusqu'à obtenir une boule dorée.",
+                "Garnir avec la sauce takoyaki, la mayonnaise japonaise, l'aonori et le beni shoga."
+            ],
+            "allergenes": ["gluten", "œufs", "mollusques"],
+            "categorie": "Entrée",
+            "tags": ["japonais", "street food", "fruits de mer"],
+            "favoris": false
+        },
+        {
+            "id": 7,
+            "nom": "Tonkatsu",
+            "description": "Côtelette de porc panée et frite à la japonaise",
+            "image": "/images/tonkatsu.jpg",
+            "temps_preparation": 20,
+            "temps_cuisson": 15,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 20,
+                        "nom": "Porc"
+                    },
+                    "quantite": 300,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 27,
+                        "nom": "Farine"
+                    },
+                    "quantite": 50,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 40,
+                        "nom": "Panko"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 28,
+                        "nom": "Œuf"
+                    },
+                    "quantite": 1,
+                    "unite": "œuf"
+                },
+                {
+                    "ingredient": {
+                        "id": 32,
+                        "nom": "Chou"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                }
+            ],
+            "etapes": [
+                "Assaisonner le porc et le passer dans la farine, l'œuf battu et la panko.",
+                "Faire frire jusqu'à ce qu'il soit doré et croustillant.",
+                "Servir avec du chou finement tranché et de la sauce tonkatsu."
+            ],
+            "allergenes": ["gluten", "œufs"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "porc", "frit"],
+            "favoris": false
+        },
+        {
+            "id": 8,
+            "nom": "Gyudon",
+            "description": "Bol de riz surmonté de bœuf et d'oignons mijotés",
+            "image": "/images/gyudon.jpg",
+            "temps_preparation": 15,
+            "temps_cuisson": 20,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 42,
+                        "nom": "Bœuf tranché"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 41,
+                        "nom": "Riz"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 9,
+                        "nom": "Sauce soja"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 13,
+                        "nom": "Mirin"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 22,
+                        "nom": "Sake"
+                    },
+                    "quantite": 50,
+                    "unite": "ml"
+                }
+            ],
+            "etapes": [
+                "Faire revenir le bœuf tranché avec l'oignon dans une sauce soja, mirin et sake.",
+                "Servir sur du riz chaud avec des garnitures comme le beni shoga."
+            ],
+            "allergenes": ["soja"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "bœuf", "riz"],
+            "favoris": false
+        },
+        {
+            "id": 8,
+            "nom": "Udon au curry",
+            "description": "Nouilles udon servies dans un bouillon au curry japonais",
+            "image": "/images/udon-curry.jpg",
+            "temps_preparation": 15,
+            "temps_cuisson": 20,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 46,
+                        "nom": "Nouilles udon"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 47,
+                        "nom": "Poudre de curry"
+                    },
+                    "quantite": 2,
+                    "unite": "cuillères à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 48,
+                        "nom": "Pommes de terre"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                }
+            ],
+            "etapes": [
+                "Préparer une soupe avec du dashi, du curry et de la sauce soja.",
+                "Cuire les nouilles udon selon les instructions.",
+                "Ajouter les légumes et servir chaud."
+            ],
+            "allergenes": ["gluten"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "curry", "nouilles"],
+            "favoris": false
+        },
+        {
+            "id": 9,
+            "nom": "Shabu-shabu",
+            "description": "Fondue japonaise avec des tranches de bœuf et des légumes",
+            "image": "/images/shabu-shabu.jpg",
+            "temps_preparation": 25,
+            "temps_cuisson": 20,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 42,
+                        "nom": "Bœuf tranché"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 45,
+                        "nom": "Chou chinois"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 44,
+                        "nom": "Champignons shiitake"
+                    },
+                    "quantite": 4,
+                    "unite": "pièces"
+                },
+                {
+                    "ingredient": {
+                        "id": 43,
+                        "nom": "Tofu"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 46,
+                        "nom": "Nouilles udon"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                }
+            ],
+            "etapes": [
+                "Préparer un bouillon de kombu et le porter à ébullition.",
+                "Ajouter les légumes et tofu pour les cuire doucement.",
+                "Tremper les fines tranches de bœuf dans le bouillon juste avant de les manger."
+            ],
+            "allergenes": ["soja", "gluten"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "bœuf", "soupe"],
+            "favoris": false
+        },
+        {
+            "id": 10,
+            "nom": "Udon au curry",
+            "description": "Nouilles udon servies dans un bouillon au curry japonais",
+            "image": "/images/udon-curry.jpg",
+            "temps_preparation": 15,
+            "temps_cuisson": 20,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 46,
+                        "nom": "Nouilles udon"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 47,
+                        "nom": "Poudre de curry"
+                    },
+                    "quantite": 2,
+                    "unite": "cuillères à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 12,
+                        "nom": "Dashi"
+                    },
+                    "quantite": 500,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 48,
+                        "nom": "Pommes de terre"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                }
+            ],
+            "etapes": [
+                "Préparer une soupe avec du dashi, du curry et de la sauce soja.",
+                "Cuire les nouilles udon selon les instructions.",
+                "Ajouter les légumes et servir chaud."
+            ],
+            "allergenes": ["gluten"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "curry", "nouilles"],
+            "favoris": false
+        },
+        {
+            "id": 11,
+            "nom": "Onigiri",
+            "description": "Boules de riz japonaises farcies",
+            "image": "/images/onigiri.jpg",
+            "temps_preparation": 20,
+            "temps_cuisson": 15,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 1,
+                        "nom": "Riz japonais"
+                    },
+                    "quantite": 300,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 3,
+                        "nom": "Saumon"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 7,
+                        "nom": "Feuille de nori"
+                    },
+                    "quantite": 4,
+                    "unite": "feuilles"
+                }
+            ],
+            "etapes": [
+                "Cuire le riz japonais.",
+                "Former des triangles ou des boules de riz en insérant une garniture comme du saumon.",
+                "Envelopper avec une feuille de nori."
+            ],
+            "allergenes": ["poisson"],
+            "categorie": "Entrée",
+            "tags": ["japonais", "riz", "poisson"],
+            "favoris": false
+        },
+        {
+            "id": 12,
+            "nom": "Chirashi sushi",
+            "description": "Bol de riz vinaigré garni de poisson cru et autres ingrédients",
+            "image": "/images/chirashi.jpg",
+            "temps_preparation": 30,
+            "temps_cuisson": 20,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 1,
+                        "nom": "Riz japonais"
+                    },
+                    "quantite": 300,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 3,
+                        "nom": "Saumon"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 4,
+                        "nom": "Thon"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 2,
+                        "nom": "Vinaigre de riz"
+                    },
+                    "quantite": 2,
+                    "unite": "cuillères à soupe"
+                }
+            ],
+            "etapes": [
+                "Assaisonner le riz avec le vinaigre de riz.",
+                "Ajouter les tranches de poisson et les garnitures sur le dessus.",
+                "Servir dans un grand bol."
+            ],
+            "allergenes": ["poisson"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "poisson", "riz"],
+            "favoris": false
+        },
+        {
+            "id": 13,
+            "nom": "Chawanmushi",
+            "description": "Flan salé japonais cuit à la vapeur",
+            "image": "/images/chawanmushi.jpg",
+            "temps_preparation": 20,
+            "temps_cuisson": 15,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 28,
+                        "nom": "Œufs"
+                    },
+                    "quantite": 2,
+                    "unite": "œufs"
+                },
+                {
+                    "ingredient": {
+                        "id": 12,
+                        "nom": "Dashi"
+                    },
+                    "quantite": 300,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 5,
+                        "nom": "Crevettes"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 44,
+                        "nom": "Champignons shiitake"
+                    },
+                    "quantite": 2,
+                    "unite": "pièces"
+                },
+                {
+                    "ingredient": {
+                        "id": 9,
+                        "nom": "Sauce soja"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 13,
+                        "nom": "Mirin"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à soupe"
+                }
+            ],
+            "etapes": [
+                "Mélanger les œufs avec le dashi, la sauce soja et le mirin.",
+                "Ajouter les crevettes et champignons dans des ramequins.",
+                "Cuire à la vapeur jusqu'à ce que le mélange soit pris."
+            ],
+            "allergenes": ["œufs", "crustacés", "soja"],
+            "categorie": "Entrée",
+            "tags": ["japonais", "vapeur", "fruits de mer"],
+            "favoris": false
+        },
+        {
+            "id": 14,
+            "nom": "Gyoza",
+            "description": "Raviolis japonais grillés et cuits à la vapeur",
+            "image": "/images/gyoza.jpg",
+            "temps_preparation": 40,
+            "temps_cuisson": 10,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 20,
+                        "nom": "Porc haché"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 32,
+                        "nom": "Chou"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 18,
+                        "nom": "Ail"
+                    },
+                    "quantite": 2,
+                    "unite": "gousses"
+                },
+                {
+                    "ingredient": {
+                        "id": 17,
+                        "nom": "Gingembre"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à café"
+                },
+                {
+                    "ingredient": {
+                        "id": 9,
+                        "nom": "Sauce soja"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 30,
+                        "nom": "Huile végétale"
+                    },
+                    "quantite": 2,
+                    "unite": "cuillères à soupe"
+                }
+            ],
+            "etapes": [
+                "Préparer une farce avec le porc, le chou et les assaisonnements.",
+                "Remplir les feuilles de gyoza et sceller en formant des plis.",
+                "Faire cuire à la poêle avec un peu d'eau pour les dorer et les cuire à la vapeur."
+            ],
+            "allergenes": ["gluten", "soja"],
+            "categorie": "Entrée",
+            "tags": ["japonais", "porc", "vapeur"],
+            "favoris": false
+        },
+        {
+            "id": 15,
+            "nom": "Oyakodon",
+            "description": "Bol de riz garni de poulet et d'œuf mijoté",
+            "image": "/images/oyakodon.jpg",
+            "temps_preparation": 15,
+            "temps_cuisson": 15,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 20,
+                        "nom": "Poulet"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 28,
+                        "nom": "Œufs"
+                    },
+                    "quantite": 2,
+                    "unite": "œufs"
+                },
+                {
+                    "ingredient": {
+                        "id": 12,
+                        "nom": "Dashi"
+                    },
+                    "quantite": 200,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 9,
+                        "nom": "Sauce soja"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 13,
+                        "nom": "Mirin"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à soupe"
+                },
+                {
+                    "ingredient": {
+                        "id": 41,
+                        "nom": "Riz"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                }
+            ],
+            "etapes": [
+                "Cuire le poulet avec des oignons dans une sauce dashi, soja et mirin.",
+                "Ajouter des œufs battus et cuire jusqu'à ce qu'ils soient pris.",
+                "Servir sur du riz chaud."
+            ],
+            "allergenes": ["œufs", "soja"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "poulet", "riz"],
+            "favoris": false
+        },
+        {
+            "id": 16,
+            "nom": "Soba froide",
+            "description": "Nouilles de sarrasin servies froides avec une sauce à tremper",
+            "image": "/images/soba.jpg",
+            "temps_preparation": 10,
+            "temps_cuisson": 8,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 46,
+                        "nom": "Nouilles soba"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 31,
+                        "nom": "Sauce tsuyu"
+                    },
+                    "quantite": 100,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 7,
+                        "nom": "Feuille de nori"
+                    },
+                    "quantite": 1,
+                    "unite": "feuille"
+                },
+                {
+                    "ingredient": {
+                        "id": 8,
+                        "nom": "Wasabi"
+                    },
+                    "quantite": 1,
+                    "unite": "cuillère à café"
+                }
+            ],
+            "etapes": [
+                "Cuire les nouilles soba et les refroidir dans de l'eau glacée.",
+                "Servir avec une sauce tsuyu, des garnitures comme le nori et le wasabi."
+            ],
+            "allergenes": ["gluten"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "nouilles", "froid"],
+            "favoris": false
+        },
+        {
+            "id": 17,
+            "nom": "Nabe",
+            "description": "Pot-au-feu japonais avec divers ingrédients",
+            "image": "/images/nabe.jpg",
+            "temps_preparation": 20,
+            "temps_cuisson": 30,
+            "difficulte": "Facile",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 20,
+                        "nom": "Poulet"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 45,
+                        "nom": "Chou chinois"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 43,
+                        "nom": "Tofu"
+                    },
+                    "quantite": 200,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 12,
+                        "nom": "Dashi"
+                    },
+                    "quantite": 500,
+                    "unite": "ml"
+                },
+                {
+                    "ingredient": {
+                        "id": 46,
+                        "nom": "Nouilles udon"
+                    },
+                    "quantite": 150,
+                    "unite": "g"
+                }
+            ],
+            "etapes": [
+                "Préparer un bouillon de kombu et ajouter les légumes et le tofu.",
+                "Cuire les morceaux de poulet et les nouilles directement dans le bouillon."
+            ],
+            "allergenes": ["soja", "gluten"],
+            "categorie": "Plat principal",
+            "tags": ["japonais", "soupe", "mijotés"],
+            "favoris": false
+        },
+        {
+            "id": 18,
+            "nom": "Matcha Dorayaki",
+            "description": "Pancakes japonais fourrés au matcha et à la pâte d'azuki",
+            "image": "/images/dorayaki.jpg",
+            "temps_preparation": 20,
+            "temps_cuisson": 10,
+            "difficulte": "Moyen",
+            "ingredients": [
+                {
+                    "ingredient": {
+                        "id": 27,
+                        "nom": "Farine"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 21,
+                        "nom": "Sucre"
+                    },
+                    "quantite": 50,
+                    "unite": "g"
+                },
+                {
+                    "ingredient": {
+                        "id": 28,
+                        "nom": "Œufs"
+                    },
+                    "quantite": 2,
+                    "unite": "œufs"
+                },
+                {
+                    "ingredient": {
+                        "id": 50,
+                        "nom": "Haricots rouges azuki"
+                    },
+                    "quantite": 100,
+                    "unite": "g"
+                }
+            ],
+            "etapes": [
+                "Préparer une pâte à dorayaki en y ajoutant de la poudre de matcha.",
+                "Faire cuire de petites crêpes dans une poêle.",
+                "Garnir avec de la pâte d'azuki et assembler deux crêpes ensemble."
+            ],
+            "allergenes": ["gluten", "œufs"],
+            "categorie": "Dessert",
+            "tags": ["japonais", "matcha", "pâtisserie"],
+            "favoris": false
+        }
+    ]
+} 

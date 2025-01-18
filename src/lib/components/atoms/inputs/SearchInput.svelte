@@ -1,19 +1,37 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
 	export let value: string = '';
 	export let placeholder: string = 'Rechercher...';
-	export let onClear: () => void;
+
+	const dispatch = createEventDispatcher<{
+		input: string;
+		clear: void;
+	}>();
+
+	function handleInput(event: Event) {
+		const target = event.target as HTMLInputElement;
+		dispatch('input', target.value);
+	}
+
+	function handleClear() {
+		value = '';
+		dispatch('clear');
+		dispatch('input', '');
+	}
 </script>
 
 <div class="relative w-full">
 	<input
 		type="text"
-		bind:value
+		{value}
 		{placeholder}
+		on:input={handleInput}
 		class="w-full rounded-3xl border-2 border-[#F4ACB7] p-3 text-center text-lg placeholder:text-center focus:border-[#F4ACB7] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
 	/>
 	{#if value}
 		<button
-			on:click={onClear}
+			on:click={handleClear}
 			class="absolute right-3 top-1/2 -translate-y-1/2 text-[#F4ACB7] hover:text-[#e690a0]"
 			aria-label="Effacer la recherche"
 		>

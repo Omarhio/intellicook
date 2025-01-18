@@ -1,169 +1,113 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import Button from '$lib/components/atoms/buttons/Button.svelte';
-	import SearchInput from '$lib/components/atoms/inputs/SearchInput.svelte';
-	import FilterGroup from '$lib/components/molecules/filters/FilterGroup.svelte';
-	import RecipeCard from '$lib/components/molecules/cards/RecipeCard.svelte';
-	import Carousel from '$lib/components/molecules/carousel/Carousel.svelte';
+	import { SearchInput, Button, FilterGroup, RecipeCard, RecipeModal, Carousel } from "$lib/components";
+	import type { Recipe } from "$lib/types/Recipe";
+	import { onMount } from "svelte";
 
-	let searchTerm = '';
-	let recettes = [];
-	let filteredRecettes = [];
-	let allIngredients: Set<string> = new Set();
-	let allAllergens = ['Poisson', 'Œuf', 'Halal', 'Crustacés', 'Soja', 'Végétarien'];
-	let selectedIngredients: string[] = [];
-	let excludedAllergens: string[] = [];
-	let showIngredientList = false;
-	let showAllergenList = false;
+	let recipes: Recipe[] = [];
+	let filteredRecipes: Recipe[] = [];
 	let currentIndex = 0;
-	let autoSlideInterval;
-	const slideDuration = 5000;
+	let showIngredients = false;
+	let showAllergens = false;
+	let selectedIngredients: string[] = [];
+	let selectedAllergens: string[] = [];
+	let autoSlideInterval: number;
+	let showModal = false;
+	let selectedRecipe: Recipe | null = null;
 
-	// Charger les recettes et ingrédients
-	async function chargerRecettes() {
-		try {
-			const response = await fetch('/recette.json');
-			if (!response.ok) throw new Error('Erreur lors du chargement des recettes');
-			const data = await response.json();
-			recettes = data.recettes;
-			recettes.forEach((recette) => {
-				recette.ingredients.forEach((ingredient) => allIngredients.add(ingredient.nom));
+	onMount(() => {
+		fetch("/data/recipes.json")
+			.then((response) => response.json())
+			.then((data) => {
+				recipes = data.recettes;
+				filteredRecipes = [...recipes];
+			})
+			.catch(error => {
+				console.error("Erreur lors du chargement des recettes:", error);
 			});
-		} catch (error) {
-			console.error('Erreur de chargement des recettes :', error);
-		}
+	});
+
+	function handleSearch(event: CustomEvent<string>) {
+		const searchTerm = event.detail.toLowerCase();
+		filteredRecipes = recipes.filter((recipe) =>
+			recipe.nom.toLowerCase().includes(searchTerm)
+		);
 	}
 
-	function resetFilters() {
-		searchTerm = '';
-		selectedIngredients = [];
-		excludedAllergens = [];
+	function handleIngredientSelection(event: CustomEvent<string[]>) {
+		selectedIngredients = event.detail;
+		filterRecipes();
 	}
 
-	// Mapping des allergènes
-	const allergenMapping = {
-		Poisson: ['Saumon', 'Thon', 'Crevettes', 'Morceaux de poulpe'],
-		Œuf: ['Œuf', 'Tamago'],
-		Halal: ['Porc', 'Porc chashu', 'Porc haché'],
-		Crustacés: ['Crevettes', 'Morceaux de poulpe'],
-		Soja: ['Sauce soja', 'Pâte de miso'],
-		Végétarien: [
-			'Poulet',
-			'Porc',
-			'Morceaux de poulpe',
-			'Bœuf tranché',
-			'Saumon',
-			'Thon',
-			'Crevettes'
-		]
-	};
+	function handleAllergenSelection(event: CustomEvent<string[]>) {
+		selectedAllergens = event.detail;
+		filterRecipes();
+	}
 
-	$: filteredRecettes = recettes.filter((recette) => {
-		const matchesSearch = searchTerm
-			? recette.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				recette.ingredients.some((ingredient) =>
-					ingredient.nom.toLowerCase().includes(searchTerm.toLowerCase())
-				)
-			: true;
-
-		const matchesIngredients =
-			selectedIngredients.length > 0
-				? selectedIngredients.every((ingredient) =>
-						recette.ingredients.map((ing) => ing.nom).includes(ingredient)
-					)
-				: true;
-
-		const excludesAllergens =
-			excludedAllergens.length > 0
-				? !recette.ingredients.some((ingredient) =>
-						excludedAllergens.some((allergen) =>
-							allergenMapping[allergen]?.includes(ingredient.nom)
-						)
-					)
-				: true;
-
-		return matchesSearch && matchesIngredients && excludesAllergens;
-	});
-
-	onMount(async () => {
-		await chargerRecettes();
-		autoSlideInterval = setInterval(() => {
-			currentIndex = (currentIndex + 1) % recettes.length;
-		}, slideDuration);
-	});
-
-	onDestroy(() => {
-		clearInterval(autoSlideInterval);
-	});
+	function filterRecipes() {
+		filteredRecipes = recipes.filter((recipe) => {
+			const matchIngredients =
+				selectedIngredients.length === 0 ||
+				recipe.ingredients.some((i) =>
+					selectedIngredients.includes(i.ingredient.nom)
+				);
+			const matchAllergens =
+				selectedAllergens.length === 0 ||
+				recipe.allergenes.some((a) => selectedAllergens.includes(a));
+			return matchIngredients && matchAllergens;
+		});
+	}
 </script>
 
-<main class="flex min-h-screen flex-col items-center bg-[#FFF6F6] p-6 text-[#9D8189]">
-	<div class="text-center">
-		<h1 class="title-font text-4xl text-[#F4ACB7] md:text-5xl">Bienvenue sur Intellicook !</h1>
-		<p class="mt-4 text-lg">Découvrez des recettes japonaises et kawaii 🍣</p>
+<main class="flex min-h-screen flex-col items-center">
+	<h1 class="mt-8 text-4xl font-bold" style="color: #F4ACB7">
+		Découvrez des recettes japonaises kawaii !
+	</h1>
+	<p class="mt-4 text-lg" style="color: #9D8189">
+		Explorez notre collection de délicieuses recettes japonaises
+	</p>
+
+	<img src="/images/bubu-cooking-dudu-bubu.gif" alt="Bubu et Dudu qui cuisinent" class="mx-auto mt-4 h-32" />
+
+	<div class="mt-8 w-full max-w-2xl px-4">
+		<SearchInput on:input={handleSearch} placeholder="Rechercher une recette..." />
 	</div>
 
-	<div class="mt-6">
-		<img
-			src="/images/tkthao219-bubududu.gif"
-			alt="Animation kawaii"
-			class="mx-auto h-48 w-auto rounded-lg"
-		/>
+	<div class="mt-8 flex flex-wrap justify-center gap-4">
+		<Button on:click={() => (showIngredients = !showIngredients)}>
+			{showIngredients ? "Masquer les ingrédients" : "Filtrer par ingrédients"}
+		</Button>
+		<Button on:click={() => (showAllergens = !showAllergens)}>
+			{showAllergens ? "Masquer les allergènes" : "Filtrer par allergènes"}
+		</Button>
 	</div>
 
-	<div class="mt-8 w-full max-w-2xl">
-		<SearchInput
-			bind:value={searchTerm}
-			placeholder="Rechercher par nom ou ingrédient..."
-			onClear={resetFilters}
-		/>
-	</div>
-
-	<div class="mt-6 flex gap-4">
-		<Button
-			onClick={() => (showIngredientList = !showIngredientList)}
-			label={showIngredientList ? 'Fermer ingrédients' : 'Ingrédients'}
-		/>
-		<Button
-			onClick={() => (showAllergenList = !showAllergenList)}
-			label={showAllergenList ? 'Fermer allergènes' : 'Allergènes'}
-		/>
-	</div>
-
-	{#if showIngredientList}
+	{#if showIngredients}
 		<FilterGroup
-			title="Sélectionnez des ingrédients :"
-			items={[...allIngredients]}
-			bind:selectedItems={selectedIngredients}
-			columns={4}
+			title="Ingrédients"
+			items={[...new Set(recipes.flatMap((r) => r.ingredients.map((i) => i.ingredient.nom)))]}
+			selected={selectedIngredients}
+			on:change={handleIngredientSelection}
 		/>
 	{/if}
 
-	{#if showAllergenList}
+	{#if showAllergens}
 		<FilterGroup
-			title="Excluez des allergènes :"
-			items={allAllergens}
-			bind:selectedItems={excludedAllergens}
-			columns={3}
+			title="Allergènes"
+			items={[...new Set(recipes.flatMap((r) => r.allergenes))]}
+			selected={selectedAllergens}
+			on:change={handleAllergenSelection}
 		/>
 	{/if}
 
-	{#if searchTerm || selectedIngredients.length > 0 || excludedAllergens.length > 0}
-		{#if filteredRecettes.length > 0}
-			<div class="mt-8 w-full max-w-3xl">
-				<h2 class="text-2xl font-bold text-[#9D8189]">Résultats :</h2>
-				<ul class="space-y-6">
-					{#each filteredRecettes as recipe}
-						<RecipeCard {recipe} />
-					{/each}
-				</ul>
-			</div>
-		{:else}
-			<p class="mt-6 text-center text-lg text-[#9D8189]">
-				Aucun résultat trouvé. Essayez d'ajuster vos filtres.
-			</p>
-		{/if}
+	{#if filteredRecipes.length > 0}
+		<div class="mt-8 w-full">
+			<Carousel items={filteredRecipes} />
+		</div>
+	{:else}
+		<p class="mt-8 text-lg" style="color: #9D8189">Aucune recette trouvée</p>
 	{/if}
 
-	<Carousel items={recettes} bind:currentIndex />
+	{#if showModal && selectedRecipe}
+		<RecipeModal recipe={selectedRecipe} on:close={() => showModal = false} />
+	{/if}
 </main>
