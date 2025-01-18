@@ -1,0 +1,828 @@
+{
+	"ingredients": [
+		{
+			"id": 1,
+			"nom": "Riz japonais"
+		},
+		{
+			"id": 2,
+			"nom": "Vinaigre de riz"
+		},
+		{
+			"id": 3,
+			"nom": "Saumon"
+		},
+		{
+			"id": 4,
+			"nom": "Thon"
+		},
+		{
+			"id": 5,
+			"nom": "Crevettes"
+		},
+		{
+			"id": 6,
+			"nom": "Concombre"
+		},
+		{
+			"id": 7,
+			"nom": "Feuille de nori"
+		},
+		{
+			"id": 8,
+			"nom": "Wasabi"
+		},
+		{
+			"id": 9,
+			"nom": "Sauce soja"
+		},
+		{
+			"id": 10,
+			"nom": "Nouilles ramen"
+		},
+		{
+			"id": 11,
+			"nom": "Pâte de miso"
+		},
+		{
+			"id": 12,
+			"nom": "Dashi"
+		},
+		{
+			"id": 13,
+			"nom": "Mirin"
+		},
+		{
+			"id": 14,
+			"nom": "Porc chashu"
+		},
+		{
+			"id": 15,
+			"nom": "Œuf mariné"
+		},
+		{
+			"id": 16,
+			"nom": "Oignon vert"
+		},
+		{
+			"id": 17,
+			"nom": "Gingembre"
+		},
+		{
+			"id": 18,
+			"nom": "Ail"
+		},
+		{
+			"id": 19,
+			"nom": "Huile de sésame"
+		},
+		{
+			"id": 20,
+			"nom": "Poulet"
+		},
+		{
+			"id": 21,
+			"nom": "Sucre"
+		},
+		{
+			"id": 22,
+			"nom": "Sake"
+		},
+		{
+			"id": 23,
+			"nom": "Poireaux japonais"
+		},
+		{
+			"id": 24,
+			"nom": "Patate douce"
+		},
+		{
+			"id": 25,
+			"nom": "Aubergine"
+		},
+		{
+			"id": 26,
+			"nom": "Courgette"
+		},
+		{
+			"id": 27,
+			"nom": "Farine"
+		},
+		{
+			"id": 28,
+			"nom": "Œuf"
+		},
+		{
+			"id": 29,
+			"nom": "Eau froide"
+		},
+		{
+			"id": 30,
+			"nom": "Huile végétale"
+		},
+		{
+			"id": 31,
+			"nom": "Sauce tentsuyu"
+		},
+		{
+			"id": 32,
+			"nom": "Chou"
+		},
+		{
+			"id": 33,
+			"nom": "Mayonnaise japonaise"
+		},
+		{
+			"id": 34,
+			"nom": "Sauce okonomiyaki"
+		},
+		{
+			"id": 35,
+			"nom": "Aonori"
+		},
+		{
+			"id": 36,
+			"nom": "Katsuobushi"
+		},
+		{
+			"id": 37,
+			"nom": "Morceaux de poulpe"
+		},
+		{
+			"id": 38,
+			"nom": "Beni shoga"
+		},
+		{
+			"id": 39,
+			"nom": "Sauce takoyaki"
+		},
+		{
+			"id": 40,
+			"nom": "Panko"
+		},
+		{
+			"id": 41,
+			"nom": "Riz"
+		},
+		{
+			"id": 42,
+			"nom": "Bœuf tranché"
+		},
+		{
+			"id": 43,
+			"nom": "Tofu"
+		},
+		{
+			"id": 44,
+			"nom": "Champignons shiitake"
+		},
+		{
+			"id": 45,
+			"nom": "Choux chinois"
+		},
+		{
+			"id": 46,
+			"nom": "Nouilles udon"
+		},
+		{
+			"id": 47,
+			"nom": "Poudre de curry"
+		},
+		{
+			"id": 48,
+			"nom": "Pommes de terre"
+		},
+		{
+			"id": 49,
+			"nom": "Tamago"
+		},
+		{
+			"id": 50,
+			"nom": "Haricots rouges azuki"
+		}
+	],
+	"recettes": [
+		{
+			"nom": "Sushi",
+			"image": "/images/sushi.jpg",
+			"ingredients": [
+				{
+					"nom": "Riz japonais",
+					"dosage": "300g"
+				},
+				{
+					"nom": "Saumon",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Vinaigre de riz",
+					"dosage": "2 cuillères à soupe"
+				},
+				{
+					"nom": "Feuille de nori",
+					"dosage": "4 feuilles"
+				},
+				{
+					"nom": "Sucre",
+					"dosage": "1 cuillère à café"
+				}
+			],
+			"etapes": [
+				"Cuire le riz japonais avec la bonne quantité d'eau.",
+				"Mélanger le vinaigre de riz, le sucre et le sel pour assaisonner le riz.",
+				"Étaler une feuille de nori et ajouter une couche de riz.",
+				"Ajouter les morceaux de saumon et d'autres ingrédients.",
+				"Rouler fermement et couper en morceaux égaux."
+			]
+		},
+		{
+			"nom": "Ramen au miso",
+			"image": "/images/ramen.jpg",
+			"ingredients": [
+				{
+					"nom": "Nouilles ramen",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Pâte de miso",
+					"dosage": "2 cuillères à soupe"
+				},
+				{
+					"nom": "Dashi",
+					"dosage": "500ml"
+				},
+				{
+					"nom": "Thon",
+					"dosage": "150g"
+				},
+				{
+					"nom": "Feuille de nori",
+					"dosage": "1 feuille"
+				},
+				{
+					"nom": "Oignon vert",
+					"dosage": "1 tige"
+				}
+			],
+			"etapes": [
+				"Préparer le bouillon avec le dashi, le miso et la sauce soja.",
+				"Cuire les nouilles ramen selon les instructions.",
+				"Ajouter les ingrédients au bouillon.",
+				"Servir chaud avec des morceaux de thon et de nori sur le dessus."
+			]
+		},
+		{
+			"nom": "Yakitori",
+			"image": "/images/yakitori.jpg",
+			"ingredients": [
+				{
+					"nom": "Poulet",
+					"dosage": "300g"
+				},
+				{
+					"nom": "Sauce soja",
+					"dosage": "50ml"
+				},
+				{
+					"nom": "Mirin",
+					"dosage": "50ml"
+				},
+				{
+					"nom": "Sucre",
+					"dosage": "1 cuillère à soupe"
+				},
+				{
+					"nom": "Sake",
+					"dosage": "50ml"
+				}
+			],
+			"etapes": [
+				"Découper le poulet en morceaux et les enfiler sur des brochettes.",
+				"Préparer une sauce avec la sauce soja, le mirin, le sucre et le sake.",
+				"Griller les brochettes en les badigeonnant de sauce régulièrement.",
+				"Servir chaud avec une sauce supplémentaire."
+			]
+		},
+		{
+			"nom": "Tempura",
+			"image": "/images/tempura.jpg",
+			"ingredients": [
+				{
+					"nom": "Farine",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Eau glacée",
+					"dosage": "150ml"
+				},
+				{
+					"nom": "Œuf",
+					"dosage": "1 œuf"
+				},
+				{
+					"nom": "Crevettes",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Légumes variés",
+					"dosage": "300g"
+				},
+				{
+					"nom": "Huile",
+					"dosage": "1 litre"
+				}
+			],
+			"etapes": [
+				"Préparer la pâte à tempura en mélangeant la farine, l'eau froide et l'œuf.",
+				"Tremper les légumes et crevettes dans la pâte.",
+				"Faire frire dans de l'huile chaude jusqu'à ce qu'ils soient dorés.",
+				"Servir chaud avec la sauce tentsuyu."
+			]
+		},
+		{
+			"nom": "Okonomiyaki",
+			"image": "/images/okonomiyaki.jpg",
+			"ingredients": [
+				{
+					"nom": "Farine",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Dashi",
+					"dosage": "150ml"
+				},
+				{
+					"nom": "Œuf",
+					"dosage": "2 œufs"
+				},
+				{
+					"nom": "Chou",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Porc",
+					"dosage": "150g"
+				},
+				{
+					"nom": "Sauce okonomiyaki",
+					"dosage": "50ml"
+				},
+				{
+					"nom": "Mayonnaise japonaise",
+					"dosage": "50ml"
+				},
+				{
+					"nom": "Aonori",
+					"dosage": "1 cuillère à café"
+				},
+				{
+					"nom": "Katsuobushi",
+					"dosage": "1 poignée"
+				}
+			],
+			"etapes": [
+				"Préparer la pâte avec la farine, l'œuf et le dashi.",
+				"Ajouter le chou finement haché et mélanger.",
+				"Faire cuire dans une poêle avec les garnitures comme le porc ou les crevettes.",
+				"Garnir avec la sauce okonomiyaki, la mayonnaise japonaise, l'aonori et le katsuobushi."
+			]
+		},
+		{
+			"nom": "Takoyaki",
+			"image": "/images/takoyaki.jpg",
+			"ingredients": [
+				{
+					"nom": "Farine",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Dashi",
+					"dosage": "150ml"
+				},
+				{
+					"nom": "Poulpe",
+					"dosage": "150g"
+				},
+				{
+					"nom": "Mayonnaise japonaise",
+					"dosage": "50ml"
+				},
+				{
+					"nom": "Sauce takoyaki",
+					"dosage": "50ml"
+				}
+			],
+			"etapes": [
+				"Préparer la pâte avec la farine, l'œuf et le dashi.",
+				"Remplir chaque cavité du moule à takoyaki avec de la pâte.",
+				"Ajouter un morceau de poulpe et cuire en tournant jusqu'à obtenir une boule dorée.",
+				"Garnir avec la sauce takoyaki, la mayonnaise japonaise, l'aonori et le beni shoga."
+			]
+		},
+		{
+			"nom": "Tonkatsu",
+			"image": "/images/tonkatsu.jpg",
+			"ingredients": [
+				{
+					"nom": "Porc",
+					"dosage": "300g"
+				},
+				{
+					"nom": "Farine",
+					"dosage": "50g"
+				},
+				{
+					"nom": "Panko",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Œuf",
+					"dosage": "1 œuf"
+				},
+				{
+					"nom": "Chou",
+					"dosage": "150g"
+				},
+				{
+					"nom": "Sauce tonkatsu",
+					"dosage": "50ml"
+				}
+			],
+			"etapes": [
+				"Assaisonner le porc et le passer dans la farine, l'œuf battu et la panko.",
+				"Faire frire jusqu'à ce qu'il soit doré et croustillant.",
+				"Servir avec du chou finement tranché et de la sauce tonkatsu."
+			]
+		},
+		{
+			"nom": "Gyudon",
+			"image": "/images/gyudon.jpg",
+			"ingredients": [
+				{
+					"nom": "Bœuf",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Oignon",
+					"dosage": "1 oignon"
+				},
+				{
+					"nom": "Sauce soja",
+					"dosage": "50ml"
+				},
+				{
+					"nom": "Mirin",
+					"dosage": "50ml"
+				},
+				{
+					"nom": "Sake",
+					"dosage": "50ml"
+				},
+				{
+					"nom": "Riz",
+					"dosage": "150g"
+				}
+			],
+			"etapes": [
+				"Faire revenir le bœuf tranché avec l'oignon dans une sauce soja, mirin et sake.",
+				"Servir sur du riz chaud avec des garnitures comme le beni shoga."
+			]
+		},
+		{
+			"nom": "Shabu-shabu",
+			"image": "/images/shabu-shabu.jpg",
+			"ingredients": [
+				{
+					"nom": "Bœuf",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Kombu",
+					"dosage": "1 morceau"
+				},
+				{
+					"nom": "Chou chinois",
+					"dosage": "150g"
+				},
+				{
+					"nom": "Carottes",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Champignons shiitake",
+					"dosage": "4 pièces"
+				},
+				{
+					"nom": "Tofu",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Nouilles udon",
+					"dosage": "150g"
+				}
+			],
+			"etapes": [
+				"Préparer un bouillon de kombu et le porter à ébullition.",
+				"Ajouter les légumes et tofu pour les cuire doucement.",
+				"Tremper les fines tranches de bœuf dans le bouillon juste avant de les manger."
+			]
+		},
+		{
+			"nom": "Udon au curry",
+			"image": "/images/udon-curry.jpg",
+			"ingredients": [
+				{
+					"nom": "Nouilles udon",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Pâte de curry",
+					"dosage": "2 cuillères à soupe"
+				},
+				{
+					"nom": "Dashi",
+					"dosage": "500ml"
+				},
+				{
+					"nom": "Carottes",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Pommes de terre",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Oignon",
+					"dosage": "1"
+				}
+			],
+			"etapes": [
+				"Préparer une soupe avec du dashi, du curry et de la sauce soja.",
+				"Cuire les nouilles udon selon les instructions.",
+				"Ajouter les légumes et servir chaud."
+			]
+		},
+		{
+			"nom": "Onigiri",
+			"image": "/images/onigiri.jpg",
+			"ingredients": [
+				{
+					"nom": "Riz japonais",
+					"dosage": "300g"
+				},
+				{
+					"nom": "Saumon",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Feuille de nori",
+					"dosage": "4 feuilles"
+				},
+				{
+					"nom": "Sel",
+					"dosage": "1 cuillère à café"
+				}
+			],
+			"etapes": [
+				"Cuire le riz japonais.",
+				"Former des triangles ou des boules de riz en insérant une garniture comme du saumon.",
+				"Envelopper avec une feuille de nori."
+			]
+		},
+		{
+			"nom": "Chirashi sushi",
+			"image": "/images/chirashi.jpg",
+			"ingredients": [
+				{
+					"nom": "Riz japonais",
+					"dosage": "300g"
+				},
+				{
+					"nom": "Saumon",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Thon",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Œufs de poisson",
+					"dosage": "50g"
+				},
+				{
+					"nom": "Vinaigre de riz",
+					"dosage": "2 cuillères à soupe"
+				}
+			],
+			"etapes": [
+				"Assaisonner le riz avec le vinaigre de riz.",
+				"Ajouter les tranches de poisson et les garnitures sur le dessus.",
+				"Servir dans un grand bol."
+			]
+		},
+		{
+			"nom": "Chawanmushi",
+			"image": "/images/chawanmushi.jpg",
+			"ingredients": [
+				{
+					"nom": "Œufs",
+					"dosage": "2"
+				},
+				{
+					"nom": "Dashi",
+					"dosage": "300ml"
+				},
+				{
+					"nom": "Crevettes",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Champignons shiitake",
+					"dosage": "2"
+				},
+				{
+					"nom": "Sauce soja",
+					"dosage": "1 cuillère à soupe"
+				},
+				{
+					"nom": "Mirin",
+					"dosage": "1 cuillère à soupe"
+				}
+			],
+			"etapes": [
+				"Mélanger les œufs avec le dashi, la sauce soja et le mirin.",
+				"Ajouter les crevettes et champignons dans des ramequins.",
+				"Cuire à la vapeur jusqu'à ce que le mélange soit pris."
+			]
+		},
+		{
+			"nom": "Gyoza",
+			"image": "/images/gyoza.jpg",
+			"ingredients": [
+				{
+					"nom": "Porc haché",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Chou",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Ail",
+					"dosage": "2 gousses"
+				},
+				{
+					"nom": "Gingembre",
+					"dosage": "1 cuillère à café"
+				},
+				{
+					"nom": "Feuilles de gyoza",
+					"dosage": "20 pièces"
+				},
+				{
+					"nom": "Sauce soja",
+					"dosage": "1 cuillère à soupe"
+				},
+				{
+					"nom": "Huile",
+					"dosage": "2 cuillères à soupe"
+				}
+			],
+			"etapes": [
+				"Préparer une farce avec le porc, le chou et les assaisonnements.",
+				"Remplir les feuilles de gyoza et sceller en formant des plis.",
+				"Faire cuire à la poêle avec un peu d'eau pour les dorer et les cuire à la vapeur."
+			]
+		},
+		{
+			"nom": "Oyakodon",
+			"image": "/images/oyakodon.jpg",
+			"ingredients": [
+				{
+					"nom": "Poulet",
+					"dosage": "150g"
+				},
+				{
+					"nom": "Oignon",
+					"dosage": "1"
+				},
+				{
+					"nom": "Œufs",
+					"dosage": "2"
+				},
+				{
+					"nom": "Dashi",
+					"dosage": "200ml"
+				},
+				{
+					"nom": "Sauce soja",
+					"dosage": "1 cuillère à soupe"
+				},
+				{
+					"nom": "Mirin",
+					"dosage": "1 cuillère à soupe"
+				},
+				{
+					"nom": "Riz",
+					"dosage": "150g"
+				}
+			],
+			"etapes": [
+				"Cuire le poulet avec des oignons dans une sauce dashi, soja et mirin.",
+				"Ajouter des œufs battus et cuire jusqu'à ce qu'ils soient pris.",
+				"Servir sur du riz chaud."
+			]
+		},
+		{
+			"nom": "Soba froide",
+			"image": "/images/soba.jpg",
+			"ingredients": [
+				{
+					"nom": "Nouilles soba",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Sauce tsuyu",
+					"dosage": "100ml"
+				},
+				{
+					"nom": "Feuille de nori",
+					"dosage": "1"
+				},
+				{
+					"nom": "Wasabi",
+					"dosage": "1 cuillère à café"
+				}
+			],
+			"etapes": [
+				"Cuire les nouilles soba et les refroidir dans de l'eau glacée.",
+				"Servir avec une sauce tsuyu, des garnitures comme le nori et le wasabi."
+			]
+		},
+		{
+			"nom": "Nabe",
+			"image": "/images/nabe.jpg",
+			"ingredients": [
+				{
+					"nom": "Poulet",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Chou chinois",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Carottes",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Tofu",
+					"dosage": "200g"
+				},
+				{
+					"nom": "Dashi",
+					"dosage": "500ml"
+				},
+				{
+					"nom": "Nouilles udon",
+					"dosage": "150g"
+				}
+			],
+			"etapes": [
+				"Préparer un bouillon de kombu et ajouter les légumes et le tofu.",
+				"Cuire les morceaux de poulet et les nouilles directement dans le bouillon."
+			]
+		},
+		{
+			"nom": "Matcha Dorayaki",
+			"image": "/images/dorayaki.jpg",
+			"ingredients": [
+				{
+					"nom": "Farine",
+					"dosage": "100g"
+				},
+				{
+					"nom": "Sucre",
+					"dosage": "50g"
+				},
+				{
+					"nom": "Œufs",
+					"dosage": "2"
+				},
+				{
+					"nom": "Poudre de matcha",
+					"dosage": "1 cuillère à soupe"
+				},
+				{
+					"nom": "Pâte d'azuki",
+					"dosage": "100g"
+				}
+			],
+			"etapes": [
+				"Préparer une pâte à dorayaki en y ajoutant de la poudre de matcha.",
+				"Faire cuire de petites crêpes dans une poêle.",
+				"Garnir avec de la pâte d'azuki et assembler deux crêpes ensemble."
+			]
+		}
+	]
+}
