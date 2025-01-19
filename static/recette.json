@@ -204,7 +204,7 @@
 	"recettes": [
 		{
 			"nom": "Sushi",
-			"image": "/images/sushi.jpg",
+			"image": "/images/sushi.webp",
 			"ingredients": [
 				{
 					"nom": "Riz japonais",
@@ -237,7 +237,7 @@
 		},
 		{
 			"nom": "Ramen au miso",
-			"image": "/images/ramen.jpg",
+			"image": "/images/ramen.webp",
 			"ingredients": [
 				{
 					"nom": "Nouilles ramen",
@@ -273,7 +273,7 @@
 		},
 		{
 			"nom": "Yakitori",
-			"image": "/images/yakitori.jpg",
+			"image": "/images/yakitori.webp",
 			"ingredients": [
 				{
 					"nom": "Poulet",
@@ -305,7 +305,7 @@
 		},
 		{
 			"nom": "Tempura",
-			"image": "/images/tempura.jpg",
+			"image": "/images/tempura.webp",
 			"ingredients": [
 				{
 					"nom": "Farine",
@@ -341,7 +341,7 @@
 		},
 		{
 			"nom": "Okonomiyaki",
-			"image": "/images/okonomiyaki.jpg",
+			"image": "/images/okonomiyaki.webp",
 			"ingredients": [
 				{
 					"nom": "Farine",
@@ -389,7 +389,7 @@
 		},
 		{
 			"nom": "Takoyaki",
-			"image": "/images/takoyaki.jpg",
+			"image": "/images/takoyaki.webp",
 			"ingredients": [
 				{
 					"nom": "Farine",
@@ -421,7 +421,7 @@
 		},
 		{
 			"nom": "Tonkatsu",
-			"image": "/images/tonkatsu.jpg",
+			"image": "/images/tonkatsu.webp",
 			"ingredients": [
 				{
 					"nom": "Porc",
@@ -456,7 +456,7 @@
 		},
 		{
 			"nom": "Gyudon",
-			"image": "/images/gyudon.jpg",
+			"image": "/images/gyudon.webp",
 			"ingredients": [
 				{
 					"nom": "Bœuf",
@@ -490,7 +490,7 @@
 		},
 		{
 			"nom": "Shabu-shabu",
-			"image": "/images/shabu-shabu.jpg",
+			"image": "/images/shabu-shabu.webp",
 			"ingredients": [
 				{
 					"nom": "Bœuf",
@@ -529,7 +529,7 @@
 		},
 		{
 			"nom": "Udon au curry",
-			"image": "/images/udon-curry.jpg",
+			"image": "/images/udon-curry.webp",
 			"ingredients": [
 				{
 					"nom": "Nouilles udon",
@@ -564,7 +564,7 @@
 		},
 		{
 			"nom": "Onigiri",
-			"image": "/images/onigiri.jpg",
+			"image": "/images/onigiri.webp",
 			"ingredients": [
 				{
 					"nom": "Riz japonais",
@@ -591,7 +591,7 @@
 		},
 		{
 			"nom": "Chirashi sushi",
-			"image": "/images/chirashi.jpg",
+			"image": "/images/chirashi.webp",
 			"ingredients": [
 				{
 					"nom": "Riz japonais",
@@ -622,7 +622,7 @@
 		},
 		{
 			"nom": "Chawanmushi",
-			"image": "/images/chawanmushi.jpg",
+			"image": "/images/chawanmushi.webp",
 			"ingredients": [
 				{
 					"nom": "Œufs",
@@ -657,7 +657,7 @@
 		},
 		{
 			"nom": "Gyoza",
-			"image": "/images/gyoza.jpg",
+			"image": "/images/gyoza.webp",
 			"ingredients": [
 				{
 					"nom": "Porc haché",
@@ -696,7 +696,7 @@
 		},
 		{
 			"nom": "Oyakodon",
-			"image": "/images/oyakodon.jpg",
+			"image": "/images/oyakodon.webp",
 			"ingredients": [
 				{
 					"nom": "Poulet",
@@ -735,7 +735,7 @@
 		},
 		{
 			"nom": "Soba froide",
-			"image": "/images/soba.jpg",
+			"image": "/images/soba.webp",
 			"ingredients": [
 				{
 					"nom": "Nouilles soba",
@@ -761,7 +761,7 @@
 		},
 		{
 			"nom": "Nabe",
-			"image": "/images/nabe.jpg",
+			"image": "/images/nabe.webp",
 			"ingredients": [
 				{
 					"nom": "Poulet",
@@ -795,7 +795,7 @@
 		},
 		{
 			"nom": "Matcha Dorayaki",
-			"image": "/images/dorayaki.jpg",
+			"image": "/images/dorayaki.webp",
 			"ingredients": [
 				{
 					"nom": "Farine",
