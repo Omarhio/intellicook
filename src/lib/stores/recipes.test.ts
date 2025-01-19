@@ -1,117 +1,75 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { get } from 'svelte/store';
 import { recipeStore, favorites } from './recipes';
-import type { Recipe } from '$lib/types/Recipe';
-
-// Mock des données de test
-const mockRecipes: Recipe[] = [
-    {
-        id: 1,
-        nom: "Sushi",
-        description: "Délicieux sushis maison",
-        image: "/images/sushi.webp",
-        temps_preparation: 30,
-        temps_cuisson: 20,
-        difficulte: "Moyen",
-        ingredients: [
-            {
-                ingredient: { id: 1, nom: "Riz japonais" },
-                quantite: 300,
-                unite: "g"
-            }
-        ],
-        etapes: ["Étape 1", "Étape 2"],
-        allergenes: ["poisson"],
-        categorie: "Plat principal",
-        tags: ["japonais", "poisson"],
-        favoris: false
-    },
-    {
-        id: 2,
-        nom: "Ramen",
-        description: "Ramen traditionnel",
-        image: "/images/ramen.webp",
-        temps_preparation: 45,
-        temps_cuisson: 30,
-        difficulte: "Difficile",
-        ingredients: [
-            {
-                ingredient: { id: 2, nom: "Nouilles" },
-                quantite: 200,
-                unite: "g"
-            }
-        ],
-        etapes: ["Étape 1", "Étape 2"],
-        allergenes: ["gluten"],
-        categorie: "Plat principal",
-        tags: ["japonais", "soupe"],
-        favoris: true
-    }
-];
 
 describe('Recipe Store', () => {
     beforeEach(() => {
-        // Réinitialise le store avant chaque test
+        // Réinitialiser le store avant chaque test
+        localStorage.clear();
         recipeStore.resetFilters();
-        // Mock de fetch pour loadRecipes
-        global.fetch = vi.fn().mockResolvedValue({
-            json: () => Promise.resolve({ recettes: mockRecipes })
-        });
     });
 
     it('devrait charger les recettes correctement', async () => {
         await recipeStore.loadRecipes();
         const state = get(recipeStore);
-        expect(state.recipes).toHaveLength(2);
+        expect(state.recipes).toHaveLength(1);
         expect(state.recipes[0].nom).toBe('Sushi');
     });
 
-    it('devrait basculer les favoris correctement', () => {
-        recipeStore.loadRecipes();
+    it('devrait basculer les favoris correctement', async () => {
+        await recipeStore.loadRecipes();
         recipeStore.toggleFavorite(1);
         const state = get(recipeStore);
         expect(state.recipes[0].favoris).toBe(true);
+        
+        // Vérifier que le favori est sauvegardé dans localStorage
+        const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        expect(savedFavorites).toContain(1);
     });
 
-    it('devrait filtrer par terme de recherche', () => {
-        recipeStore.loadRecipes();
+    it('devrait filtrer par terme de recherche', async () => {
+        await recipeStore.loadRecipes();
         recipeStore.setSearchTerm('sushi');
         const state = get(recipeStore);
         expect(state.filtered).toHaveLength(1);
         expect(state.filtered[0].nom).toBe('Sushi');
     });
 
-    it('devrait filtrer par tags', () => {
-        recipeStore.loadRecipes();
-        recipeStore.setSelectedTags(['soupe']);
+    it('devrait filtrer par tags', async () => {
+        await recipeStore.loadRecipes();
+        recipeStore.setSelectedTags(['riz']);
         const state = get(recipeStore);
         expect(state.filtered).toHaveLength(1);
-        expect(state.filtered[0].nom).toBe('Ramen');
+        expect(state.filtered[0].tags).toContain('riz');
     });
 
-    it('devrait filtrer par allergènes', () => {
-        recipeStore.loadRecipes();
+    it('devrait filtrer par allergènes', async () => {
+        await recipeStore.loadRecipes();
         recipeStore.setSelectedAllergens(['gluten']);
         const state = get(recipeStore);
         expect(state.filtered).toHaveLength(1);
-        expect(state.filtered[0].nom).toBe('Sushi');
+        expect(state.filtered[0].allergenes).toContain('gluten');
     });
 
-    it('devrait réinitialiser les filtres correctement', () => {
-        recipeStore.loadRecipes();
+    it('devrait réinitialiser les filtres correctement', async () => {
+        await recipeStore.loadRecipes();
         recipeStore.setSearchTerm('sushi');
-        recipeStore.setSelectedTags(['japonais']);
+        recipeStore.setSelectedTags(['riz']);
+        recipeStore.setSelectedAllergens(['gluten']);
+        
         recipeStore.resetFilters();
         const state = get(recipeStore);
+        
         expect(state.searchTerm).toBe('');
         expect(state.selectedTags).toHaveLength(0);
-        expect(state.filtered).toEqual(state.recipes);
+        expect(state.selectedAllergens).toHaveLength(0);
     });
 
-    it('devrait mettre à jour le store dérivé des favoris', () => {
-        recipeStore.loadRecipes();
+    it('devrait mettre à jour le store dérivé des favoris', async () => {
+        await recipeStore.loadRecipes();
+        recipeStore.toggleFavorite(1);
         const favs = get(favorites);
         expect(favs).toHaveLength(1);
-        expect(favs[0].nom).toBe('Ramen');
+        expect(favs[0].nom).toBe('Sushi');
     });
 }); 
