@@ -2,45 +2,39 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import type { Recipe } from '$lib/types/Recipe';
-	import { recettes, getRecettes } from '../../data/recetteStore';
+	import { recipeStore, favorites } from '$lib/stores/recipes';
 	import { SearchInput, RecipeCard, RecipeModal } from '$lib/components';
 
 	let recipes: Recipe[] = [];
-	let favorites: string[] = [];
 	let selectedRecipe: Recipe | null = null;
 	let searchTerm = '';
 	let showSnackbar = false;
 	let snackbarMessage = '';
 
-	// S'abonner au store et charger les recettes
-	recettes.subscribe((value) => {
-		recipes = value;
+	// Charger les recettes
+	onMount(async () => {
+		await recipeStore.loadRecipes();
 	});
 
-	// Charger les recettes et les favoris
-	onMount(async () => {
-		await getRecettes();
-		const storedFavorites = localStorage.getItem('favorites');
-		if (storedFavorites) {
-			favorites = JSON.parse(storedFavorites);
-		}
+	// S'abonner au store dérivé des favoris
+	favorites.subscribe(favs => {
+		recipes = favs;
 	});
 
 	// Gérer les favoris
-	function toggleFavorite(recipeName: string) {
-		if (favorites.includes(recipeName)) {
-			favorites = favorites.filter((name) => name !== recipeName);
-			showSnackbarMessage(`${recipeName} retiré des favoris`);
-		} else {
-			favorites = [...favorites, recipeName];
+	function toggleFavorite(recipeId: number) {
+		recipeStore.toggleFavorite(recipeId);
+		const recipe = recipes.find(r => r.id === recipeId);
+		if (recipe) {
+			showSnackbarMessage(`${recipe.nom} retiré des favoris`);
 		}
-		localStorage.setItem('favorites', JSON.stringify(favorites));
 	}
 
 	// Supprimer tous les favoris
 	function deleteAllFavorites() {
-		favorites = [];
-		localStorage.setItem('favorites', JSON.stringify(favorites));
+		recipes.forEach(recipe => {
+			recipeStore.toggleFavorite(recipe.id);
+		});
 		showSnackbarMessage('Tous les favoris ont été supprimés');
 	}
 
@@ -54,9 +48,9 @@
 	}
 
 	// Filtrer les recettes favorites
-	$: filteredFavorites = recipes
-		.filter((recipe) => favorites.includes(recipe.nom))
-		.filter((recipe) => recipe.nom.toLowerCase().includes(searchTerm.toLowerCase()));
+	$: filteredFavorites = recipes.filter((recipe) => 
+		recipe.nom.toLowerCase().includes(searchTerm.toLowerCase())
+	);
 </script>
 
 <div class="min-h-screen bg-[#FFF6F6] pb-16">
@@ -65,7 +59,7 @@
 		<p class="mt-2 text-center italic text-[#9D8189]">Retrouvez toutes vos recettes préférées ici.</p>
 
 		<!-- Bouton supprimer tous les favoris -->
-		{#if favorites.length > 0}
+		{#if recipes.length > 0}
 			<div class="mt-4 flex justify-center">
 				<button
 					class="rounded-2xl bg-[#F4ACB7] px-6 py-2 text-white shadow-lg transition-all hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
@@ -88,12 +82,12 @@
 		<!-- Liste des recettes favorites -->
 		{#if filteredFavorites.length > 0}
 			<ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-				{#each filteredFavorites as recipe (recipe.nom)}
+				{#each filteredFavorites as recipe (recipe.id)}
 					<RecipeCard
 						{recipe}
 						isFavorite={true}
-						onFavoriteClick={() => toggleFavorite(recipe.nom)}
-						onClick={() => (selectedRecipe = recipe)}
+						on:favorite={() => toggleFavorite(recipe.id)}
+						on:click={() => (selectedRecipe = recipe)}
 					/>
 				{/each}
 			</ul>
@@ -118,7 +112,10 @@
 
 <!-- Modale de recette -->
 {#if selectedRecipe}
-	<RecipeModal recipe={selectedRecipe} onClose={() => (selectedRecipe = null)} />
+	<RecipeModal 
+		recipe={selectedRecipe} 
+		on:close={() => (selectedRecipe = null)} 
+	/>
 {/if}
 
 <!-- Snackbar -->

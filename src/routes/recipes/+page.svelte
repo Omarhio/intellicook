@@ -47,7 +47,7 @@
 		});
 		recipes = state.recipes;
 		filteredRecipes = showFavoritesOnly 
-			? state.filtered.filter(r => r.favoris)
+			? state.favorites
 			: state.filtered;
 	});
 
@@ -129,13 +129,6 @@
 						recipeStore.resetFilters();
 					}}
 				/>
-
-				<!-- Bouton pour filtrer les favoris -->
-				<FilterButton
-					active={showFavoritesOnly}
-					label={showFavoritesOnly ? 'Tous' : 'Favoris'}
-					on:click={() => (showFavoritesOnly = !showFavoritesOnly)}
-				/>
 			</div>
 
 			<!-- Bouton réinitialiser -->
@@ -201,7 +194,7 @@
 							<RecipeCard
 								{recipe}
 								isFavorite={recipe.favoris}
-								on:favoriteClick={() => recipeStore.toggleFavorite(recipe.id)}
+								on:favorite={() => recipeStore.toggleFavorite(recipe.id)}
 								on:click={() => (selectedRecipe = recipe)}
 							/>
 						</li>

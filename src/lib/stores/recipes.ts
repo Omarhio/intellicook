@@ -20,7 +20,25 @@ const initialState: RecipeStore = {
 };
 
 function createRecipeStore() {
-    const { subscribe, set, update } = writable<RecipeStore>(initialState);
+    // Charger les favoris depuis le localStorage
+    function loadFavorites(): number[] {
+        const storedFavorites = localStorage.getItem('favorites');
+        const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+        console.log('Favoris chargés:', favorites);
+        return favorites;
+    }
+
+    // Sauvegarder les favoris dans le localStorage
+    function saveFavorites(favoriteIds: number[]) {
+        console.log('Sauvegarde des favoris:', favoriteIds);
+        localStorage.setItem('favorites', JSON.stringify(favoriteIds));
+    }
+
+    // Initialiser le store avec les favoris chargés
+    const { subscribe, set, update } = writable<RecipeStore>({
+        ...initialState,
+        favorites: [] // Les favoris seront mis à jour lors du chargement des recettes
+    });
 
     return {
         subscribe,
@@ -28,13 +46,12 @@ function createRecipeStore() {
         // Charge les recettes depuis le fichier JSON
         async loadRecipes() {
             try {
+                console.log('Chargement des recettes...');
                 const response = await fetch('/data/recipes.json');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data: RecipeResponse = await response.json();
-                
-                console.log('Données reçues:', data);
                 
                 // Vérifier que les données sont valides
                 if (!data || !Array.isArray(data.recettes)) {
@@ -66,10 +83,24 @@ function createRecipeStore() {
                     return true;
                 });
 
+                // Charger les favoris depuis le localStorage
+                const favoriteIds = loadFavorites();
+                console.log('IDs des favoris chargés:', favoriteIds);
+                
+                const recipesWithFavorites = validRecipes.map(recipe => {
+                    const isFavorite = favoriteIds.includes(recipe.id);
+                    console.log(`Recette ${recipe.id} (${recipe.nom}) - Favorite: ${isFavorite}`);
+                    return {
+                        ...recipe,
+                        favoris: isFavorite
+                    };
+                });
+
                 update(state => ({
                     ...state,
-                    recipes: validRecipes,
-                    filtered: validRecipes
+                    recipes: recipesWithFavorites,
+                    filtered: recipesWithFavorites,
+                    favorites: recipesWithFavorites.filter(r => r.favoris)
                 }));
             } catch (error) {
                 console.error('Erreur lors du chargement des recettes:', error);
@@ -79,20 +110,30 @@ function createRecipeStore() {
 
         // Gestion des favoris
         toggleFavorite(recipeId: number) {
+            console.log('Toggle favori pour la recette:', recipeId);
             update(state => {
                 const recipes = state.recipes.map(recipe => 
                     recipe.id === recipeId 
                         ? { ...recipe, favoris: !recipe.favoris }
                         : recipe
                 );
+                const filtered = state.filtered.map(recipe =>
+                    recipe.id === recipeId
+                        ? { ...recipe, favoris: !recipe.favoris }
+                        : recipe
+                );
+                const favorites = recipes.filter(r => r.favoris);
+                
+                // Sauvegarder les favoris dans le localStorage
+                const favoriteIds = favorites.map(r => r.id);
+                console.log('Nouveaux favoris:', favoriteIds);
+                saveFavorites(favoriteIds);
+
                 return {
                     ...state,
                     recipes,
-                    filtered: state.filtered.map(recipe =>
-                        recipe.id === recipeId
-                            ? { ...recipe, favoris: !recipe.favoris }
-                            : recipe
-                    )
+                    filtered,
+                    favorites
                 };
             });
         },
@@ -160,5 +201,5 @@ export const recipeStore = createRecipeStore();
 // Store dérivé pour les favoris
 export const favorites = derived(
     recipeStore,
-    $store => $store.recipes.filter(recipe => recipe.favoris)
+    $store => $store.favorites
 ); 
