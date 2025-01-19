@@ -29,14 +29,51 @@ function createRecipeStore() {
         async loadRecipes() {
             try {
                 const response = await fetch('/data/recipes.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 const data: RecipeResponse = await response.json();
+                
+                console.log('Données reçues:', data);
+                
+                // Vérifier que les données sont valides
+                if (!data || !Array.isArray(data.recettes)) {
+                    throw new Error('Format de données invalide');
+                }
+
+                // Vérifier et nettoyer chaque recette
+                const validRecipes = data.recettes.filter(recipe => {
+                    // Vérifications de base
+                    if (!recipe || typeof recipe !== 'object') {
+                        console.warn('Recette invalide (null ou pas un objet)');
+                        return false;
+                    }
+
+                    // Vérifier les champs requis
+                    const requiredFields = {
+                        id: recipe.id !== undefined && recipe.id !== null,
+                        nom: typeof recipe.nom === 'string',
+                        description: typeof recipe.description === 'string',
+                        ingredients: Array.isArray(recipe.ingredients)
+                    };
+
+                    const isValid = Object.values(requiredFields).every(v => v);
+                    if (!isValid) {
+                        console.warn('Champs manquants dans la recette:', recipe.nom, requiredFields);
+                        return false;
+                    }
+
+                    return true;
+                });
+
                 update(state => ({
                     ...state,
-                    recipes: data.recettes,
-                    filtered: data.recettes
+                    recipes: validRecipes,
+                    filtered: validRecipes
                 }));
             } catch (error) {
                 console.error('Erreur lors du chargement des recettes:', error);
+                throw error;
             }
         },
 
