@@ -11,6 +11,7 @@
 
 	function handleInput(event: Event) {
 		const target = event.target as HTMLInputElement;
+		value = target.value;
 		dispatch('input', target.value);
 	}
 
@@ -21,18 +22,18 @@
 	}
 </script>
 
-<div class="relative w-full">
+<div class="relative w-full max-w-2xl mx-auto">
 	<input
 		type="text"
 		{value}
 		{placeholder}
 		on:input={handleInput}
-		class="w-full rounded-3xl border-2 border-[#F4ACB7] p-3 text-center text-lg placeholder:text-center focus:border-[#F4ACB7] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
+		class="w-full h-12 rounded-3xl border-2 border-[#F4ACB7] px-6 py-3 text-center text-lg placeholder:text-center placeholder:text-[#9D8189] focus:border-[#F4ACB7] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7] focus:ring-opacity-50 transition-all duration-200"
 	/>
 	{#if value}
 		<button
 			on:click={handleClear}
-			class="absolute right-3 top-1/2 -translate-y-1/2 text-[#F4ACB7] hover:text-[#e690a0]"
+			class="absolute right-4 top-1/2 -translate-y-1/2 text-[#F4ACB7] hover:text-[#e690a0] transition-colors duration-200"
 			aria-label="Effacer la recherche"
 		>
 			<svg
