@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { Recipe } from '$lib/types/Recipe';
-	import { recettes, getRecettes } from '../../data/recetteStore';
+	import { recipeStore, favorites } from '$lib/stores/recipes';
 	import {
 		SearchInput,
 		FilterButton,
@@ -11,7 +11,7 @@
 	} from '$lib/components';
 
 	let recipes: Recipe[] = [];
-	let favorites: string[] = [];
+	let filteredRecipes: Recipe[] = [];
 	let selectedRecipe: Recipe | null = null;
 	let searchTerm = '';
 	let showFavoritesOnly = false;
@@ -19,44 +19,32 @@
 	let selectedAllergens: string[] = [];
 
 	// S'abonner au store et charger les recettes
-	recettes.subscribe((value) => {
-		recipes = value;
+	recipeStore.subscribe(state => {
+		recipes = state.recipes;
+		filteredRecipes = state.filtered;
 	});
 
-	// Charger les recettes et les favoris
+	// Charger les recettes
 	onMount(async () => {
-		await getRecettes();
-		const storedFavorites = localStorage.getItem('favorites');
-		if (storedFavorites) {
-			favorites = JSON.parse(storedFavorites);
-		}
+		await recipeStore.loadRecipes();
 	});
 
-	// Gérer les favoris
-	function toggleFavorite(recipeName: string) {
-		if (favorites.includes(recipeName)) {
-			favorites = favorites.filter((name) => name !== recipeName);
-		} else {
-			favorites = [...favorites, recipeName];
-		}
-		localStorage.setItem('favorites', JSON.stringify(favorites));
+	// Gérer la recherche
+	function handleSearch() {
+		recipeStore.setSearchTerm(searchTerm);
 	}
 
-	// Filtrer les recettes
-	$: filteredRecipes = recipes.filter((recipe) => {
-		const matchesSearch = recipe.nom.toLowerCase().includes(searchTerm.toLowerCase());
-		const matchesFavorites = !showFavoritesOnly || favorites.includes(recipe.nom);
-		const matchesIngredients =
-			selectedIngredients.length === 0 ||
-			selectedIngredients.every((ing) => recipe.ingredients.some((i) => i.nom === ing));
-		const matchesAllergens =
-			selectedAllergens.length === 0 ||
-			!selectedAllergens.some((allergen) => recipe.allergenes?.includes(allergen));
-		return matchesSearch && matchesFavorites && matchesIngredients && matchesAllergens;
-	});
+	// Gérer les filtres
+	$: if (selectedAllergens.length > 0) {
+		recipeStore.setSelectedAllergens(selectedAllergens);
+	}
+
+	$: if (selectedIngredients.length > 0) {
+		recipeStore.setSelectedTags(selectedIngredients);
+	}
 
 	// Extraire tous les ingrédients uniques
-	$: allIngredients = [...new Set(recipes.flatMap((r) => r.ingredients.map((i) => i.nom)))].sort();
+	$: allIngredients = [...new Set(recipes.flatMap((r) => r.ingredients.map((i) => i.ingredient.nom)))].sort();
 
 	// Extraire tous les allergènes uniques
 	$: allAllergens = [...new Set(recipes.flatMap((r) => r.allergenes || []))].sort();
@@ -71,7 +59,11 @@
 			<SearchInput
 				bind:value={searchTerm}
 				placeholder="Rechercher une recette..."
-				onClear={() => (searchTerm = '')}
+				on:input={handleSearch}
+				on:clear={() => {
+					searchTerm = '';
+					recipeStore.resetFilters();
+				}}
 			/>
 
 			<!-- Bouton pour filtrer les favoris -->
@@ -114,12 +106,12 @@
 
 			<!-- Liste des recettes -->
 			<ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-				{#each filteredRecipes as recipe (recipe.nom)}
+				{#each filteredRecipes as recipe (recipe.id)}
 					<RecipeCard
 						{recipe}
-						isFavorite={favorites.includes(recipe.nom)}
-						onFavoriteClick={() => toggleFavorite(recipe.nom)}
-						onClick={() => (selectedRecipe = recipe)}
+						isFavorite={recipe.favoris}
+						on:favoriteClick={() => recipeStore.toggleFavorite(recipe.id)}
+						on:click={() => (selectedRecipe = recipe)}
 					/>
 				{/each}
 			</ul>
@@ -129,5 +121,5 @@
 
 <!-- Modale de recette -->
 {#if selectedRecipe}
-	<RecipeModal recipe={selectedRecipe} onClose={() => (selectedRecipe = null)} />
+	<RecipeModal recipe={selectedRecipe} on:close={() => (selectedRecipe = null)} />
 {/if}
