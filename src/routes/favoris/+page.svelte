@@ -81,7 +81,7 @@
 			<SearchInput
 				bind:value={searchTerm}
 				placeholder="Rechercher dans mes favoris..."
-				onClear={() => (searchTerm = '')}
+				on:clear={() => (searchTerm = '')}
 			/>
 		</div>
 
