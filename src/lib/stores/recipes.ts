@@ -187,7 +187,7 @@ function filterRecipes(state: RecipeStore): Recipe[] {
             state.selectedTags.some(tag => recipe.tags.includes(tag));
 
         const matchesAllergens = state.selectedAllergens.length === 0 ||
-            !state.selectedAllergens.some(allergen => 
+            state.selectedAllergens.some(allergen => 
                 recipe.allergenes?.includes(allergen)
             );
 
