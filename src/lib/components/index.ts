@@ -1,18 +1,18 @@
-// Composants atomiques
-export { default as Button } from './atoms/buttons/Button.svelte';
-export { default as FilterButton } from './atoms/buttons/FilterButton.svelte';
-export { default as IconButton } from './atoms/buttons/IconButton.svelte';
-export { default as CloseButton } from './atoms/buttons/CloseButton.svelte';
-export { default as SearchInput } from './atoms/inputs/SearchInput.svelte';
-export { default as CheckboxInput } from './atoms/inputs/CheckboxInput.svelte';
+// UI Components
+export { default as IconButton } from './ui/IconButton.svelte';
+export { default as Button } from './ui/Button.svelte';
+export { default as FilterButton } from './ui/FilterButton.svelte';
+export { default as CloseButton } from './ui/CloseButton.svelte';
+export { default as SearchInput } from './ui/inputs/SearchInput.svelte';
+export { default as CheckboxInput } from './ui/inputs/CheckboxInput.svelte';
+export { default as TextInput } from './ui/inputs/TextInput.svelte';
+export { default as Textarea } from './ui/inputs/Textarea.svelte';
+export { default as Select } from './ui/inputs/Select.svelte';
 
-// Composants moléculaires
-export { default as RecipeCard } from './molecules/cards/RecipeCard.svelte';
-export { default as FilterGroup } from './molecules/filters/FilterGroup.svelte';
-export { default as Carousel } from './molecules/carousel/Carousel.svelte';
-export { default as NavLink } from './molecules/navigation/NavLink.svelte';
-export { default as RecipeModal } from './molecules/modals/RecipeModal.svelte';
+// Layout Components
+export { default as Carousel } from './layout/carousel/Carousel.svelte';
 
-// Composants organismes
-export { default as Header } from './organisms/header/Header.svelte';
-export { default as Footer } from './organisms/footer/Footer.svelte'; 
+// Feature Components
+export { default as RecipeCard } from './features/recipes/cards/RecipeCard.svelte';
+export { default as FilterGroup } from './features/recipes/filters/FilterGroup.svelte';
+export { default as RecipeModal } from './features/recipes/modals/RecipeModal.svelte'; 
