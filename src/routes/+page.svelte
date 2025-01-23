@@ -116,7 +116,7 @@
 				<Carousel items={filteredRecipes} />
 			</div>
 		{:else}
-			<p class="mt-8 text-lg" style="color: #9D8189">Aucune recette trouvée</p>
+			<p class="mt-8 text-center text-lg" style="color: #9D8189">Aucune recette trouvée</p>
 		{/if}
 
 		{#if showModal && selectedRecipe}
