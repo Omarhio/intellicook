@@ -1,8 +1,6 @@
 <!-- Test.svelte -->
 <script lang="ts">
-  import TextInput from '$lib/components/atoms/inputs/TextInput.svelte';
-  import Textarea from '$lib/components/atoms/inputs/Textarea.svelte';
-  import Select from '$lib/components/atoms/inputs/Select.svelte';
+  import { TextInput, Textarea, Select } from '$lib';
   
   let textValue = '';
   let textareaValue = '';

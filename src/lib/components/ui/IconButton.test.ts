@@ -1,14 +1,21 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, fireEvent } from '@testing-library/svelte';
+import type { RenderResult } from '@testing-library/svelte';
 import IconButton from './IconButton.svelte';
+
+interface IconButtonProps {
+    ariaLabel: string;
+    isFavorite?: boolean;
+    size?: 'sm' | 'md' | 'lg';
+    className?: string;
+}
 
 describe('IconButton', () => {
     it('devrait rendre le bouton avec les props par défaut', () => {
-        const { getByRole } = render(IconButton, {
-            props: {
-                ariaLabel: 'Ajouter aux favoris'
-            }
-        });
+        const props: IconButtonProps = {
+            ariaLabel: 'Ajouter aux favoris'
+        };
+        const { getByRole } = render(IconButton, { props });
 
         const button = getByRole('button');
         expect(button).toBeTruthy();
@@ -16,12 +23,11 @@ describe('IconButton', () => {
     });
 
     it('devrait appliquer la classe correcte selon l\'état favori', () => {
-        const { getByRole } = render(IconButton, {
-            props: {
-                ariaLabel: 'Ajouter aux favoris',
-                isFavorite: true
-            }
-        });
+        const props: IconButtonProps = {
+            ariaLabel: 'Ajouter aux favoris',
+            isFavorite: true
+        };
+        const { getByRole } = render(IconButton, { props });
 
         const button = getByRole('button');
         const svg = button.querySelector('svg');
@@ -30,12 +36,11 @@ describe('IconButton', () => {
     });
 
     it('devrait rendre le cœur vide quand isFavorite est false', () => {
-        const { getByRole } = render(IconButton, {
-            props: {
-                ariaLabel: 'Ajouter aux favoris',
-                isFavorite: false
-            }
-        });
+        const props: IconButtonProps = {
+            ariaLabel: 'Ajouter aux favoris',
+            isFavorite: false
+        };
+        const { getByRole } = render(IconButton, { props });
         
         const button = getByRole('button');
         const svg = button.querySelector('svg');
@@ -44,12 +49,11 @@ describe('IconButton', () => {
     });
 
     it('devrait appliquer la taille correcte', () => {
-        const { getByRole } = render(IconButton, {
-            props: {
-                ariaLabel: 'Ajouter aux favoris',
-                size: 'lg'
-            }
-        });
+        const props: IconButtonProps = {
+            ariaLabel: 'Ajouter aux favoris',
+            size: 'lg'
+        };
+        const { getByRole } = render(IconButton, { props });
 
         const button = getByRole('button');
         const svg = button.querySelector('svg');
@@ -60,11 +64,10 @@ describe('IconButton', () => {
 
     it('devrait déclencher l\'événement click', async () => {
         const handleClick = vi.fn();
-        const { getByRole, component } = render(IconButton, {
-            props: {
-                ariaLabel: 'Ajouter aux favoris'
-            }
-        });
+        const props: IconButtonProps = {
+            ariaLabel: 'Ajouter aux favoris'
+        };
+        const { getByRole } = render(IconButton, { props });
 
         const button = getByRole('button');
         button.addEventListener('click', handleClick);
@@ -73,11 +76,10 @@ describe('IconButton', () => {
     });
 
     it('devrait avoir les transitions et animations correctes', () => {
-        const { getByRole } = render(IconButton, {
-            props: {
-                ariaLabel: 'Ajouter aux favoris'
-            }
-        });
+        const props: IconButtonProps = {
+            ariaLabel: 'Ajouter aux favoris'
+        };
+        const { getByRole } = render(IconButton, { props });
 
         const button = getByRole('button');
         const svg = button.querySelector('svg');
