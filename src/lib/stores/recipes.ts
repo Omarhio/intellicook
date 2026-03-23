@@ -20,53 +20,41 @@ const initialState: RecipeStore = {
 };
 
 function createRecipeStore() {
-    // Charger les favoris depuis le localStorage
     function loadFavorites(): number[] {
         const storedFavorites = localStorage.getItem('favorites');
-        const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
-        console.log('Favoris chargés:', favorites);
-        return favorites;
+        return storedFavorites ? JSON.parse(storedFavorites) : [];
     }
 
-    // Sauvegarder les favoris dans le localStorage
     function saveFavorites(favoriteIds: number[]) {
-        console.log('Sauvegarde des favoris:', favoriteIds);
         localStorage.setItem('favorites', JSON.stringify(favoriteIds));
     }
 
-    // Initialiser le store avec les favoris chargés
     const { subscribe, set, update } = writable<RecipeStore>({
         ...initialState,
-        favorites: [] // Les favoris seront mis à jour lors du chargement des recettes
+        favorites: []
     });
 
     return {
         subscribe,
-        
-        // Charge les recettes depuis le fichier JSON
+
         async loadRecipes() {
             try {
-                console.log('Chargement des recettes...');
                 const response = await fetch('/data/recipes.json');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data: RecipeResponse = await response.json();
-                
-                // Vérifier que les données sont valides
+
                 if (!data || !Array.isArray(data.recettes)) {
                     throw new Error('Format de données invalide');
                 }
 
-                // Vérifier et nettoyer chaque recette
                 const validRecipes = data.recettes.filter(recipe => {
-                    // Vérifications de base
                     if (!recipe || typeof recipe !== 'object') {
                         console.warn('Recette invalide (null ou pas un objet)');
                         return false;
                     }
 
-                    // Vérifier les champs requis
                     const requiredFields = {
                         id: recipe.id !== undefined && recipe.id !== null,
                         nom: typeof recipe.nom === 'string',
@@ -83,18 +71,12 @@ function createRecipeStore() {
                     return true;
                 });
 
-                // Charger les favoris depuis le localStorage
                 const favoriteIds = loadFavorites();
-                console.log('IDs des favoris chargés:', favoriteIds);
-                
-                const recipesWithFavorites = validRecipes.map(recipe => {
-                    const isFavorite = favoriteIds.includes(recipe.id);
-                    console.log(`Recette ${recipe.id} (${recipe.nom}) - Favorite: ${isFavorite}`);
-                    return {
-                        ...recipe,
-                        favoris: isFavorite
-                    };
-                });
+
+                const recipesWithFavorites = validRecipes.map(recipe => ({
+                    ...recipe,
+                    favoris: favoriteIds.includes(recipe.id)
+                }));
 
                 update(state => ({
                     ...state,
@@ -108,12 +90,10 @@ function createRecipeStore() {
             }
         },
 
-        // Gestion des favoris
         toggleFavorite(recipeId: number) {
-            console.log('Toggle favori pour la recette:', recipeId);
             update(state => {
-                const recipes = state.recipes.map(recipe => 
-                    recipe.id === recipeId 
+                const recipes = state.recipes.map(recipe =>
+                    recipe.id === recipeId
                         ? { ...recipe, favoris: !recipe.favoris }
                         : recipe
                 );
@@ -123,22 +103,13 @@ function createRecipeStore() {
                         : recipe
                 );
                 const favorites = recipes.filter(r => r.favoris);
-                
-                // Sauvegarder les favoris dans le localStorage
-                const favoriteIds = favorites.map(r => r.id);
-                console.log('Nouveaux favoris:', favoriteIds);
-                saveFavorites(favoriteIds);
 
-                return {
-                    ...state,
-                    recipes,
-                    filtered,
-                    favorites
-                };
+                saveFavorites(favorites.map(r => r.id));
+
+                return { ...state, recipes, filtered, favorites };
             });
         },
 
-        // Filtrage des recettes
         setSearchTerm(term: string) {
             update(state => ({
                 ...state,
@@ -163,7 +134,6 @@ function createRecipeStore() {
             }));
         },
 
-        // Réinitialisation des filtres
         resetFilters() {
             update(state => ({
                 ...state,
@@ -176,10 +146,9 @@ function createRecipeStore() {
     };
 }
 
-// Fonction utilitaire pour filtrer les recettes
 function filterRecipes(state: RecipeStore): Recipe[] {
     return state.recipes.filter(recipe => {
-        const matchesSearch = state.searchTerm === '' || 
+        const matchesSearch = state.searchTerm === '' ||
             recipe.nom.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
             recipe.description.toLowerCase().includes(state.searchTerm.toLowerCase());
 
@@ -187,7 +156,7 @@ function filterRecipes(state: RecipeStore): Recipe[] {
             state.selectedTags.some(tag => recipe.tags.includes(tag));
 
         const matchesAllergens = state.selectedAllergens.length === 0 ||
-            state.selectedAllergens.some(allergen => 
+            state.selectedAllergens.some(allergen =>
                 recipe.allergenes?.includes(allergen)
             );
 
@@ -195,11 +164,9 @@ function filterRecipes(state: RecipeStore): Recipe[] {
     });
 }
 
-// Création du store principal
 export const recipeStore = createRecipeStore();
 
-// Store dérivé pour les favoris
 export const favorites = derived(
     recipeStore,
     $store => $store.favorites
-); 
+);

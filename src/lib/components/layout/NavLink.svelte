@@ -1,10 +1,19 @@
 <script lang="ts">
-  export let href: string = '/';
-  export let label: string;
-  export let icon: string;
-  export let isActive: boolean = false;
-  export let isMobile: boolean = false;
-  export let onClick: (() => void) | undefined = undefined;
+  let {
+    href = '/',
+    label,
+    icon,
+    isActive = false,
+    isMobile = false,
+    onclick
+  }: {
+    href?: string;
+    label: string;
+    icon: string;
+    isActive?: boolean;
+    isMobile?: boolean;
+    onclick?: () => void;
+  } = $props();
 </script>
 
 {#if isMobile}
@@ -12,7 +21,7 @@
     <a
       {href}
       class={`menu-link-kawaii ${isActive ? 'font-bold underline underline-offset-1' : ''}`}
-      on:click={onClick}
+      {onclick}
     >
       <img src={icon} alt={label} class="icon-kawaii" />
       <span>{label}</span>
@@ -29,4 +38,4 @@
       <img src={icon} alt={label} class="icon-kawaii-desktop" />
     </a>
   </li>
-{/if} 
+{/if}

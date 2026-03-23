@@ -5,40 +5,43 @@
 	import { recipeStore, favorites } from '$lib/stores/recipes';
 	import { SearchInput, RecipeCard, RecipeModal } from '$lib/components';
 
-	let recipes: Recipe[] = [];
-	let selectedRecipe: Recipe | null = null;
-	let searchTerm = '';
-	let showSnackbar = false;
-	let snackbarMessage = '';
+	let selectedRecipe = $state<Recipe | null>(null);
+	let searchTerm = $state('');
+	let showSnackbar = $state(false);
+	let snackbarMessage = $state('');
+	let error = $state<string | null>(null);
 
-	// Charger les recettes
 	onMount(async () => {
-		await recipeStore.loadRecipes();
+		try {
+			await recipeStore.loadRecipes();
+		} catch (e) {
+			error = e instanceof Error ? e.message : 'Erreur lors du chargement des recettes. Veuillez réessayer.';
+		}
 	});
 
-	// S'abonner au store dérivé des favoris
-	favorites.subscribe(favs => {
-		recipes = favs;
-	});
+	let recipes = $derived($favorites);
 
-	// Gérer les favoris
+	let filteredFavorites = $derived(
+		recipes.filter((recipe: Recipe) =>
+			recipe.nom.toLowerCase().includes(searchTerm.toLowerCase())
+		)
+	);
+
 	function toggleFavorite(recipeId: number) {
+		const recipe = recipes.find((r: Recipe) => r.id === recipeId);
 		recipeStore.toggleFavorite(recipeId);
-		const recipe = recipes.find(r => r.id === recipeId);
 		if (recipe) {
 			showSnackbarMessage(`${recipe.nom} retiré des favoris`);
 		}
 	}
 
-	// Supprimer tous les favoris
 	function deleteAllFavorites() {
-		recipes.forEach(recipe => {
+		recipes.forEach((recipe: Recipe) => {
 			recipeStore.toggleFavorite(recipe.id);
 		});
 		showSnackbarMessage('Tous les favoris ont été supprimés');
 	}
 
-	// Afficher un message dans le snackbar
 	function showSnackbarMessage(message: string) {
 		snackbarMessage = message;
 		showSnackbar = true;
@@ -46,11 +49,6 @@
 			showSnackbar = false;
 		}, 4000);
 	}
-
-	// Filtrer les recettes favorites
-	$: filteredFavorites = recipes.filter((recipe) => 
-		recipe.nom.toLowerCase().includes(searchTerm.toLowerCase())
-	);
 </script>
 
 <div class="min-h-screen bg-[#FFF6F6] pb-16">
@@ -58,36 +56,50 @@
 		<h1 class="mb-8 text-center text-4xl font-bold text-[#F4ACB7]">Mes Recettes Favorites</h1>
 		<p class="mt-2 text-center italic text-[#9D8189]">Retrouvez toutes vos recettes préférées ici.</p>
 
-		<!-- Bouton supprimer tous les favoris -->
+		{#if error}
+			<div class="mb-8 rounded-lg bg-red-100 p-4 text-red-700" transition:fade>
+				<p>{error}</p>
+				<button
+					class="mt-2 text-sm underline"
+					onclick={() => {
+						error = null;
+						recipeStore.loadRecipes().catch((e) => {
+							error = e instanceof Error ? e.message : 'Erreur lors du rechargement.';
+						});
+					}}
+				>
+					Réessayer
+				</button>
+			</div>
+		{/if}
+
 		{#if recipes.length > 0}
 			<div class="mt-4 flex justify-center">
 				<button
 					class="rounded-2xl bg-[#F4ACB7] px-6 py-2 text-white shadow-lg transition-all hover:bg-[#D5899C] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7]"
-					on:click={deleteAllFavorites}
+					onclick={deleteAllFavorites}
 				>
 					Supprimer tous les favoris
 				</button>
 			</div>
 		{/if}
 
-		<!-- Barre de recherche -->
 		<div class="mb-8 mt-6">
 			<SearchInput
 				bind:value={searchTerm}
 				placeholder="Rechercher dans mes favoris..."
-				on:clear={() => (searchTerm = '')}
+				onclear={() => (searchTerm = '')}
 			/>
 		</div>
 
-		<!-- Liste des recettes favorites -->
 		{#if filteredFavorites.length > 0}
 			<ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 				{#each filteredFavorites as recipe (recipe.id)}
 					<RecipeCard
 						{recipe}
 						isFavorite={true}
-						on:favorite={() => toggleFavorite(recipe.id)}
-						on:click={() => (selectedRecipe = recipe)}
+						onfavorite={() => toggleFavorite(recipe.id)}
+						onclick={() => (selectedRecipe = recipe)}
 					/>
 				{/each}
 			</ul>
@@ -96,7 +108,7 @@
 				<img src="/images/bubu-dudu-sseeyall.gif" alt="Aucun favori" class="mx-auto mt-2 h-48" />
 				<p class="mt-4 text-lg text-[#9D8189]">
 					{searchTerm
-						? "Aucune recette favorite ne correspond à votre recherche."
+						? 'Aucune recette favorite ne correspond à votre recherche.'
 						: "Vous n'avez pas encore de recettes favorites."}
 				</p>
 				<a
@@ -110,15 +122,10 @@
 	</div>
 </div>
 
-<!-- Modale de recette -->
 {#if selectedRecipe}
-	<RecipeModal 
-		recipe={selectedRecipe} 
-		on:close={() => (selectedRecipe = null)} 
-	/>
+	<RecipeModal recipe={selectedRecipe} onclose={() => (selectedRecipe = null)} />
 {/if}
 
-<!-- Snackbar -->
 {#if showSnackbar}
 	<div
 		class="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 transform rounded-lg bg-[#F4ACB7] px-6 py-3 text-white shadow-lg"

@@ -1,29 +1,39 @@
 <script lang="ts">
-	import { scale } from 'svelte/transition';
-	import { elasticOut } from 'svelte/easing';
-	
-	export let ariaLabel: string;
-	export let isFavorite: boolean = false;
-	export let size: 'sm' | 'md' | 'lg' = 'md';
-	export let className: string = '';
-	
+	import type { MouseEventHandler } from 'svelte/elements';
+
+	let {
+		ariaLabel,
+		isFavorite = false,
+		size = 'md',
+		className = '',
+		onclick
+	}: {
+		ariaLabel: string;
+		isFavorite?: boolean;
+		size?: 'sm' | 'md' | 'lg';
+		className?: string;
+		onclick?: MouseEventHandler<HTMLButtonElement>;
+	} = $props();
+
 	const sizeClasses = {
 		sm: 'h-4 w-4',
 		md: 'h-6 w-6',
 		lg: 'h-8 w-8'
 	};
-	
-	$: heartClass = `${sizeClasses[size]} transition-all duration-300 ease-out 
-		hover:scale-110 active:scale-95 
-		${isFavorite 
-			? 'text-[#FF6B8B] drop-shadow-lg hover:text-[#FF4D76]' 
-			: 'text-white/90 hover:text-[#FF6B8B] filter drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)]'}`;
+
+	let heartClass = $derived(
+		`${sizeClasses[size]} transition-all duration-300 ease-out
+		hover:scale-110 active:scale-95
+		${isFavorite
+			? 'text-[#FF6B8B] drop-shadow-lg hover:text-[#FF4D76]'
+			: 'text-white/90 hover:text-[#FF6B8B] filter drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)]'}`
+	);
 </script>
 
 <button
 	type="button"
 	aria-label={ariaLabel}
-	on:click
+	{onclick}
 	class="group relative flex items-center justify-center rounded-full p-2 transition-all duration-300 hover:bg-white/10 {className}"
 >
 	<svg
@@ -47,10 +57,10 @@
 	button {
 		-webkit-tap-highlight-color: transparent;
 	}
-	
+
 	@media (hover: hover) {
 		button:hover svg {
 			filter: drop-shadow(0 0 8px rgba(255, 107, 139, 0.5));
 		}
 	}
-</style> 
+</style>

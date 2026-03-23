@@ -1,37 +1,33 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	import type { MouseEventHandler } from 'svelte/elements';
 	import type { Recipe } from '$lib/types/Recipe';
 	import IconButton from '$lib/components/ui/IconButton.svelte';
 
-	export let recipe: Recipe;
-	export let isFavorite: boolean = false;
+	let {
+		recipe,
+		isFavorite = false,
+		onclick,
+		onfavorite
+	}: {
+		recipe: Recipe;
+		isFavorite?: boolean;
+		onclick?: MouseEventHandler<HTMLButtonElement>;
+		onfavorite?: (e: MouseEvent) => void;
+	} = $props();
 
-	const dispatch = createEventDispatcher<{
-		click: void;
-		favorite: void;
-	}>();
-
-	let imgError = false;
+	let imgError = $state(false);
 	const defaultImage = '/images/recipe-placeholder.webp';
-
-	function handleClick() {
-		dispatch('click');
-	}
 
 	function handleFavorite(e: MouseEvent) {
 		e.stopPropagation();
-		dispatch('favorite');
-	}
-
-	function handleImageError() {
-		imgError = true;
+		onfavorite?.(e);
 	}
 </script>
 
 <div class="relative mx-auto max-w-sm rounded-lg border p-4 pb-12 shadow-lg transition-all hover:bg-[#FDE2E4] sm:pb-4">
 	<button
 		class="w-full text-left"
-		on:click={handleClick}
+		{onclick}
 		type="button"
 		aria-label="Voir les détails de la recette {recipe.nom}"
 	>
@@ -40,7 +36,7 @@
 			alt={recipe.nom}
 			class="h-48 w-full rounded-md object-cover"
 			loading="lazy"
-			on:error={handleImageError}
+			onerror={() => (imgError = true)}
 		/>
 		<h2 class="mt-4 text-2xl font-semibold">{recipe.nom}</h2>
 		<p class="mt-2 text-[#9D8189]">
@@ -49,9 +45,9 @@
 	</button>
 
 	<IconButton
-		on:click={handleFavorite}
-		ariaLabel={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+		onclick={handleFavorite}
+		ariaLabel={isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
 		{isFavorite}
 		className="absolute bottom-4 right-4 sm:bottom-auto sm:top-4"
 	/>
-</div> 
+</div>

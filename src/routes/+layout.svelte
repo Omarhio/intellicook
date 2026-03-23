@@ -1,22 +1,23 @@
 <script lang="ts">
 	import '../app.css';
+	import type { Snippet } from 'svelte';
 	import Hamburger from 'svelte-hamburgers';
 	import { afterNavigate } from '$app/navigation';
+	import { page } from '$app/stores';
 
-	let isMenuOpen = false;
-	let currentPath = '';
+	let { children }: { children: Snippet } = $props();
 
-	$: {
-		if (typeof window !== 'undefined') {
-			document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-			currentPath = window.location.pathname;
-		}
-	}
+	let isMenuOpen = $state(false);
+
+	$effect(() => {
+		document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+	});
 
 	afterNavigate(() => {
 		isMenuOpen = false;
-		currentPath = window.location.pathname;
 	});
+
+	let currentPath = $derived($page.url.pathname);
 </script>
 
 <svelte:head>
@@ -46,22 +47,17 @@
 				aria-label="Toggle menu"
 				aria-expanded={isMenuOpen}
 				class="absolute left-4 top-2 z-[10000] block cursor-pointer md:hidden"
-				on:click={() => (isMenuOpen = !isMenuOpen)}
-				on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && (isMenuOpen = !isMenuOpen)}
+				onclick={() => (isMenuOpen = !isMenuOpen)}
+				onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && (isMenuOpen = !isMenuOpen)}
 			>
-				<Hamburger
-					open={isMenuOpen}
-					--color="#9D8189"
-				/>
+				<Hamburger open={isMenuOpen} --color="#9D8189" />
 			</div>
 
 			<ul class="nav-links-desktop hidden gap-6 font-body text-lg md:flex">
 				<li class="nav-item-desktop">
 					<a
 						href="/"
-						class={`menu-link-kawaii-desktop ${
-							currentPath === '/' ? 'font-bold underline underline-offset-1' : ''
-						}`}
+						class={`menu-link-kawaii-desktop ${currentPath === '/' ? 'font-bold underline underline-offset-1' : ''}`}
 					>
 						<span>Accueil</span>
 						<img src="/images/8.png" alt="Favoris" class="icon-kawaii-desktop" />
@@ -70,9 +66,7 @@
 				<li class="nav-item-desktop">
 					<a
 						href="/recipes"
-						class={`menu-link-kawaii-desktop ${
-							currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''
-						}`}
+						class={`menu-link-kawaii-desktop ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''}`}
 					>
 						<span>Recettes</span>
 						<img src="/images/2.png" alt="Favoris" class="icon-kawaii-desktop" />
@@ -81,9 +75,7 @@
 				<li class="nav-item-desktop">
 					<a
 						href="/favoris"
-						class={`menu-link-kawaii-desktop ${
-							currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''
-						}`}
+						class={`menu-link-kawaii-desktop ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''}`}
 					>
 						<span>Favoris</span>
 						<img src="/images/5.png" alt="Favoris" class="icon-kawaii-desktop" />
@@ -97,12 +89,10 @@
 			class="menu-overlay fixed inset-0 z-[9999] transform bg-[#FFCAD4] text-[#9D8189] transition-transform duration-400 ease-in-out"
 			style="transform: translateX({isMenuOpen ? '0%' : '-100%'})"
 		>
-			<!-- Ajout du GIF en haut au centre -->
 			<div class="absolute bottom-12 left-1/2 -translate-x-1/2 transform">
 				<img src="/images/cute.gif" alt="Kawaii Animation" class="h-40 w-auto object-contain" />
 			</div>
 
-			<!-- Liste de navigation -->
 			<ul
 				class="menu-links flex h-full flex-col items-center justify-center gap-12 text-center font-body text-2xl"
 			>
@@ -112,10 +102,8 @@
 				<li class="menu-item">
 					<a
 						href="/"
-						class={`menu-link-kawaii ${
-							currentPath === '/' ? 'font-bold underline underline-offset-1' : ''
-						}`}
-						on:click={() => (isMenuOpen = false)}
+						class={`menu-link-kawaii ${currentPath === '/' ? 'font-bold underline underline-offset-1' : ''}`}
+						onclick={() => (isMenuOpen = false)}
 					>
 						<img src="/images/3.png" alt="Accueil" class="icon-kawaii" />
 						<span>Accueil</span>
@@ -125,10 +113,8 @@
 				<li class="menu-item">
 					<a
 						href="/recipes"
-						class={`menu-link-kawaii ${
-							currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''
-						}`}
-						on:click={() => (isMenuOpen = false)}
+						class={`menu-link-kawaii ${currentPath === '/recipes' ? 'font-bold underline underline-offset-1' : ''}`}
+						onclick={() => (isMenuOpen = false)}
 					>
 						<img src="/images/3.png" alt="Recettes" class="icon-kawaii" />
 						<span>Recettes</span>
@@ -138,10 +124,8 @@
 				<li class="menu-item">
 					<a
 						href="/favoris"
-						class={`menu-link-kawaii ${
-							currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''
-						}`}
-						on:click={() => (isMenuOpen = false)}
+						class={`menu-link-kawaii ${currentPath === '/favoris' ? 'font-bold underline underline-offset-1' : ''}`}
+						onclick={() => (isMenuOpen = false)}
 					>
 						<img src="/images/3.png" alt="Favoris" class="icon-kawaii" />
 						<span>Favoris</span>
@@ -150,7 +134,6 @@
 				</li>
 			</ul>
 
-			<!-- Pied de menu -->
 			<div
 				class="menu-footer absolute bottom-0 left-0 right-0 flex flex-col items-center gap-4 bg-[#FFCAD4] py-4 shadow-inner"
 			>
@@ -160,7 +143,7 @@
 	</header>
 
 	<main class="flex-1">
-		<slot />
+		{@render children()}
 	</main>
 
 	<footer class="mt-auto bg-[#FFCAD4] py-6 font-body text-[#9D8189]">
@@ -168,8 +151,8 @@
 			<div class="flex items-center gap-2">
 				<img src="/logo.webp" alt="Intellicook Logo" class="h-12 w-auto" />
 				<p class="max-w-sm text-center text-sm md:text-left">
-					<strong class="font-title text-lg text-[#9D8189]">Intellicook</strong> — Découvrez des recettes
-					japonaises et kawaii pour illuminer vos repas !
+					<strong class="font-title text-lg text-[#9D8189]">Intellicook</strong> — Découvrez des
+					recettes japonaises et kawaii pour illuminer vos repas !
 				</p>
 			</div>
 
