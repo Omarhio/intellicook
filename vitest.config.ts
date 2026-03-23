@@ -1,12 +1,16 @@
 import { defineConfig } from 'vitest/config';
-import { sveltekit } from '@sveltejs/kit/vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { svelteTesting } from '@testing-library/svelte/vite';
+import path from 'path';
 
 export default defineConfig({
-	plugins: [sveltekit(), svelteTesting()],
+	plugins: [svelte({ hot: false }), svelteTesting()],
 
-	optimizeDeps: {
-		include: ['svelte-hamburgers'] // Force l'inclusion de svelte-hamburgers pour éviter les problèmes
+	resolve: {
+		alias: {
+			$lib: path.resolve('./src/lib'),
+			$app: path.resolve('./node_modules/@sveltejs/kit/src/runtime/app')
+		}
 	},
 
 	test: {

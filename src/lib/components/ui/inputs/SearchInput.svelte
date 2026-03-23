@@ -35,7 +35,6 @@
 		{placeholder}
 		oninput={handleInput}
 		class="w-full h-12 rounded-3xl border-2 border-[#F4ACB7] px-6 py-3 text-center text-lg placeholder:text-center placeholder:text-[#9D8189] focus:border-[#F4ACB7] focus:outline-none focus:ring-2 focus:ring-[#F4ACB7] focus:ring-opacity-50 transition-all duration-200"
-		role="searchbox"
 		aria-label="Rechercher une recette"
 	/>
 	{#if value}

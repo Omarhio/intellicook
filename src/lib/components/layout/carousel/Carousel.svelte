@@ -14,7 +14,7 @@
 		autoplayInterval?: number;
 	} = $props();
 
-	let interval: number;
+	let interval: number | undefined;
 	let direction = $state(1);
 	let isPaused = $state(false);
 	let imgErrors = $state<Record<number, boolean>>({});
@@ -55,7 +55,7 @@
 	}
 
 	function stopAutoSlide() {
-		if (interval) {
+		if (interval !== undefined) {
 			window.clearInterval(interval);
 			interval = undefined;
 		}
@@ -106,6 +106,8 @@
 	let nextIndex = $derived((currentIndex + 1) % items.length);
 </script>
 
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div
 	class="mx-auto mt-10 w-full max-w-6xl"
 	role="region"
@@ -192,7 +194,7 @@
 					<div in:receive={{ key: previousIndex }} out:send={{ key: previousIndex }}>
 						<img
 							src={imgErrors[previousIndex] ? defaultImage : items[previousIndex].image}
-							alt=""
+							alt={items[previousIndex].nom}
 							class="h-full w-full transform object-cover transition-transform duration-300 hover:scale-110"
 							onerror={() => (imgErrors[previousIndex] = true)}
 						/>
@@ -212,7 +214,7 @@
 					<div in:receive={{ key: currentIndex }} out:send={{ key: currentIndex }}>
 						<img
 							src={imgErrors[currentIndex] ? defaultImage : items[currentIndex].image}
-							alt=""
+							alt={items[currentIndex].nom}
 							class="h-full w-full transform object-cover transition-transform duration-500 hover:scale-110"
 							onerror={() => (imgErrors[currentIndex] = true)}
 						/>
@@ -233,7 +235,7 @@
 					<div in:receive={{ key: nextIndex }} out:send={{ key: nextIndex }}>
 						<img
 							src={imgErrors[nextIndex] ? defaultImage : items[nextIndex].image}
-							alt=""
+							alt={items[nextIndex].nom}
 							class="h-full w-full transform object-cover transition-transform duration-300 hover:scale-110"
 							onerror={() => (imgErrors[nextIndex] = true)}
 						/>
@@ -281,7 +283,7 @@
 					aria-label="Voir la recette {items[i].nom}"
 					aria-selected={i === currentIndex}
 					role="tab"
-				/>
+				></button>
 			{/each}
 		</div>
 	{:else}

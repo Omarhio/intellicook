@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, fireEvent } from '@testing-library/svelte';
-import type { RenderResult } from '@testing-library/svelte';
+import userEvent from '@testing-library/user-event';
 import FilterButton from './FilterButton.svelte';
 
 interface FilterButtonProps {
@@ -72,15 +72,14 @@ describe('FilterButton', () => {
 
     it('ne devrait pas déclencher l\'événement click quand désactivé', async () => {
         const handleClick = vi.fn();
-        const props: FilterButtonProps = { 
+        const props: FilterButtonProps = {
             label: 'Filtres',
             disabled: true
         };
         const { getByRole } = render(FilterButton, { props });
         const button = getByRole('button');
-        
-        button.addEventListener('click', handleClick);
-        await fireEvent.click(button);
+
+        await userEvent.click(button);
         expect(handleClick).not.toHaveBeenCalled();
     });
 

@@ -1,13 +1,23 @@
 <script lang="ts">
-  export let variant: 'title' | 'body' = 'body';
-  export let size: 'sm' | 'base' | 'lg' | 'xl' | '2xl' = 'base';
-  export let color: string = '';
-  
+  import type { Snippet } from 'svelte';
+
+  let {
+    variant = 'body',
+    size = 'base',
+    color = '',
+    children
+  }: {
+    variant?: 'title' | 'body';
+    size?: 'sm' | 'base' | 'lg' | 'xl' | '2xl';
+    color?: string;
+    children?: Snippet;
+  } = $props();
+
   const baseClasses = {
     title: 'font-title',
     body: 'font-body'
   };
-  
+
   const sizeClasses = {
     sm: 'text-sm',
     base: 'text-base',
@@ -15,10 +25,10 @@
     xl: 'text-xl',
     '2xl': 'text-2xl'
   };
-  
-  $: classes = `${baseClasses[variant]} ${sizeClasses[size]} ${color}`;
+
+  let classes = $derived(`${baseClasses[variant]} ${sizeClasses[size]} ${color}`);
 </script>
 
 <span class={classes}>
-  <slot />
-</span> 
+  {@render children?.()}
+</span>

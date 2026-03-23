@@ -35,50 +35,36 @@ describe('RecipeCard', () => {
         expect(getByRole('img', { name: 'Sushi' })).toBeInTheDocument();
     });
 
-    it('devrait émettre l\'événement click lors du clic sur la carte', async () => {
-        const { component, getByRole } = render(RecipeCard, {
-            props: { 
-                recipe: mockRecipe,
-                isFavorite: false
-            }
+    it('devrait appeler onclick lors du clic sur la carte', async () => {
+        const mockClick = vi.fn();
+        const { getByRole } = render(RecipeCard, {
+            props: { recipe: mockRecipe, isFavorite: false, onclick: mockClick }
         });
 
-        const mockClick = vi.fn();
-        component.$on('click', mockClick);
-        
-        const button = getByRole('button', { name: 'Voir les détails de la recette' });
+        const button = getByRole('button', { name: /Voir les détails de la recette Sushi/ });
         await fireEvent.click(button);
         expect(mockClick).toHaveBeenCalled();
     });
 
-    it('devrait émettre l\'événement favorite lors du clic sur le bouton favori', async () => {
-        const { component, getByRole } = render(RecipeCard, {
-            props: { 
-                recipe: mockRecipe,
-                isFavorite: false
-            }
+    it('devrait appeler onfavorite lors du clic sur le bouton favori', async () => {
+        const mockFavorite = vi.fn();
+        const { getByRole } = render(RecipeCard, {
+            props: { recipe: mockRecipe, isFavorite: false, onfavorite: mockFavorite }
         });
 
-        const mockFavorite = vi.fn();
-        component.$on('favorite', mockFavorite);
-        
-        const favoriteButton = getByRole('button', { name: 'Ajouter ou retirer des favoris' });
+        const favoriteButton = getByRole('button', { name: 'Ajouter aux favoris' });
         await fireEvent.click(favoriteButton);
         expect(mockFavorite).toHaveBeenCalled();
     });
 
-    it('devrait afficher le bon état du bouton favori', async () => {
+    it('devrait afficher le bon aria-label selon l\'état favori', async () => {
         const { getByRole, rerender } = render(RecipeCard, {
-            props: { 
-                recipe: mockRecipe,
-                isFavorite: false
-            }
+            props: { recipe: mockRecipe, isFavorite: false }
         });
 
-        const favoriteButton = getByRole('button', { name: 'Ajouter ou retirer des favoris' });
-        expect(favoriteButton.querySelector('svg')?.classList.toString()).toContain('text-white/90');
+        expect(getByRole('button', { name: 'Ajouter aux favoris' })).toBeInTheDocument();
 
         await rerender({ recipe: mockRecipe, isFavorite: true });
-        expect(favoriteButton.querySelector('svg')?.classList.toString()).toContain('text-[#FF6B8B]');
+        expect(getByRole('button', { name: 'Retirer des favoris' })).toBeInTheDocument();
     });
-}); 
+});

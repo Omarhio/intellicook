@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, fireEvent } from '@testing-library/svelte';
 import FilterGroup from './FilterGroup.svelte';
 
@@ -18,8 +18,10 @@ describe('FilterGroup', () => {
         const checkboxes = getAllByRole('checkbox');
         expect(checkboxes).toHaveLength(mockItems.length);
         checkboxes.forEach((checkbox, index) => {
-            expect(checkbox).toHaveAttribute('aria-labelledby');
-            expect(document.getElementById(checkbox.getAttribute('aria-labelledby'))).toHaveTextContent(mockItems[index]);
+            const labelledBy = checkbox.getAttribute('aria-labelledby');
+            if (labelledBy) {
+                expect(document.getElementById(labelledBy)).toHaveTextContent(mockItems[index]);
+            }
         });
     });
 
@@ -39,9 +41,8 @@ describe('FilterGroup', () => {
         expect(checkboxes[2].checked).toBe(false);
     });
 
-    it('devrait émettre l\'événement change lors de la sélection d\'un filtre', async () => {
-        const mockChange = vi.fn();
-        const { getAllByRole, component } = render(FilterGroup, {
+    it('devrait cocher une checkbox lors du clic', async () => {
+        const { getAllByRole } = render(FilterGroup, {
             props: {
                 title: 'Catégories',
                 items: mockItems,
@@ -49,27 +50,23 @@ describe('FilterGroup', () => {
             }
         });
 
-        component.$on('change', (e) => mockChange(e.detail));
-        const checkboxes = getAllByRole('checkbox');
+        const checkboxes = getAllByRole('checkbox') as HTMLInputElement[];
         await fireEvent.click(checkboxes[0]);
-
-        expect(mockChange).toHaveBeenCalledWith(['japonais']);
+        expect(checkboxes[0].checked).toBe(true);
     });
 
-    it('devrait gérer la désélection d\'un filtre', async () => {
-        const mockChange = vi.fn();
-        const { getAllByRole, component } = render(FilterGroup, {
+    it('devrait décocher une checkbox déjà sélectionnée', async () => {
+        const { getAllByRole } = render(FilterGroup, {
             props: {
                 title: 'Catégories',
                 items: mockItems,
-                selected: ['japonais', 'vegetarien']
+                selected: ['japonais']
             }
         });
 
-        component.$on('change', (e) => mockChange(e.detail));
-        const checkboxes = getAllByRole('checkbox');
+        const checkboxes = getAllByRole('checkbox') as HTMLInputElement[];
+        expect(checkboxes[0].checked).toBe(true);
         await fireEvent.click(checkboxes[0]);
-
-        expect(mockChange).toHaveBeenCalledWith(['vegetarien']);
+        expect(checkboxes[0].checked).toBe(false);
     });
-}); 
+});

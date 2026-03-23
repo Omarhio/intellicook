@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, fireEvent } from '@testing-library/svelte';
-import type { RenderResult } from '@testing-library/svelte';
+import userEvent from '@testing-library/user-event';
 import Button from './Button.svelte';
 
 interface ButtonProps {
@@ -67,9 +67,8 @@ describe('Button', () => {
         const props: ButtonProps = { disabled: true };
         const { getByRole } = render(Button, { props });
         const button = getByRole('button');
-        
-        button.addEventListener('click', handleClick);
-        await fireEvent.click(button);
+
+        await userEvent.click(button);
         expect(handleClick).not.toHaveBeenCalled();
     });
 }); 

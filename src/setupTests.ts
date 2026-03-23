@@ -8,33 +8,18 @@ expect.extend(matchers);
 
 // Mock des transitions Svelte
 vi.mock('svelte/transition', () => ({
-    fade: () => ({
-        delay: 0,
-        duration: 0,
-        easing: (t: number) => t,
-        css: () => ''
-    }),
-    scale: () => ({
-        delay: 0,
-        duration: 0,
-        easing: (t: number) => t,
-        css: () => ''
-    })
+    fade: () => ({ delay: 0, duration: 0, easing: (t: number) => t, css: () => '' }),
+    scale: () => ({ delay: 0, duration: 0, easing: (t: number) => t, css: () => '' }),
+    crossfade: () => [
+        () => ({ delay: 0, duration: 0, easing: (t: number) => t, css: () => '' }),
+        () => ({ delay: 0, duration: 0, easing: (t: number) => t, css: () => '' })
+    ]
 }));
 
 // Mock des easings Svelte
 vi.mock('svelte/easing', () => ({
     elasticOut: (t: number) => t
 }));
-
-// Configuration de l'environnement de test
-vi.mock('svelte', async () => {
-    const actual = await vi.importActual('svelte');
-    return {
-        ...actual as any,
-        mount: vi.fn()
-    };
-});
 
 // Mock de fetch pour les tests du store
 global.fetch = vi.fn(() =>

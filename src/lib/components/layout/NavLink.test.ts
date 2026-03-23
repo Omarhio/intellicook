@@ -66,7 +66,7 @@ describe('NavLink', () => {
 
     it('devrait appeler onClick en version mobile', async () => {
         const handleClick = vi.fn();
-        const props = { ...defaultProps, isMobile: true, onClick: handleClick };
+        const props = { ...defaultProps, isMobile: true, onclick: handleClick };
         const { container } = render(NavLink, { props });
         
         const link = container.querySelector('a');
